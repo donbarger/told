@@ -66,12 +66,12 @@ function SamaritanArt() {
     <svg viewBox="0 0 800 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
       <defs>
         <linearGradient id="sam-sky" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#070A14" />
-          <stop offset="100%" stopColor="#1B2A4A" />
+          <stop offset="0%" stopColor="#0C1830" />
+          <stop offset="100%" stopColor="#243858" />
         </linearGradient>
-        <radialGradient id="sam-lamp" cx="0.5" cy="0.65" r="0.35">
-          <stop offset="0%" stopColor="#F3D54E" stopOpacity="0.55" />
-          <stop offset="50%" stopColor="#E87722" stopOpacity="0.2" />
+        <radialGradient id="sam-lamp" cx="0.48" cy="0.62" r="0.55">
+          <stop offset="0%" stopColor="#F3D54E" stopOpacity="0.75" />
+          <stop offset="40%" stopColor="#E87722" stopOpacity="0.35" />
           <stop offset="100%" stopColor="#E87722" stopOpacity="0" />
         </radialGradient>
       </defs>
@@ -91,19 +91,19 @@ function SamaritanArt() {
       {/* wounded man, lying on ground */}
       <g transform="translate(440,320)">
         <ellipse cx="0" cy="5" rx="55" ry="12" fill="#12100C" opacity="0.5" />
-        <path d="M-50,4 Q-20,-10 20,-6 L40,4 Q20,14 -20,12 Z" fill="#1B1A2E" />
-        <circle cx="-38" cy="-2" r="9" fill="#1B1A2E" />
+        <path d="M-50,4 Q-20,-10 20,-6 L40,4 Q20,14 -20,12 Z" fill="#3A2830" />
+        <circle cx="-38" cy="-2" r="9" fill="#8A5038" />
       </g>
       {/* samaritan kneeling over him */}
       <g transform="translate(390,295)">
         {/* body bent forward */}
-        <path d="M-10,0 Q0,-24 14,-30" stroke="#0A0F1C" strokeWidth="10" strokeLinecap="round" fill="none" />
-        <circle cx="14" cy="-38" r="9" fill="#0A0F1C" />
+        <path d="M-10,0 Q0,-24 14,-30" stroke="#1B365D" strokeWidth="10" strokeLinecap="round" fill="none" />
+        <circle cx="14" cy="-38" r="9" fill="#A06840" />
         {/* arm reaching down */}
-        <path d="M6,-24 Q10,-4 16,6" stroke="#0A0F1C" strokeWidth="7" strokeLinecap="round" fill="none" />
+        <path d="M6,-24 Q10,-4 16,6" stroke="#1B365D" strokeWidth="7" strokeLinecap="round" fill="none" />
         {/* kneeling legs */}
-        <path d="M-10,0 L-18,14" stroke="#0A0F1C" strokeWidth="8" strokeLinecap="round" />
-        <path d="M-4,4 L-4,18" stroke="#0A0F1C" strokeWidth="8" strokeLinecap="round" />
+        <path d="M-10,0 L-18,14" stroke="#1B365D" strokeWidth="8" strokeLinecap="round" />
+        <path d="M-4,4 L-4,18" stroke="#1B365D" strokeWidth="8" strokeLinecap="round" />
       </g>
       {/* oil lamp */}
       <g transform="translate(355,290)">
@@ -125,67 +125,78 @@ function SamaritanArt() {
   );
 }
 
-/* ── Widow's Offering — two hands over an offering box, two coins ───────── */
+/* ── The Fight — woman in courthouse hallway, fist raised to knock again ── */
 function WidowArt() {
   return (
     <svg viewBox="0 0 800 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
       <defs>
-        <linearGradient id="wid-bg" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#C8A870" />
-          <stop offset="100%" stopColor="#7A5A28" />
+        <linearGradient id="wid-hall" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#1C1C1C" />
+          <stop offset="100%" stopColor="#2A2418" />
         </linearGradient>
-        <radialGradient id="wid-glow" cx="0.5" cy="0.55" r="0.3">
-          <stop offset="0%" stopColor="#F3D54E" stopOpacity="0.5" />
-          <stop offset="100%" stopColor="#F3D54E" stopOpacity="0" />
+        <radialGradient id="wid-overhead" cx="0.5" cy="0" r="0.5">
+          <stop offset="0%" stopColor="#D4C890" stopOpacity="0.35" />
+          <stop offset="100%" stopColor="#D4C890" stopOpacity="0" />
         </radialGradient>
-        <linearGradient id="wid-box" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#2A1E0A" />
-          <stop offset="100%" stopColor="#0A0800" />
-        </linearGradient>
       </defs>
-      <rect width="800" height="400" fill="url(#wid-bg)" />
-      {/* temple wall texture */}
-      {[0,50,100,150,200,250,300,350].map((y,i) => (
-        <path key={i} d={`M0,${y} L800,${y}`} stroke="#5A3A10" strokeWidth="1" opacity="0.18" />
+      <rect width="800" height="400" fill="url(#wid-hall)" />
+      <rect width="800" height="400" fill="url(#wid-overhead)" />
+      {/* receding hallway — perspective */}
+      <path d="M0,0 L320,180 L320,400 L0,400 Z" fill="#141410" />
+      <path d="M800,0 L480,180 L480,400 L800,400 Z" fill="#141410" />
+      <path d="M320,180 L480,180 L480,400 L320,400 Z" fill="#1C1C18" />
+      {/* ceiling line */}
+      <path d="M0,0 L320,180 M800,0 L480,180" stroke="#2A2A20" strokeWidth="2" opacity="0.6" />
+      {/* floor line */}
+      <path d="M0,400 L320,400 M480,400 L800,400" stroke="#2A2A20" strokeWidth="1" opacity="0.3" />
+      {/* overhead fluorescent lights receding */}
+      {[[400,10,120,6],[400,90,80,5],[400,140,50,4],[400,162,28,3]].map(([x,y,w,h],i) => (
+        <g key={i}>
+          <rect x={x-w/2} y={y} width={w} height={h} rx="2" fill="#D4C890" opacity={0.55-i*0.1} />
+          <rect x={x-w/2-10} y={y+h} width={w+20} height={2} fill="#D4C890" opacity={0.08-i*0.01} />
+        </g>
       ))}
-      {[80,240,400,560,720].map((x,i) => (
-        <path key={i} d={`M${x},0 L${x},400`} stroke="#5A3A10" strokeWidth="1" opacity="0.14" />
+      {/* identical closed doors receding — denial after denial */}
+      {[[110,60,180,260],[250,100,120,200],[335,130,80,150]].map(([x,y,w,h],i) => (
+        <g key={i} opacity={0.7-i*0.15}>
+          <rect x={x} y={y} width={w} height={h} rx="3" fill="#1A1208" />
+          <rect x={x} y={y} width={w} height={h} rx="3" fill="none" stroke="#3A3020" strokeWidth="2" />
+          <rect x={x+w*0.38} y={y+h*0.42} width={w*0.12} height={w*0.06} rx="2" fill="#4A3A20" />
+          <circle cx={x+w*0.6} cy={y+h*0.5} r={w*0.055} fill="#4A3A20" />
+        </g>
       ))}
-      {/* stone columns faint */}
-      {[100, 700].map((x,i) => (
-        <rect key={i} x={x-18} y={0} width={36} height={400} fill="#8A6020" opacity="0.2" />
+      {/* mirror doors right side */}
+      {[[690,60,180,260],[550,100,120,200],[465,130,80,150]].map(([x,y,w,h],i) => (
+        <g key={i} opacity={0.7-i*0.15}>
+          <rect x={x} y={y} width={w} height={h} rx="3" fill="#1A1208" />
+          <rect x={x} y={y} width={w} height={h} rx="3" fill="none" stroke="#3A3020" strokeWidth="2" />
+          <circle cx={x+w*0.4} cy={y+h*0.5} r={w*0.055} fill="#4A3A20" />
+        </g>
       ))}
-      {/* glow from box */}
-      <rect x="250" y="150" width="300" height="250" fill="url(#wid-glow)" />
-      {/* offering box */}
-      <g transform="translate(400,310)">
-        <rect x="-80" y="-50" width="160" height="80" rx="4" fill="url(#wid-box)" />
-        <rect x="-80" y="-50" width="160" height="80" rx="4" fill="none" stroke="#B8893F" strokeWidth="1.5" opacity="0.6" />
-        {/* slot */}
-        <rect x="-20" y="-55" width="40" height="8" rx="3" fill="#1A0800" />
-        <rect x="-20" y="-55" width="40" height="8" rx="3" fill="none" stroke="#8A6020" strokeWidth="1" opacity="0.5" />
+      {/* crumpled rejection notices on floor */}
+      {[[200,385],[260,390],[340,388],[460,387],[540,391]].map(([x,y],i) => (
+        <ellipse key={i} cx={x} cy={y} rx="16" ry="7" fill="#2A2418" opacity="0.8" transform={`rotate(${i*15-20},${x},${y})`} />
+      ))}
+      {/* the woman — standing at the far door, fist raised to knock again */}
+      <g transform="translate(400,270)">
+        {/* body */}
+        <circle cx="0" cy="-26" r="12" fill="#A06840" />
+        {/* head covering / hair */}
+        <path d="M-14,-30 Q0,-50 14,-30 Q10,-14 -10,-14 Z" fill="#5A2C10" />
+        <path d="M-12,-4 L12,-4 L10,28 L-10,28 Z" fill="#8A4828" />
+        {/* coat — she's been here all day */}
+        <path d="M-12,-4 Q-22,8 -18,34" stroke="#7A3C1C" strokeWidth="7" strokeLinecap="round" fill="none" />
+        <path d="M12,-4 Q22,8 18,34" stroke="#7A3C1C" strokeWidth="7" strokeLinecap="round" fill="none" />
+        {/* legs */}
+        <path d="M-10,26 L-12,52" stroke="#7A3C1C" strokeWidth="6" strokeLinecap="round" />
+        <path d="M10,26 L12,52" stroke="#7A3C1C" strokeWidth="6" strokeLinecap="round" />
+        {/* arm raised — fist about to knock, again */}
+        <path d="M12,-8 Q28,-24 32,-38" stroke="#8A4828" strokeWidth="7" strokeLinecap="round" fill="none" />
+        <rect x="26" y="-46" width="14" height="12" rx="3" fill="#A06840" />
+        {/* other arm — small bag at her side, documents */}
+        <path d="M-12,-4 Q-26,8 -28,20" stroke="#8A4828" strokeWidth="6" strokeLinecap="round" fill="none" />
+        <rect x="-36" y="14" width="18" height="24" rx="2" fill="#5A2C10" />
       </g>
-      {/* two hands, releasing coins */}
-      {/* left hand */}
-      <g transform="translate(360,255)">
-        <path d="M-20,0 Q-22,-28 -8,-38 Q4,-46 12,-30 L14,0 Z" fill="#C8956A" />
-        {/* fingers */}
-        <path d="M-14,-34 Q-16,-52 -6,-54 Q2,-54 2,-36" stroke="#C8956A" strokeWidth="7" strokeLinecap="round" fill="none" />
-        <path d="M-4,-38 Q-4,-58 6,-58 Q14,-58 14,-40" stroke="#C8956A" strokeWidth="7" strokeLinecap="round" fill="none" />
-        <path d="M8,-34 Q10,-52 18,-50 Q24,-48 22,-32" stroke="#C8956A" strokeWidth="7" strokeLinecap="round" fill="none" />
-      </g>
-      {/* right hand */}
-      <g transform="translate(440,255)">
-        <path d="M20,0 Q22,-28 8,-38 Q-4,-46 -12,-30 L-14,0 Z" fill="#C8956A" />
-        <path d="M14,-34 Q16,-52 6,-54 Q-2,-54 -2,-36" stroke="#C8956A" strokeWidth="7" strokeLinecap="round" fill="none" />
-        <path d="M4,-38 Q4,-58 -6,-58 Q-14,-58 -14,-40" stroke="#C8956A" strokeWidth="7" strokeLinecap="round" fill="none" />
-        <path d="M-8,-34 Q-10,-52 -18,-50 Q-24,-48 -22,-32" stroke="#C8956A" strokeWidth="7" strokeLinecap="round" fill="none" />
-      </g>
-      {/* two coins falling */}
-      <circle cx="380" cy="282" r="9" fill="#B8893F" />
-      <circle cx="380" cy="282" r="9" fill="none" stroke="#F3D54E" strokeWidth="1" opacity="0.7" />
-      <circle cx="420" cy="288" r="9" fill="#B8893F" />
-      <circle cx="420" cy="288" r="9" fill="none" stroke="#F3D54E" strokeWidth="1" opacity="0.7" />
     </svg>
   );
 }
@@ -397,12 +408,12 @@ function RichRulerArt() {
     <svg viewBox="0 0 800 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
       <defs>
         <linearGradient id="rr-sky" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#1B1A2E" />
-          <stop offset="60%" stopColor="#3A2A18" />
-          <stop offset="100%" stopColor="#6A4A28" />
+          <stop offset="0%" stopColor="#2A2848" />
+          <stop offset="55%" stopColor="#6A4828" />
+          <stop offset="100%" stopColor="#9A6A38" />
         </linearGradient>
-        <radialGradient id="rr-glow" cx="0.22" cy="0.6" r="0.3">
-          <stop offset="0%" stopColor="#F3D54E" stopOpacity="0.4" />
+        <radialGradient id="rr-glow" cx="0.22" cy="0.6" r="0.4">
+          <stop offset="0%" stopColor="#F3D54E" stopOpacity="0.55" />
           <stop offset="100%" stopColor="#F3D54E" stopOpacity="0" />
         </radialGradient>
       </defs>
@@ -432,24 +443,24 @@ function RichRulerArt() {
       </g>
       {/* the young man walking away — back to viewer, head slightly bowed */}
       <g transform="translate(490,250)">
-        <circle cx="0" cy="-18" r="12" fill="#0F1F3A" />
-        <path d="M-12,-4 L12,-4 L10,32 L-10,32 Z" fill="#1B365D" />
+        <circle cx="0" cy="-18" r="12" fill="#8A5830" />
+        <path d="M-12,-4 L12,-4 L10,32 L-10,32 Z" fill="#3A5A80" />
         {/* fine cloak */}
-        <path d="M-12,-4 Q-26,14 -22,44" stroke="#1B365D" strokeWidth="8" strokeLinecap="round" fill="none" />
-        <path d="M12,-4 Q26,14 22,44" stroke="#1B365D" strokeWidth="8" strokeLinecap="round" fill="none" />
+        <path d="M-12,-4 Q-26,14 -22,44" stroke="#3A5A80" strokeWidth="8" strokeLinecap="round" fill="none" />
+        <path d="M12,-4 Q26,14 22,44" stroke="#3A5A80" strokeWidth="8" strokeLinecap="round" fill="none" />
         {/* arms at sides, dejected */}
-        <path d="M-11,4 Q-22,14 -20,26" stroke="#0F1F3A" strokeWidth="6" strokeLinecap="round" fill="none" />
-        <path d="M11,4 Q22,14 20,26" stroke="#0F1F3A" strokeWidth="6" strokeLinecap="round" fill="none" />
+        <path d="M-11,4 Q-22,14 -20,26" stroke="#2A4A70" strokeWidth="6" strokeLinecap="round" fill="none" />
+        <path d="M11,4 Q22,14 20,26" stroke="#2A4A70" strokeWidth="6" strokeLinecap="round" fill="none" />
         {/* feet walking away */}
-        <path d="M-10,30 L-14,50" stroke="#0F1F3A" strokeWidth="6" strokeLinecap="round" />
-        <path d="M10,30 L8,50" stroke="#0F1F3A" strokeWidth="6" strokeLinecap="round" />
+        <path d="M-10,30 L-14,50" stroke="#2A4A70" strokeWidth="6" strokeLinecap="round" />
+        <path d="M10,30 L8,50" stroke="#2A4A70" strokeWidth="6" strokeLinecap="round" />
       </g>
       {/* Jesus, standing still, watching */}
-      <g transform="translate(260,264)" opacity="0.8">
-        <circle cx="0" cy="-18" r="11" fill="#0F1F3A" />
-        <path d="M-10,-4 L10,-4 L8,28 L-8,28 Z" fill="#009681" opacity="0.7" />
-        <path d="M-8,24 Q-12,38 -8,48" stroke="#009681" strokeWidth="7" strokeLinecap="round" fill="none" opacity="0.7" />
-        <path d="M8,24 Q12,38 8,48" stroke="#009681" strokeWidth="7" strokeLinecap="round" fill="none" opacity="0.7" />
+      <g transform="translate(260,264)" opacity="0.9">
+        <circle cx="0" cy="-18" r="11" fill="#A07848" />
+        <path d="M-10,-4 L10,-4 L8,28 L-8,28 Z" fill="#009681" />
+        <path d="M-8,24 Q-12,38 -8,48" stroke="#009681" strokeWidth="7" strokeLinecap="round" fill="none" />
+        <path d="M8,24 Q12,38 8,48" stroke="#009681" strokeWidth="7" strokeLinecap="round" fill="none" />
       </g>
     </svg>
   );
@@ -505,172 +516,228 @@ function BartimaeusArt() {
   );
 }
 
-/* ── Talents — one figure digging at night, burying something ─────────── */
+/* ── The Portfolio — figure frozen at a dark desk, sealed envelope untouched */
 function TalentsArt() {
   return (
     <svg viewBox="0 0 800 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
       <defs>
-        <linearGradient id="tal-sky" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#04060E" />
-          <stop offset="100%" stopColor="#0A1020" />
+        <linearGradient id="tal-room" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#141410" />
+          <stop offset="100%" stopColor="#201E18" />
         </linearGradient>
-        <radialGradient id="tal-moon" cx="0.72" cy="0.22" r="0.18">
-          <stop offset="0%" stopColor="#E8E0C8" stopOpacity="0.4" />
-          <stop offset="100%" stopColor="#E8E0C8" stopOpacity="0" />
+        <radialGradient id="tal-lamp" cx="0.5" cy="0.48" r="0.52">
+          <stop offset="0%" stopColor="#C4A840" stopOpacity="0.75" />
+          <stop offset="50%" stopColor="#C4A840" stopOpacity="0.3" />
+          <stop offset="100%" stopColor="#C4A840" stopOpacity="0" />
+        </radialGradient>
+        <radialGradient id="tal-window" cx="0.5" cy="0.5" r="0.5">
+          <stop offset="0%" stopColor="#2A3A5A" stopOpacity="0.6" />
+          <stop offset="100%" stopColor="#2A3A5A" stopOpacity="0" />
         </radialGradient>
       </defs>
-      <rect width="800" height="400" fill="url(#tal-sky)" />
-      <rect width="800" height="400" fill="url(#tal-moon)" />
-      {/* stars */}
-      {[[60,30],[140,18],[240,45],[380,22],[520,38],[640,14],[720,52],[80,80],[310,60],[580,72]].map(([x,y],i) => (
-        <circle key={i} cx={x} cy={y} r={i%3===0?1.8:1.2} fill="#E8E0C8" opacity={0.4+i%4*0.15} />
+      <rect width="800" height="400" fill="url(#tal-room)" />
+      {/* window — city outside, life going on */}
+      <rect x="560" y="40" width="180" height="240" rx="4" fill="#0E1828" />
+      <rect x="560" y="40" width="180" height="240" rx="4" fill="url(#tal-window)" />
+      <rect x="560" y="40" width="180" height="240" rx="4" fill="none" stroke="#1A2030" strokeWidth="3" />
+      {/* window panes */}
+      <path d="M650,40 L650,280" stroke="#1A2030" strokeWidth="2" />
+      <path d="M560,160 L740,160" stroke="#1A2030" strokeWidth="2" />
+      {/* city lights in window */}
+      {[[580,200],[600,220],[620,190],[640,210],[670,225],[690,195],[710,215],[725,200]].map(([x,y],i) => (
+        <rect key={i} x={x} y={y} width={i%3===0?8:5} height={i%2===0?18:12} fill="#4A6A9A" opacity={0.5+i%3*0.15} />
       ))}
-      {/* moon */}
-      <circle cx="576" cy="88" r="22" fill="#E8E0C8" opacity="0.75" />
-      <circle cx="584" cy="82" r="18" fill="#0A1020" />
-      {/* tree silhouette */}
-      <path d="M580,400 Q574,320 570,240 Q564,170 574,100" stroke="#0A1020" strokeWidth="18" strokeLinecap="round" fill="none" />
-      <circle cx="548" cy="145" r="55" fill="#04060E" />
-      <circle cx="600" cy="130" r="48" fill="#04060E" />
-      <circle cx="575" cy="110" r="42" fill="#0A1020" />
-      {/* ground */}
-      <path d="M0,320 L800,320 L800,400 L0,400 Z" fill="#0A0C0A" />
-      {/* disturbed earth — hole being dug */}
-      <ellipse cx="380" cy="332" rx="50" ry="14" fill="#1A1408" />
-      <ellipse cx="380" cy="328" rx="38" ry="10" fill="#0A0804" />
-      {/* mound of dirt beside */}
-      <path d="M340,326 Q320,305 300,318 Q310,330 340,332 Z" fill="#1A1408" />
-      {/* figure crouching, digging */}
-      <g transform="translate(396,298)">
-        <circle cx="0" cy="-20" r="10" fill="#0F1F3A" />
-        <path d="M-10,-4 L10,-4 Q14,16 8,28 L-8,28 Q-14,16 -10,-4 Z" fill="#0F1F3A" />
-        {/* bent low */}
-        <path d="M10,-2 Q28,8 36,22" stroke="#0F1F3A" strokeWidth="7" strokeLinecap="round" fill="none" />
-        <path d="M-10,-2 Q-22,4 -28,16" stroke="#0F1F3A" strokeWidth="7" strokeLinecap="round" fill="none" />
+      {[[575,80],[595,100],[615,70],[635,90],[655,75],[675,95],[700,80],[720,100]].map(([x,y],i) => (
+        <circle key={i} cx={x} cy={y} r="2" fill="#E8D890" opacity={0.3+i%3*0.1} />
+      ))}
+      {/* desk surface */}
+      <rect x="80" y="270" width="620" height="16" rx="2" fill="#1A1408" />
+      <rect x="80" y="286" width="620" height="8" rx="1" fill="#0E0C08" />
+      {/* desk lamp — angled, casting cone of light */}
+      <path d="M240,270 L260,200 L290,195" stroke="#2A2418" strokeWidth="6" strokeLinecap="round" fill="none" />
+      <path d="M266,192 L316,192 L330,215 L252,215 Z" fill="#2A2418" />
+      {/* lamp glow on desk */}
+      <rect x="100" y="200" width="500" height="200" fill="url(#tal-lamp)" />
+      {/* sealed envelope — the talent, untouched */}
+      <g transform="translate(380,255)">
+        <rect x="-80" y="-30" width="160" height="100" rx="4" fill="#C4A840" opacity="0.35" />
+        <rect x="-80" y="-30" width="160" height="100" rx="4" fill="none" stroke="#C4A840" strokeWidth="2" opacity="0.75" />
+        {/* envelope flap lines */}
+        <path d="M-80,-30 L0,20 L80,-30" stroke="#C4A840" strokeWidth="1.5" opacity="0.7" fill="none" />
+        <path d="M-80,70 L0,20 L80,70" stroke="#C4A840" strokeWidth="1.5" opacity="0.6" fill="none" />
+        {/* wax seal — still intact */}
+        <circle cx="0" cy="22" r="10" fill="#8A2020" opacity="0.9" />
+        <circle cx="0" cy="22" r="10" fill="none" stroke="#C44A4A" strokeWidth="1.5" opacity="0.7" />
       </g>
-      {/* shovel */}
-      <path d="M424,280 L450,330" stroke="#3A2A10" strokeWidth="4" strokeLinecap="round" />
-      <ellipse cx="452" cy="334" rx="10" ry="6" fill="#2A1A08" transform="rotate(-30,452,334)" />
-      {/* coin bag in the hole */}
-      <ellipse cx="372" cy="330" rx="14" ry="9" fill="#B8893F" opacity="0.6" />
-      <path d="M366,322 Q372,316 378,322" stroke="#8A6020" strokeWidth="2.5" fill="none" />
+      {/* figure slumped at desk — head down on arms, frozen */}
+      <g transform="translate(390,268)">
+        {/* arms folded on desk */}
+        <path d="M-80,-4 Q-40,-12 0,-10 Q40,-12 80,-4" stroke="#2A2018" strokeWidth="12" strokeLinecap="round" fill="none" opacity="0.9" />
+        {/* head resting on arms */}
+        <circle cx="0" cy="-22" r="18" fill="#7A4828" />
+        {/* hair shadow on top */}
+        <path d="M-14,-30 Q0,-48 14,-30" fill="#3A2010" />
+      </g>
+      {/* months-old coffee cup, dusty */}
+      <g transform="translate(540,260)">
+        <ellipse cx="0" cy="8" rx="16" ry="5" fill="#0E0C08" />
+        <path d="M-14,4 L14,4 L12,-18 L-12,-18 Z" fill="#1A1808" />
+        <ellipse cx="0" cy="-18" rx="14" ry="4" fill="#0E0C08" />
+        <path d="M14,-6 Q22,-6 22,2 Q22,8 14,8" stroke="#1A1808" strokeWidth="3" fill="none" />
+      </g>
     </svg>
   );
 }
 
-/* ── Unmerciful Servant — man seizing another by the collar ──────────── */
+/* ── The Debt — office hallway, suit grabs smaller figure, forgiveness torn on floor */
 function DebtArt() {
   return (
     <svg viewBox="0 0 800 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
       <defs>
-        <linearGradient id="debt-bg" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#1A0E08" />
-          <stop offset="100%" stopColor="#2A1A10" />
+        <linearGradient id="debt-hall" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#D8D4C8" />
+          <stop offset="100%" stopColor="#A8A498" />
         </linearGradient>
-        <linearGradient id="debt-wall" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0%" stopColor="#0A0804" />
-          <stop offset="100%" stopColor="#1A1408" />
+        <linearGradient id="debt-wall-l" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stopColor="#B8B4A8" />
+          <stop offset="100%" stopColor="#C8C4B8" />
+        </linearGradient>
+        <linearGradient id="debt-wall-r" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stopColor="#C8C4B8" />
+          <stop offset="100%" stopColor="#B0AC9E" />
         </linearGradient>
       </defs>
-      <rect width="800" height="400" fill="url(#debt-bg)" />
-      {/* cobblestone alley wall */}
-      <rect x="0" y="0" width="800" height="240" fill="url(#debt-wall)" />
-      {[0,48,96,144,192].map((y,i) => (
-        <path key={i} d={`M0,${y} L800,${y}`} stroke="#2A1A0A" strokeWidth="1" opacity="0.6" />
+      {/* fluorescent office corridor */}
+      <rect x="0" y="0" width="800" height="400" fill="url(#debt-hall)" />
+      {/* left wall */}
+      <path d="M0,0 L280,140 L280,400 L0,400 Z" fill="url(#debt-wall-l)" />
+      {/* right wall */}
+      <path d="M800,0 L520,140 L520,400 L800,400 Z" fill="url(#debt-wall-r)" />
+      {/* ceiling */}
+      <path d="M0,0 L280,140 L520,140 L800,0 Z" fill="#E0DCD0" />
+      {/* fluorescent strip lights */}
+      {[[400,8,200,10],[400,60,130,7],[400,98,80,5],[400,122,50,4]].map(([x,y,w,h],i) => (
+        <rect key={i} x={x-w/2} y={y} width={w} height={h} rx="2" fill="#F8F4E0" opacity={0.9-i*0.1} />
       ))}
-      {[80,200,320,440,560,680].map((x,i) => (
-        <path key={i} d={`M${x},${i%2===0?0:48} L${x},${i%2===0?48:96}`} stroke="#2A1A0A" strokeWidth="1" opacity="0.5" />
+      {/* floor — glossy tile */}
+      <path d="M280,400 L520,400 L520,140 L280,140 Z" fill="#C0BC B0" />
+      <path d="M280,400 L520,400 L520,140 L280,140 Z" fill="#C0BCB0" />
+      {[160,200,240,280,320,360].map((y,i) => (
+        <path key={i} d={`M${280+(y-140)*0.5},${y} L${520-(y-140)*0.5},${y}`} stroke="#B0ACA0" strokeWidth="1" opacity="0.4" />
       ))}
-      {/* iron bars suggesting prison */}
-      <g opacity="0.25">
-        {[580,610,640,670,700].map((x,i) => (
-          <rect key={i} x={x} y={0} width="6" height="230" fill="#4A3A28" />
-        ))}
-        <rect x="570" y="0" width="148" height="6" fill="#4A3A28" />
-        <rect x="570" y="220" width="148" height="6" fill="#4A3A28" />
+      {/* torn document on floor — the forgiven debt, discarded */}
+      <g transform="translate(390,370)">
+        <path d="M-40,-6 Q-10,-12 20,-8 L22,8 Q-8,14 -38,8 Z" fill="#F0ECD8" opacity="0.9" transform="rotate(-12)" />
+        <path d="M10,-10 Q40,-4 42,10 L20,14 Q18,2 10,-10 Z" fill="#E8E4D0" opacity="0.85" transform="rotate(8)" />
+        {/* red FORGIVEN stamp faintly visible */}
+        <text x="-30" y="4" fontSize="8" fill="#C44A4A" opacity="0.4" fontFamily="sans-serif" fontWeight="bold" transform="rotate(-12)">FORGIVEN</text>
       </g>
-      {/* ground */}
-      <path d="M0,240 L800,240 L800,400 L0,400 Z" fill="#1A0C04" />
-      {/* debtor — groveling, hands together, on knees */}
-      <g transform="translate(500,265)">
-        <circle cx="0" cy="-8" r="9" fill="#2A1808" />
-        <path d="M-9,0 L9,0 L6,22 L-6,22 Z" fill="#2A1808" />
-        {/* bent low, on knees */}
-        <path d="M-8,20 L-12,38 L-20,42" stroke="#2A1808" strokeWidth="6" strokeLinecap="round" fill="none" />
-        <path d="M8,20 L10,38 L18,42" stroke="#2A1808" strokeWidth="6" strokeLinecap="round" fill="none" />
-        {/* hands clasped together begging */}
-        <path d="M-6,2 Q-2,-10 6,-6 Q14,-2 10,8" stroke="#3A2818" strokeWidth="6" strokeLinecap="round" fill="none" />
-        <circle cx="-4" cy="-6" r="5" fill="#3A2818" />
+      {/* debtor — backed against wall, hands raised, pleading */}
+      <g transform="translate(490,260)">
+        <circle cx="0" cy="-20" r="11" fill="#4A4A4A" />
+        <path d="M-10,-4 L10,-4 L8,26 L-8,26 Z" fill="#3A3A3A" />
+        <path d="M-8,24 L-10,50" stroke="#3A3A3A" strokeWidth="6" strokeLinecap="round" />
+        <path d="M8,24 L10,50" stroke="#3A3A3A" strokeWidth="6" strokeLinecap="round" />
+        {/* both hands raised — surrender/pleading */}
+        <path d="M-10,-4 Q-26,-14 -28,-28" stroke="#4A4A4A" strokeWidth="7" strokeLinecap="round" fill="none" />
+        <path d="M10,-4 Q26,-14 28,-28" stroke="#4A4A4A" strokeWidth="7" strokeLinecap="round" fill="none" />
+        <circle cx="-28" cy="-32" r="6" fill="#C8956A" />
+        <circle cx="28" cy="-32" r="6" fill="#C8956A" />
       </g>
-      {/* unmerciful servant — aggressive, grabbing the man */}
-      <g transform="translate(370,240)">
-        <circle cx="0" cy="-20" r="11" fill="#0F1F3A" />
-        <path d="M-11,-4 L11,-4 L9,28 L-9,28 Z" fill="#1B365D" />
-        {/* legs, planted wide, confrontational stance */}
-        <path d="M-9,26 L-16,55" stroke="#0F1F3A" strokeWidth="7" strokeLinecap="round" />
-        <path d="M9,26 L14,55" stroke="#0F1F3A" strokeWidth="7" strokeLinecap="round" />
-        {/* arm extended forward, grabbing */}
-        <path d="M11,-4 Q44,10 56,14" stroke="#0F1F3A" strokeWidth="8" strokeLinecap="round" fill="none" />
-        {/* other fist clenched */}
-        <path d="M-11,-4 Q-26,-2 -30,6" stroke="#0F1F3A" strokeWidth="8" strokeLinecap="round" fill="none" />
+      {/* the suit — powerful, grabbing, blocking the hallway */}
+      <g transform="translate(330,248)">
+        <circle cx="0" cy="-22" r="13" fill="#1A1A2A" />
+        {/* suit jacket */}
+        <path d="M-14,-6 L14,-6 L12,30 L-12,30 Z" fill="#1A1A2A" />
+        {/* tie */}
+        <path d="M-2,-6 L2,-6 L3,20 L0,28 L-3,20 Z" fill="#8A1A1A" />
+        {/* lapels */}
+        <path d="M-14,-6 Q-6,-14 0,-10 Q6,-14 14,-6" stroke="#2A2A3A" strokeWidth="2" fill="none" opacity="0.5" />
+        {/* legs wide, dominant stance */}
+        <path d="M-12,28 L-18,58" stroke="#1A1A2A" strokeWidth="8" strokeLinecap="round" />
+        <path d="M12,28 L16,58" stroke="#1A1A2A" strokeWidth="8" strokeLinecap="round" />
+        {/* arm extended — grabbing collar of debtor */}
+        <path d="M14,-4 Q50,8 62,14" stroke="#1A1A2A" strokeWidth="9" strokeLinecap="round" fill="none" />
+        {/* hand at end, gripping */}
+        <path d="M62,10 Q74,10 74,18 Q74,26 62,24" stroke="#1A1A2A" strokeWidth="5" strokeLinecap="round" fill="none" />
+        {/* other arm — folder/documents under arm */}
+        <path d="M-14,-4 Q-28,4 -32,14" stroke="#1A1A2A" strokeWidth="8" strokeLinecap="round" fill="none" />
+        <rect x="-48" y="6" width="24" height="30" rx="2" fill="#2A2A1A" transform="rotate(-10,-48,6)" />
       </g>
     </svg>
   );
 }
 
-/* ── Narrow Gate — a lone figure at a narrow stone gate, wide road beside */
+/* ── The Gate — iron estate gate at night, warm inside, figure lying outside */
 function GateArt() {
   return (
     <svg viewBox="0 0 800 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
       <defs>
-        <linearGradient id="gate-sky" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#0A0E1A" />
-          <stop offset="55%" stopColor="#1B2A4A" />
-          <stop offset="100%" stopColor="#2D3A5A" />
+        <linearGradient id="gate-night" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#080E1A" />
+          <stop offset="100%" stopColor="#101828" />
         </linearGradient>
-        <radialGradient id="gate-light" cx="0.5" cy="0.6" r="0.22">
-          <stop offset="0%" stopColor="#F3D54E" stopOpacity="0.55" />
-          <stop offset="100%" stopColor="#F3D54E" stopOpacity="0" />
+        <radialGradient id="gate-inside" cx="0.72" cy="0.5" r="0.55">
+          <stop offset="0%" stopColor="#E87722" stopOpacity="0.85" />
+          <stop offset="45%" stopColor="#E87722" stopOpacity="0.45" />
+          <stop offset="100%" stopColor="#E87722" stopOpacity="0" />
+        </radialGradient>
+        <radialGradient id="gate-outside" cx="0.28" cy="0.7" r="0.3">
+          <stop offset="0%" stopColor="#1B2A4A" stopOpacity="0.4" />
+          <stop offset="100%" stopColor="#1B2A4A" stopOpacity="0" />
         </radialGradient>
       </defs>
-      <rect width="800" height="400" fill="url(#gate-sky)" />
-      {/* stars */}
-      {[[60,22],[180,14],[320,38],[480,18],[640,30],[740,12],[100,60],[420,48]].map(([x,y],i) => (
-        <circle key={i} cx={x} cy={y} r="1.5" fill="#E8E0C8" opacity="0.5" />
+      <rect width="800" height="400" fill="url(#gate-night)" />
+      {/* warm interior — the world inside the gate */}
+      <rect x="420" y="0" width="380" height="400" fill="#0E0804" />
+      <rect x="420" y="0" width="380" height="400" fill="url(#gate-inside)" />
+      {/* outside — cold blue */}
+      <rect x="0" y="0" width="380" height="400" fill="url(#gate-outside)" />
+      {/* faint stars outside only */}
+      {[[40,30],[90,18],[160,42],[250,22],[340,38]].map(([x,y],i) => (
+        <circle key={i} cx={x} cy={y} r="1.3" fill="#E8E0C8" opacity="0.4" />
       ))}
-      {/* wide road — sweeping left, crowded way */}
-      <path d="M0,310 Q280,290 800,320 L800,400 L0,400 Z" fill="#1A1208" opacity="0.8" />
-      {/* crowd going wide way */}
-      {[80,140,190,240,600,660,720,770].map((x,i) => (
-        <g key={i} transform={`translate(${x},${296+i%2*8})`} opacity="0.6">
-          <circle cx="0" cy="-12" r="8" fill="#0F1F3A" />
-          <path d="M-6,0 L6,0 L4,16 L-4,16 Z" fill="#0F1F3A" />
+      {/* the estate — mansion silhouette inside */}
+      <rect x="520" y="80" width="240" height="200" fill="#0A0604" opacity="0.8" />
+      <path d="M510,80 L640,30 L770,80 Z" fill="#0A0604" opacity="0.8" />
+      {/* mansion windows — warm and lit */}
+      {[[550,110,50,55],[640,110,50,55],[550,195,50,40],[640,195,50,40]].map(([x,y,w,h],i) => (
+        <rect key={i} x={x} y={y} width={w} height={h} rx="2" fill="#E87722" opacity={0.35+i%2*0.1} />
+      ))}
+      {/* ground */}
+      <path d="M0,330 L800,330 L800,400 L0,400 Z" fill="#060808" />
+      {/* stone wall */}
+      <rect x="0" y="230" width="800" height="50" fill="#1A1810" />
+      {[0,70,140,210,280,350,420,490,560,630,700,770].map((x,i) => (
+        <rect key={i} x={x+2} y={233} width={65} height={20} rx="1" fill="#0E0C08" opacity="0.6" />
+      ))}
+      {/* iron gate — bars, ornate, separating the two worlds */}
+      <rect x="340" y="120" width="10" height="165" fill="#3A3828" />
+      <rect x="450" y="120" width="10" height="165" fill="#3A3828" />
+      <rect x="338" y="118" width="124" height="10" fill="#3A3828" />
+      <rect x="338" y="278" width="124" height="8" fill="#3A3828" />
+      {/* vertical bars */}
+      {[355,372,389,406,423,440].map((x,i) => (
+        <g key={i}>
+          <rect x={x} y={128} width={6} height={148} fill="#484838" />
+          {/* spear tips */}
+          <path d={`M${x+3},128 L${x-2},116 L${x+3},110 L${x+8},116 Z`} fill="#484838" />
         </g>
       ))}
-      {/* stone wall across middle */}
-      <rect x="0" y="220" width="800" height="50" fill="#2A2018" />
-      {[0,60,120,180,240,300,360,420,480,540,600,660,720,780].map((x,i) => (
-        <rect key={i} x={x+2} y={222} width={56} height={22} rx="1" fill="#1A1408" opacity="0.5" />
-      ))}
-      {/* wide gate — big opening on the right side, with crowd */}
-      <rect x="550" y="150" width="250" height="120" fill="#1A1208" opacity="0.5" />
-      <rect x="548" y="148" width="5" height="124" fill="#3A2A18" />
-      <rect x="798" y="148" width="5" height="124" fill="#3A2A18" />
-      <rect x="548" y="148" width="255" height="8" fill="#3A2A18" />
-      {/* narrow gate — small opening center-left, with light beyond */}
-      <rect x="354" y="155" width="64" height="113" fill="url(#gate-light)" />
-      <rect x="354" y="165" width="64" height="103" fill="#F3D54E" opacity="0.08" />
-      {/* gate pillars */}
-      <rect x="348" y="150" width="8" height="120" fill="#4A3A28" />
-      <rect x="416" y="150" width="8" height="120" fill="#4A3A28" />
-      <rect x="348" y="150" width="76" height="8" rx="2" fill="#4A3A28" />
-      {/* lone figure at narrow gate, pausing */}
-      <g transform="translate(386,248)">
-        <circle cx="0" cy="-18" r="9" fill="#1B365D" />
-        <path d="M-9,-4 L9,-4 L7,22 L-7,22 Z" fill="#1B365D" />
-        <path d="M-7,20 L-9,38" stroke="#1B365D" strokeWidth="5" strokeLinecap="round" />
-        <path d="M7,20 L9,38" stroke="#1B365D" strokeWidth="5" strokeLinecap="round" />
+      {/* horizontal crossbar on gate */}
+      <rect x="338" y="190" width="124" height="6" fill="#1A1810" opacity="0.8" />
+      {/* figure lying outside the gate — Lazarus */}
+      <g transform="translate(200,315)">
+        <ellipse cx="0" cy="8" rx="75" ry="14" fill="#080808" opacity="0.4" />
+        {/* body lying at base of wall — rags, visible */}
+        <path d="M-65,6 Q-20,-8 30,-4 L60,8 Q20,18 -40,14 Z" fill="#4A3828" />
+        <circle cx="-52" cy="2" r="11" fill="#8A5830" />
+        {/* hand outstretched toward gate */}
+        <path d="M50,4 Q72,-2 82,-10" stroke="#7A5030" strokeWidth="5" strokeLinecap="round" fill="none" />
+        <circle cx="84" cy="-12" r="6" fill="#8A5830" />
       </g>
+      {/* light from inside barely reaching outside — the gap */}
+      <path d="M420,230 L420,330 L380,330 L380,230 Z" fill="#E87722" opacity="0.04" />
     </svg>
   );
 }
@@ -681,8 +748,8 @@ function ElderArt() {
     <svg viewBox="0 0 800 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
       <defs>
         <linearGradient id="el-sky" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#020408" />
-          <stop offset="100%" stopColor="#0A1008" />
+          <stop offset="0%" stopColor="#0C1A2E" />
+          <stop offset="100%" stopColor="#182C18" />
         </linearGradient>
         <radialGradient id="el-window1" cx="0.5" cy="0.5" r="0.5">
           <stop offset="0%" stopColor="#E87722" stopOpacity="0.9" />
@@ -719,16 +786,16 @@ function ElderArt() {
       <path d="M0,350 L800,350 L800,400 L0,400 Z" fill="#060808" />
       {/* elder brother — standing with arms crossed, turned away from house */}
       <g transform="translate(230,315)">
-        <circle cx="0" cy="-22" r="12" fill="#0F1F3A" />
-        <path d="M-12,-4 L12,-4 L10,30 L-10,30 Z" fill="#0F1F3A" />
+        <circle cx="0" cy="-22" r="12" fill="#8A5A28" />
+        <path d="M-12,-4 L12,-4 L10,30 L-10,30 Z" fill="#6A3C18" />
         {/* arms folded across chest */}
-        <path d="M-12,-2 Q-6,6 6,4" stroke="#0F1F3A" strokeWidth="7" strokeLinecap="round" fill="none" />
-        <path d="M12,-2 Q6,6 -6,4" stroke="#0F1F3A" strokeWidth="7" strokeLinecap="round" fill="none" />
+        <path d="M-12,-2 Q-6,6 6,4" stroke="#7A4820" strokeWidth="7" strokeLinecap="round" fill="none" />
+        <path d="M12,-2 Q6,6 -6,4" stroke="#7A4820" strokeWidth="7" strokeLinecap="round" fill="none" />
         {/* legs — standing firm */}
-        <path d="M-10,28 L-12,50" stroke="#0F1F3A" strokeWidth="7" strokeLinecap="round" />
-        <path d="M10,28 L12,50" stroke="#0F1F3A" strokeWidth="7" strokeLinecap="round" />
+        <path d="M-10,28 L-12,50" stroke="#6A3C18" strokeWidth="7" strokeLinecap="round" />
+        <path d="M10,28 L12,50" stroke="#6A3C18" strokeWidth="7" strokeLinecap="round" />
         {/* slight turn toward house — he can't fully look away */}
-        <path d="M10,-14 Q22,-10 24,-4" stroke="#1B1A2E" strokeWidth="4" strokeLinecap="round" fill="none" opacity="0.5" />
+        <path d="M10,-14 Q22,-10 24,-4" stroke="#8A5A28" strokeWidth="4" strokeLinecap="round" fill="none" opacity="0.7" />
       </g>
       {/* field tool beside him — he came from work */}
       <path d="M270,310 L274,355" stroke="#2A1A08" strokeWidth="4" strokeLinecap="round" />
@@ -737,66 +804,82 @@ function ElderArt() {
   );
 }
 
-/* ── Pharisee & Tax Collector — two figures praying, one front/one back ── */
+/* ── The Better Prayer — prayer breakfast, two postures, morning community room */
 function PhariseeArt() {
   return (
     <svg viewBox="0 0 800 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
       <defs>
-        <linearGradient id="ph-bg" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#0A0E18" />
-          <stop offset="100%" stopColor="#141E30" />
+        <linearGradient id="ph-room" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#D8D4C0" />
+          <stop offset="100%" stopColor="#B8B4A0" />
         </linearGradient>
-        <radialGradient id="ph-col-glow" cx="0.3" cy="0.4" r="0.4">
-          <stop offset="0%" stopColor="#F3D54E" stopOpacity="0.15" />
-          <stop offset="100%" stopColor="#F3D54E" stopOpacity="0" />
-        </radialGradient>
-        <radialGradient id="ph-back-glow" cx="0.72" cy="0.7" r="0.2">
-          <stop offset="0%" stopColor="#4A6A9A" stopOpacity="0.3" />
-          <stop offset="100%" stopColor="#4A6A9A" stopOpacity="0" />
+        <linearGradient id="ph-window-light" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stopColor="#E8E0C0" stopOpacity="0.6" />
+          <stop offset="100%" stopColor="#E8E0C0" stopOpacity="0" />
+        </linearGradient>
+        <radialGradient id="ph-back-shadow" cx="0.8" cy="0.7" r="0.25">
+          <stop offset="0%" stopColor="#505040" stopOpacity="0.2" />
+          <stop offset="100%" stopColor="#505040" stopOpacity="0" />
         </radialGradient>
       </defs>
-      <rect width="800" height="400" fill="url(#ph-bg)" />
-      {/* temple columns */}
-      {[80, 200, 560, 700].map((x,i) => (
+      {/* community room — morning light */}
+      <rect width="800" height="400" fill="url(#ph-room)" />
+      {/* morning windows along left wall */}
+      {[60,200].map((x,i) => (
         <g key={i}>
-          <rect x={x-15} y={0} width={30} height={380} fill="#1A2040" opacity={0.7} />
-          <rect x={x-18} y={0} width={36} height={16} fill="#242A4A" opacity={0.7} />
-          <rect x={x-20} y={-6} width={40} height={8} fill="#2A3050" opacity={0.7} />
-          <rect x={x-6} y={16} width={4} height={360} fill="#0A0E1A" opacity={0.4} />
-          <rect x={x+2} y={16} width={4} height={360} fill="#0A0E1A" opacity={0.4} />
+          <rect x={x} y={40} width={80} height={200} rx="3" fill="#B8D4E8" opacity="0.7" />
+          <rect x={x} y={40} width={80} height={200} rx="3" fill="url(#ph-window-light)" />
+          <rect x={x} y={40} width={80} height={200} rx="3" fill="none" stroke="#A0A090" strokeWidth="2" />
+          <path d={`M${x+40},40 L${x+40},240`} stroke="#A0A090" strokeWidth="1.5" />
+          <path d={`M${x},140 L${x+80},140`} stroke="#A0A090" strokeWidth="1.5" />
         </g>
       ))}
-      {/* floor tiles */}
-      {[0,80,160,240,320].map((y,i) => (
-        <path key={i} d={`M0,${380-y} L800,${380-y}`} stroke="#1A2040" strokeWidth="1" opacity="0.3" />
+      <rect x="0" y="0" width="320" height="400" fill="url(#ph-window-light)" opacity="0.3" />
+      {/* round tables — prayer breakfast setup */}
+      {[[310,310,70],[560,330,55],[680,305,48]].map(([x,y,r],i) => (
+        <g key={i}>
+          <ellipse cx={x} cy={y} rx={r} ry={r*0.35} fill="#8A7A58" opacity={0.8-i*0.1} />
+          {/* coffee cups on tables */}
+          <ellipse cx={x+r*0.4} cy={y-4} rx="7" ry="3" fill="#5A4A30" opacity={0.7-i*0.1} />
+        </g>
       ))}
-      {/* pharisee glow */}
-      <rect x="100" y="0" width="400" height="400" fill="url(#ph-col-glow)" />
-      {/* pharisee — center-front, arms raised, upright posture */}
-      <g transform="translate(300,270)">
-        <circle cx="0" cy="-28" r="13" fill="#1B2A4A" />
-        {/* prayer shawl */}
-        <path d="M-16,-22 Q-20,-34 -10,-40 Q0,-48 10,-40 Q20,-34 16,-22" fill="#2A3A5A" />
-        <path d="M-14,-4 L14,-4 L12,32 L-12,32 Z" fill="#2A3A5A" />
-        <path d="M-12,28 Q-22,44 -18,56" stroke="#2A3A5A" strokeWidth="7" strokeLinecap="round" fill="none" />
-        <path d="M12,28 Q22,44 18,56" stroke="#2A3A5A" strokeWidth="7" strokeLinecap="round" fill="none" />
-        {/* arms raised in prayer — prominent, confident */}
-        <path d="M14,-8 Q36,-24 42,-38" stroke="#2A3A5A" strokeWidth="8" strokeLinecap="round" fill="none" />
-        <path d="M-14,-8 Q-36,-24 -42,-38" stroke="#2A3A5A" strokeWidth="8" strokeLinecap="round" fill="none" />
-        {/* hands open */}
-        <circle cx="42" cy="-40" r="6" fill="#2A3A5A" />
-        <circle cx="-42" cy="-40" r="6" fill="#2A3A5A" />
+      {/* chairs */}
+      {[[280,290],[340,290],[300,330],[320,330]].map(([x,y],i) => (
+        <rect key={i} x={x-10} y={y} width={20} height={14} rx="3" fill="#6A6050" opacity="0.5" />
+      ))}
+      {/* pharisee — front of room, standing, upright, slightly elevated */}
+      <g transform="translate(285,248)">
+        <circle cx="0" cy="-24" r="13" fill="#2A2A3A" />
+        {/* business casual — blazer */}
+        <path d="M-14,-6 L14,-6 L12,30 L-12,30 Z" fill="#3A3A4A" />
+        {/* lapels */}
+        <path d="M-14,-6 Q-4,-16 0,-10 Q4,-16 14,-6" stroke="#2A2A3A" strokeWidth="2" fill="#2A2A3A" opacity="0.5" />
+        {/* shirt/tie visible */}
+        <path d="M-2,-6 L2,-6 L3,18 L0,24 L-3,18 Z" fill="#1B365D" opacity="0.7" />
+        {/* legs */}
+        <path d="M-12,28 L-14,52" stroke="#2A2A3A" strokeWidth="7" strokeLinecap="round" />
+        <path d="M12,28 L14,52" stroke="#2A2A3A" strokeWidth="7" strokeLinecap="round" />
+        {/* arms partly raised — speaking/presenting posture */}
+        <path d="M-14,-4 Q-32,-8 -38,-2" stroke="#2A2A3A" strokeWidth="7" strokeLinecap="round" fill="none" />
+        <path d="M14,-4 Q32,-8 38,-2" stroke="#2A2A3A" strokeWidth="7" strokeLinecap="round" fill="none" />
+        {/* coffee cup in hand */}
+        <rect x="36" y="-8" width="10" height="12" rx="2" fill="#5A4A30" opacity="0.7" />
       </g>
-      {/* tax collector — far back, head bowed, hand on chest */}
-      <rect x="100" y="100" width="600" height="300" fill="url(#ph-back-glow)" />
-      <g transform="translate(590,330)" opacity="0.85">
-        <circle cx="0" cy="-16" r="9" fill="#0A0E1A" />
-        {/* head sharply bowed */}
-        <path d="M-9,-2 L9,-2 L7,20 L-7,20 Z" fill="#0A0E1A" />
-        <path d="M-7,18 L-9,34" stroke="#0A0E1A" strokeWidth="5" strokeLinecap="round" />
-        <path d="M7,18 L9,34" stroke="#0A0E1A" strokeWidth="5" strokeLinecap="round" />
-        {/* hand on chest */}
-        <path d="M-8,-2 Q-4,8 4,6" stroke="#0A0E1A" strokeWidth="6" strokeLinecap="round" fill="none" />
+      {/* tax collector — back corner, alone at separate table, head down, hand on chest */}
+      <rect x="460" y="0" width="340" height="400" fill="url(#ph-back-shadow)" />
+      <g transform="translate(620,310)" opacity="0.8">
+        <circle cx="0" cy="-20" r="11" fill="#2A2820" />
+        <path d="M-10,-4 L10,-4 L8,24 L-8,24 Z" fill="#2A2820" />
+        {/* head bowed sharply — not performing, just present */}
+        <circle cx="0" cy="-30" r="11" fill="#2A2820" />
+        <path d="M-11,-32 Q0,-48 11,-32" fill="#1A1818" opacity="0.7" />
+        {/* legs */}
+        <path d="M-8,22 L-10,42" stroke="#2A2820" strokeWidth="6" strokeLinecap="round" />
+        <path d="M8,22 L10,42" stroke="#2A2820" strokeWidth="6" strokeLinecap="round" />
+        {/* hand pressed to chest — the single gesture */}
+        <path d="M-8,-6 Q0,0 8,-2" stroke="#2A2820" strokeWidth="7" strokeLinecap="round" fill="none" />
+        {/* solitary coffee cup in front of him — untouched */}
+        <ellipse cx="28" cy="22" rx="10" ry="4" fill="#4A3A20" opacity="0.5" />
       </g>
     </svg>
   );
@@ -874,272 +957,368 @@ function MarthaArt() {
   );
 }
 
-/* ── Nicodemus — lone figure approaching a lamp in the dark of night ───── */
+/* ── Nicodemus — suited professional alone at night with a single lamp ───── */
 function NicodemusArt() {
   return (
     <svg viewBox="0 0 800 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
       <defs>
-        <linearGradient id="nic-sky" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#01010A" />
-          <stop offset="100%" stopColor="#03030E" />
+        <linearGradient id="nic-bg" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stopColor="#0E0C1A" />
+          <stop offset="100%" stopColor="#100E20" />
         </linearGradient>
-        <radialGradient id="nic-lamp" cx="0.6" cy="0.55" r="0.35">
-          <stop offset="0%" stopColor="#F3D54E" stopOpacity="0.7" />
-          <stop offset="40%" stopColor="#E87722" stopOpacity="0.25" />
+        <radialGradient id="nic-glow" cx="0.55" cy="0.6" r="0.5">
+          <stop offset="0%" stopColor="#F3D54E" stopOpacity="0.75" />
+          <stop offset="35%" stopColor="#E87722" stopOpacity="0.35" />
           <stop offset="100%" stopColor="#E87722" stopOpacity="0" />
         </radialGradient>
       </defs>
-      <rect width="800" height="400" fill="url(#nic-sky)" />
-      {/* faint stars */}
-      {[[50,18],[150,35],[280,12],[420,44],[530,22],[660,38],[740,14],[100,55],[350,50]].map(([x,y],i) => (
-        <circle key={i} cx={x} cy={y} r="1.2" fill="#E8E0C8" opacity="0.4" />
-      ))}
-      {/* moon sliver */}
-      <path d="M700,50 Q724,34 736,60 Q716,56 700,50 Z" fill="#E8E0C8" opacity="0.6" />
-      {/* lamp glow — the meeting point */}
-      <rect x="200" y="100" width="500" height="350" fill="url(#nic-lamp)" />
-      {/* stone wall / building edge */}
-      <rect x="560" y="0" width="240" height="400" fill="#030308" />
-      {[0,60,120,180,240,300,360].map((y,i) => (
-        <path key={i} d={`M560,${y} L800,${y}`} stroke="#0A0A18" strokeWidth="1" opacity="0.5" />
-      ))}
-      {[600,650,700,750].map((x,i) => (
-        <path key={i} d={`M${x},${i%2===0?0:60} L${x},${i%2===0?60:120}`} stroke="#0A0A18" strokeWidth="1" opacity="0.4" />
-      ))}
-      {/* doorway arch with lamp beside it */}
-      <path d="M520,160 Q520,60 600,60 Q680,60 680,160 L680,380 L520,380 Z" fill="#020208" />
-      <path d="M522,162 Q522,64 600,64 Q678,64 678,162" fill="none" stroke="#1A1A30" strokeWidth="3" opacity="0.6" />
-      {/* oil lamp on ledge */}
-      <g transform="translate(510,220)">
-        <ellipse cx="0" cy="8" rx="16" ry="5" fill="#3A2A10" />
-        <path d="M-14,4 L14,4 L12,-4 L-12,-4 Z" fill="#5A3A18" />
-        <ellipse cx="14" cy="0" rx="5" ry="7" fill="#F3D54E" opacity="0.8" />
-        <circle cx="14" cy="-6" r="4" fill="#F3D54E" />
-        <circle cx="14" cy="-10" r="2" fill="#FFF8E0" opacity="0.9" />
-        {/* lamp ledge */}
-        <rect x="-22" y="8" width="44" height="8" rx="2" fill="#2A1A08" />
+      <rect width="800" height="400" fill="url(#nic-bg)" />
+      <rect width="800" height="400" fill="url(#nic-glow)" />
+      {/* floor */}
+      <rect x="0" y="340" width="800" height="60" fill="#030208" />
+      {/* back wall — dark, almost invisible */}
+      <rect x="0" y="0" width="800" height="345" fill="#040310" />
+      {/* table */}
+      <path d="M310,310 L490,310 L490,320 L310,320 Z" fill="#1A1008" />
+      <path d="M320,318 L324,348" stroke="#120C06" strokeWidth="5" strokeLinecap="round" />
+      <path d="M476,318 L480,348" stroke="#120C06" strokeWidth="5" strokeLinecap="round" />
+      {/* table leg cross-brace */}
+      <path d="M322,335 L478,335" stroke="#100A04" strokeWidth="3" opacity="0.6" />
+      {/* desk lamp — warm glow source */}
+      <g transform="translate(440,200)">
+        {/* base */}
+        <ellipse cx="0" cy="48" rx="20" ry="6" fill="#1A1008" />
+        <rect x="-4" y="14" width="8" height="34" fill="#1A1008" rx="2" />
+        {/* arm */}
+        <path d="M0,14 Q-8,-4 -18,-12" stroke="#1A1008" strokeWidth="5" strokeLinecap="round" fill="none" />
+        {/* shade */}
+        <path d="M-36,-12 L0,-22 L0,-2 L-30,-2 Z" fill="#2A1A08" />
+        {/* bulb glow */}
+        <ellipse cx="-18" cy="-8" rx="10" ry="8" fill="#F3D54E" opacity="0.7" />
+        <circle cx="-18" cy="-8" r="5" fill="#FFF8E0" opacity="0.9" />
       </g>
-      {/* ground */}
-      <path d="M0,355 L800,355 L800,400 L0,400 Z" fill="#020206" />
-      {/* nicodemus — cloaked, approaching carefully, alone */}
-      <g transform="translate(260,310)">
-        <circle cx="0" cy="-24" r="11" fill="#0A0A18" />
-        {/* hood pulled up */}
-        <path d="M-14,-28 Q0,-50 14,-28 Q10,-12 -10,-12 Z" fill="#080818" />
-        <path d="M-13,-4 L13,-4 L11,32 L-11,32 Z" fill="#0A0A1A" />
-        {/* robe, long */}
-        <path d="M-11,28 Q-18,48 -14,60" stroke="#080818" strokeWidth="7" strokeLinecap="round" fill="none" />
-        <path d="M11,28 Q18,48 14,60" stroke="#080818" strokeWidth="7" strokeLinecap="round" fill="none" />
-        {/* one arm raised slightly — reaching? gesturing? */}
-        <path d="M12,-4 Q26,2 28,14" stroke="#0A0A1A" strokeWidth="6" strokeLinecap="round" fill="none" />
-        {/* staff */}
-        <path d="M-16,28 L-18,62" stroke="#1A1A10" strokeWidth="3.5" strokeLinecap="round" />
+      {/* briefcase on floor beside chair — identity marker */}
+      <g transform="translate(230,310)">
+        <rect x="-22" y="-28" width="44" height="30" rx="3" fill="#1A1008" />
+        <rect x="-22" y="-28" width="44" height="4" rx="2" fill="#241408" />
+        <path d="M-8,-28 Q-8,-36 0,-36 Q8,-36 8,-28" fill="none" stroke="#2A1A08" strokeWidth="3" />
+        <path d="M-22,-14 L22,-14" stroke="#2A1A0A" strokeWidth="1.5" opacity="0.5" />
+        <rect x="-4" y="-17" width="8" height="6" rx="1" fill="#241408" />
+      </g>
+      {/* chair */}
+      <path d="M270,310 L270,260" stroke="#100A04" strokeWidth="6" strokeLinecap="round" />
+      <path d="M340,310 L340,260" stroke="#100A04" strokeWidth="6" strokeLinecap="round" />
+      <path d="M260,265 L350,265" stroke="#100A04" strokeWidth="8" strokeLinecap="round" />
+      {/* chair back */}
+      <path d="M265,265 L265,200" stroke="#100A04" strokeWidth="5" strokeLinecap="round" />
+      <path d="M345,265 L345,200" stroke="#100A04" strokeWidth="5" strokeLinecap="round" />
+      <path d="M262,200 L348,200" stroke="#100A04" strokeWidth="7" strokeLinecap="round" />
+      {/* nicodemus — seated, leaning slightly forward, suit visible */}
+      <g transform="translate(305,262)">
+        {/* head */}
+        <circle cx="0" cy="-16" r="14" fill="#9A7050" />
+        {/* suit jacket — charcoal, visible against dark bg */}
+        <path d="M-18,0 L18,0 L15,48 L-15,48 Z" fill="#2A2A3C" />
+        {/* shirt collar / tie */}
+        <path d="M-5,0 L0,-4 L5,0 L3,18 L-3,18 Z" fill="#E8E0D0" opacity="0.75" />
+        <path d="M0,-4 L2,12 L-1,22 L-2,12 Z" fill="#3A5A90" opacity="0.9" />
+        {/* lapels */}
+        <path d="M-18,0 Q-8,-8 -5,0" fill="#222234" />
+        <path d="M18,0 Q8,-8 5,0" fill="#222234" />
+        {/* arms on table — leaning in */}
+        <path d="M-18,6 Q-32,18 -28,40" stroke="#2A2A3C" strokeWidth="8" strokeLinecap="round" fill="none" />
+        <path d="M18,6 Q32,18 30,40" stroke="#2A2A3C" strokeWidth="8" strokeLinecap="round" fill="none" />
+        {/* hands on table */}
+        <ellipse cx="-26" cy="42" rx="7" ry="5" fill="#9A7050" />
+        <ellipse cx="30" cy="42" rx="7" ry="5" fill="#9A7050" />
+        {/* legs */}
+        <path d="M-14,46 L-12,72" stroke="#2A2A3C" strokeWidth="8" strokeLinecap="round" />
+        <path d="M14,46 L12,72" stroke="#2A2A3C" strokeWidth="8" strokeLinecap="round" />
       </g>
     </svg>
   );
 }
 
-/* ── Rich Fool — filled barn, small figure before it, dark sky above ────── */
+/* ── Rich Fool — glass office at night, laptop charts, one fading star ────── */
 function RichFoolArt() {
   return (
     <svg viewBox="0 0 800 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
       <defs>
-        <linearGradient id="rf-sky" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#04050A" />
-          <stop offset="70%" stopColor="#0E0A04" />
-          <stop offset="100%" stopColor="#1A1208" />
+        <linearGradient id="rf-night" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#06091A" />
+          <stop offset="100%" stopColor="#0A0F1E" />
         </linearGradient>
-        <linearGradient id="rf-barn" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#2A1A08" />
-          <stop offset="100%" stopColor="#1A0E04" />
+        <linearGradient id="rf-office" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#0E0E18" />
+          <stop offset="100%" stopColor="#121220" />
         </linearGradient>
-        <radialGradient id="rf-door-glow" cx="0.5" cy="0.8" r="0.35">
-          <stop offset="0%" stopColor="#E87722" stopOpacity="0.5" />
-          <stop offset="100%" stopColor="#E87722" stopOpacity="0" />
+        <radialGradient id="rf-screen" cx="0.5" cy="0.5" r="0.5">
+          <stop offset="0%" stopColor="#1AFF88" stopOpacity="0.22" />
+          <stop offset="100%" stopColor="#1AFF88" stopOpacity="0" />
         </radialGradient>
+        <linearGradient id="rf-city" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#020408" />
+          <stop offset="100%" stopColor="#0A0C18" />
+        </linearGradient>
       </defs>
-      <rect width="800" height="400" fill="url(#rf-sky)" />
-      {/* single cold star — a fading one */}
-      <circle cx="400" cy="35" r="2.5" fill="#E8E0C8" opacity="0.5" />
-      <circle cx="400" cy="35" r="5" fill="#E8E0C8" opacity="0.08" />
-      {/* ground */}
-      <path d="M0,340 L800,340 L800,400 L0,400 Z" fill="#0A0804" />
-      {/* the barn — large, imposing, new construction */}
-      <path d="M140,345 L140,160 L400,80 L660,160 L660,345 Z" fill="url(#rf-barn)" />
-      {/* roof */}
-      <path d="M130,162 L400,74 L670,162 Z" fill="#1A0E04" />
-      <path d="M130,162 L400,74 L670,162" stroke="#2A1A08" strokeWidth="3" fill="none" opacity="0.7" />
-      {/* barn planks */}
-      {[200,260,320,380,440,500,560,620].map((x,i) => (
-        <path key={i} d={`M${x},160 L${x},345`} stroke="#120C04" strokeWidth="2" opacity="0.4" />
+      {/* sky beyond window */}
+      <rect width="800" height="400" fill="url(#rf-night)" />
+      {/* city skyline through floor-to-ceiling glass */}
+      {/* glass wall frame */}
+      <rect x="60" y="20" width="680" height="300" fill="url(#rf-city)" opacity="0.85" />
+      {/* city buildings — distant lights */}
+      {[
+        [80,180,60,140],[160,200,40,100],[220,170,50,130],[290,195,35,105],[350,160,65,140],
+        [430,185,45,115],[500,175,55,125],[570,190,40,110],[630,165,60,135],[700,200,45,100]
+      ].map(([x,y,w,h],i) => (
+        <rect key={i} x={x} y={y} width={w} height={h} fill="#0C0E18" rx="1" />
       ))}
-      {/* barn door (big, open, light spilling) */}
-      <rect x="320" y="230" width="160" height="115" fill="#0E0804" />
-      <rect x="320" y="230" width="160" height="115" fill="url(#rf-door-glow)" />
-      {/* grain / harvest visible inside */}
-      <path d="M320,345 Q360,310 400,320 Q440,310 480,345 Z" fill="#B8893F" opacity="0.35" />
-      {/* barn door frame */}
-      <rect x="318" y="228" width="5" height="117" fill="#2A1A08" />
-      <rect x="477" y="228" width="5" height="117" fill="#2A1A08" />
-      <rect x="318" y="226" width="164" height="6" fill="#2A1A08" />
-      {/* center post */}
-      <rect x="399" y="228" width="4" height="117" fill="#2A1A08" opacity="0.5" />
-      {/* figure in front — triumphant stance, hands on hips */}
-      <g transform="translate(400,325)">
-        <circle cx="0" cy="-22" r="11" fill="#1A1408" />
-        <path d="M-11,-4 L11,-4 L9,26 L-9,26 Z" fill="#1A1408" />
-        <path d="M-9,24 L-11,42" stroke="#1A1408" strokeWidth="6" strokeLinecap="round" />
-        <path d="M9,24 L11,42" stroke="#1A1408" strokeWidth="6" strokeLinecap="round" />
-        {/* arms out, hands on hips — satisfied posture */}
-        <path d="M-11,-2 Q-28,4 -32,14" stroke="#1A1408" strokeWidth="7" strokeLinecap="round" fill="none" />
-        <path d="M11,-2 Q28,4 32,14" stroke="#1A1408" strokeWidth="7" strokeLinecap="round" fill="none" />
+      {/* building windows — tiny glowing squares */}
+      {[
+        [90,200],[100,210],[90,220],[120,190],[130,200],[170,215],[180,225],[170,235],
+        [230,185],[240,195],[260,180],[300,205],[310,215],[360,175],[370,185],[380,165],
+        [440,198],[450,208],[460,188],[510,190],[520,200],[580,204],[590,214],[640,180],
+        [650,190],[660,170],[710,214],[720,204]
+      ].map(([x,y],i) => (
+        <rect key={i} x={x} y={y} width="6" height="5" fill="#F3D54E" opacity={0.12 + (i%5)*0.04} rx="0.5" />
+      ))}
+      {/* glass panels / mullions */}
+      {[60, 230, 400, 570, 740].map((x, i) => (
+        <rect key={i} x={x} y="20" width="3" height="300" fill="#0A0A14" opacity="0.7" />
+      ))}
+      <rect x="60" y="20" width="680" height="3" fill="#0A0A14" opacity="0.7" />
+      <rect x="60" y="160" width="680" height="3" fill="#0A0A14" opacity="0.4" />
+      <rect x="60" y="318" width="680" height="3" fill="#0A0A14" opacity="0.7" />
+      {/* the single fading star — visible high in the glass */}
+      <circle cx="400" cy="55" r="2" fill="#E8E0C8" opacity="0.45" />
+      <circle cx="400" cy="55" r="6" fill="#E8E0C8" opacity="0.06" />
+      {/* interior — conference room overlay */}
+      <rect x="0" y="320" width="800" height="80" fill="#060608" />
+      {/* conference table edge */}
+      <path d="M80,345 L720,345 L720,370 L80,370 Z" rx="3" fill="#0E0C10" />
+      <path d="M80,342 L720,342" stroke="#18161E" strokeWidth="2" opacity="0.8" />
+      {/* laptop screen glow */}
+      <rect x="330" y="240" width="180" height="110" rx="4" fill="#040810" />
+      <rect x="340" y="248" width="160" height="90" rx="2" fill="#050E08" />
+      {/* screen content — green charts */}
+      <rect x="340" y="248" width="160" height="90" rx="2" fill="url(#rf-screen)" />
+      {/* chart bars */}
+      {[[348,300,8,28],[360,292,8,36],[372,285,8,43],[384,278,8,50],[396,272,8,56],[408,266,8,62],[420,274,8,54],[432,268,8,60],[444,260,8,68],[456,264,8,64],[468,258,8,70],[480,252,8,76]].map(([x,y,w,h],i) => (
+        <rect key={i} x={x} y={y} width={w} height={h} fill="#1AFF88" opacity={0.25 + (i%3)*0.06} rx="1" />
+      ))}
+      {/* chart line on top */}
+      <polyline points="348,300 360,292 372,285 384,278 396,272 408,266 420,274 432,268 444,260 456,264 468,258 480,252" fill="none" stroke="#1AFF88" strokeWidth="1.5" opacity="0.5" />
+      {/* laptop hinge / base */}
+      <path d="M326,338 L474,338 L474,344 L326,344 Z" fill="#0E0C10" rx="1" />
+      {/* screen glow spilling onto table and face */}
+      <rect x="300" y="280" width="240" height="80" fill="#1AFF88" opacity="0.03" />
+      {/* figure seated — leaning back, satisfied */}
+      <g transform="translate(400,320)">
+        <circle cx="0" cy="-28" r="13" fill="#9A7050" />
+        {/* shirt collar */}
+        <path d="M-5,-16 L0,-20 L5,-16 L3,0 L-3,0 Z" fill="#E8E0D0" opacity="0.8" />
+        {/* jacket */}
+        <path d="M-18,-4 L18,-4 L15,28 L-15,28 Z" fill="#2A2840" />
+        <path d="M-18,-4 Q-8,-14 -5,-16" fill="#222038" />
+        <path d="M18,-4 Q8,-14 5,-16" fill="#222038" />
+        {/* arms — one on table near laptop, one back */}
+        <path d="M-17,2 Q-28,12 -32,26" stroke="#2A2840" strokeWidth="8" strokeLinecap="round" fill="none" />
+        <path d="M17,2 Q30,10 36,22" stroke="#2A2840" strokeWidth="8" strokeLinecap="round" fill="none" />
+        {/* legs */}
+        <path d="M-12,26 L-10,48" stroke="#2A2840" strokeWidth="8" strokeLinecap="round" />
+        <path d="M12,26 L10,48" stroke="#2A2840" strokeWidth="8" strokeLinecap="round" />
       </g>
     </svg>
   );
 }
 
-/* ── Ten Virgins — five lit lamps and five dark ones, a closed door ──── */
+/* ── Ten Virgins — left: 5 entering warmth; right: 5 at closed door ──── */
 function VirginsArt() {
   return (
     <svg viewBox="0 0 800 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
       <defs>
-        <linearGradient id="vir-bg" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#06040E" />
-          <stop offset="100%" stopColor="#0A0814" />
+        <linearGradient id="vir-bg" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stopColor="#120C06" />
+          <stop offset="48%" stopColor="#06040A" />
+          <stop offset="100%" stopColor="#04030A" />
         </linearGradient>
+        <radialGradient id="vir-warm" cx="0.18" cy="0.5" r="0.4">
+          <stop offset="0%" stopColor="#E87722" stopOpacity="0.45" />
+          <stop offset="55%" stopColor="#F3D54E" stopOpacity="0.12" />
+          <stop offset="100%" stopColor="#E87722" stopOpacity="0" />
+        </radialGradient>
       </defs>
       <rect width="800" height="400" fill="url(#vir-bg)" />
+      <rect width="800" height="400" fill="url(#vir-warm)" />
       {/* floor */}
-      <path d="M0,350 L800,350 L800,400 L0,400 Z" fill="#060408" />
-      {/* the closed door — center back */}
-      <rect x="340" y="120" width="120" height="230" rx="4" fill="#0A0808" />
-      <rect x="340" y="120" width="120" height="230" rx="4" fill="none" stroke="#2A1A10" strokeWidth="3" opacity="0.7" />
-      {/* door arch */}
-      <path d="M340,120 Q340,80 400,80 Q460,80 460,120" fill="#0A0808" />
-      <path d="M340,120 Q340,80 400,80 Q460,80 460,120" fill="none" stroke="#2A1A10" strokeWidth="3" opacity="0.7" />
+      <rect x="0" y="355" width="800" height="45" fill="#060408" />
+      {/* corridor ceiling line */}
+      <rect x="0" y="40" width="800" height="3" fill="#0A0810" opacity="0.5" />
+
+      {/* LEFT SIDE — open door into warmth */}
+      {/* warm light flooding through open doorway */}
+      <path d="M40,40 L200,40 L200,355 L40,355 Z" fill="#E87722" opacity="0.08" />
+      <path d="M40,40 L180,40 L180,355 L40,355 Z" fill="#F3D54E" opacity="0.04" />
+      {/* open door — pushed back against wall */}
+      <path d="M40,50 L40,350 L72,350 L72,50 Z" fill="#2A1A08" />
+      <path d="M40,50 L72,50" stroke="#3A2208" strokeWidth="2" />
+      <path d="M40,350 L72,350" stroke="#3A2208" strokeWidth="2" />
       {/* door panels */}
-      <rect x="350" y="135" width="46" height="80" rx="2" fill="none" stroke="#1A1010" strokeWidth="1.5" opacity="0.5" />
-      <rect x="404" y="135" width="46" height="80" rx="2" fill="none" stroke="#1A1010" strokeWidth="1.5" opacity="0.5" />
-      <rect x="350" y="228" width="46" height="100" rx="2" fill="none" stroke="#1A1010" strokeWidth="1.5" opacity="0.5" />
-      <rect x="404" y="228" width="46" height="100" rx="2" fill="none" stroke="#1A1010" strokeWidth="1.5" opacity="0.5" />
+      <rect x="45" y="70" width="22" height="100" rx="1" fill="none" stroke="#3A2208" strokeWidth="1" opacity="0.5" />
+      <rect x="45" y="185" width="22" height="130" rx="1" fill="none" stroke="#3A2208" strokeWidth="1" opacity="0.5" />
+      {/* warm light on floor through doorway */}
+      <path d="M72,355 L200,355 L240,400 L0,400 Z" fill="#E87722" opacity="0.08" />
+
+      {/* 5 lit-candle figures walking in — processional, forward motion */}
+      {[200, 240, 280, 320, 355].map((x, i) => {
+        const forward = i < 3;
+        return (
+          <g key={i} transform={`translate(${x}, 295)`}>
+            {/* figure */}
+            <circle cx="0" cy="-28" r="10" fill="#2A1C10" opacity={0.85 - i*0.05} />
+            <path d="M-10,-10 L10,-10 L8,22 L-8,22 Z" fill="#2A1C10" opacity={0.85 - i*0.05} />
+            {/* flowing robe — motion */}
+            <path d={forward ? "M-8,20 Q-14,36 -10,52" : "M-8,20 Q-12,36 -10,52"} stroke="#1A1008" strokeWidth="6" strokeLinecap="round" fill="none" opacity="0.7" />
+            <path d={forward ? "M8,20 Q14,36 12,52" : "M8,20 Q10,36 10,52"} stroke="#1A1008" strokeWidth="6" strokeLinecap="round" fill="none" opacity="0.7" />
+            {/* candle arm raised */}
+            <path d="M10,-10 Q20,-20 20,-32" stroke="#2A1C10" strokeWidth="6" strokeLinecap="round" fill="none" opacity="0.8" />
+            {/* lit candle */}
+            <rect x="16" y="-44" width="8" height="16" rx="2" fill="#D4A860" opacity="0.9" />
+            <ellipse cx="20" cy="-44" rx="4" ry="6" fill="#F3D54E" opacity="0.9" />
+            <circle cx="20" cy="-48" r="3" fill="#FFF8E0" opacity="0.9" />
+            {/* candle glow */}
+            <circle cx="20" cy="-46" r="12" fill="#F3D54E" opacity={0.14 + (3-i)*0.03} />
+          </g>
+        );
+      })}
+
+      {/* RIGHT SIDE — closed door, cold and dark */}
+      {/* closed door — solid, no light */}
+      <rect x="560" y="50" width="100" height="305" rx="3" fill="#0C0808" />
+      <rect x="560" y="50" width="100" height="305" rx="3" fill="none" stroke="#1A1010" strokeWidth="2.5" opacity="0.6" />
+      {/* door arch */}
+      <path d="M560,52 Q560,20 610,20 Q660,20 660,52" fill="#0C0808" />
+      <path d="M560,52 Q560,20 610,20 Q660,20 660,52" fill="none" stroke="#1A1010" strokeWidth="2.5" opacity="0.6" />
+      {/* door panels */}
+      <rect x="570" y="70" width="40" height="90" rx="2" fill="none" stroke="#160E0E" strokeWidth="1.5" opacity="0.4" />
+      <rect x="618" y="70" width="36" height="90" rx="2" fill="none" stroke="#160E0E" strokeWidth="1.5" opacity="0.4" />
+      <rect x="570" y="174" width="40" height="140" rx="2" fill="none" stroke="#160E0E" strokeWidth="1.5" opacity="0.4" />
+      <rect x="618" y="174" width="36" height="140" rx="2" fill="none" stroke="#160E0E" strokeWidth="1.5" opacity="0.4" />
       {/* door handle */}
-      <circle cx="422" cy="240" r="6" fill="#2A1A10" />
+      <circle cx="640" cy="220" r="7" fill="#1A1010" />
+      {/* hand pressed flat against door — one figure closest */}
+      <path d="M558,200 Q548,196 542,204 Q536,212 544,218 Q550,222 558,218" fill="#1A1008" opacity="0.55" />
 
-      {/* FIVE LIT LAMPS — left side */}
-      {[80, 140, 200, 260, 320].map((x, i) => (
-        <g key={i} transform={`translate(${x}, 270)`}>
-          {/* lamp body */}
-          <ellipse cx="0" cy="8" rx="14" ry="5" fill="#3A2A10" />
-          <path d="M-12,4 L12,4 L10,-4 L-10,-4 Z" fill="#7A5A28" />
-          <ellipse cx="12" cy="-2" rx="5" ry="7" fill="#F3D54E" opacity="0.85" />
-          <circle cx="12" cy="-8" r="3.5" fill="#F3D54E" />
-          <circle cx="12" cy="-12" r="2" fill="#FFF8E0" opacity="0.9" />
-          {/* glow */}
-          <ellipse cx="12" cy="-8" rx="18" ry="14" fill="#F3D54E" opacity="0.12" />
-          {/* handle */}
-          <path d="M-12,0 Q-22,-4 -22,-12 Q-22,-20 -12,-16" stroke="#5A3A18" strokeWidth="2" fill="none" />
-        </g>
-      ))}
-
-      {/* FIVE DARK LAMPS — right side */}
-      {[480, 540, 600, 660, 720].map((x, i) => (
-        <g key={i} transform={`translate(${x}, 270)`}>
-          <ellipse cx="0" cy="8" rx="14" ry="5" fill="#1A1008" opacity="0.7" />
-          <path d="M-12,4 L12,4 L10,-4 L-10,-4 Z" fill="#2A1A08" opacity="0.7" />
-          <ellipse cx="12" cy="-2" rx="5" ry="7" fill="#1A1008" opacity="0.5" />
-          {/* cold wick — no glow */}
-          <circle cx="12" cy="-8" r="3" fill="#1A1008" opacity="0.5" />
-          <path d="M-12,0 Q-22,-4 -22,-12 Q-22,-20 -12,-16" stroke="#2A1A08" strokeWidth="2" fill="none" opacity="0.5" />
-        </g>
-      ))}
-
-      {/* dividing line — two sides */}
-      <path d="M400,240 L400,380" stroke="#1A1010" strokeWidth="1" opacity="0.3" strokeDasharray="4 4" />
-
-      {/* figures behind the lamps — small, waiting */}
-      {[80, 140, 200, 260, 320].map((x, i) => (
-        <g key={i} transform={`translate(${x}, 235)`} opacity="0.6">
-          <circle cx="0" cy="-10" r="8" fill="#1A2A3A" />
-          <path d="M-7,0 L7,0 L5,16 L-5,16 Z" fill="#1A2A3A" />
-        </g>
-      ))}
-      {[480, 540, 600, 660, 720].map((x, i) => (
-        <g key={i} transform={`translate(${x}, 235)`} opacity="0.4">
-          <circle cx="0" cy="-10" r="8" fill="#1A1010" />
-          <path d="M-7,0 L7,0 L5,16 L-5,16 Z" fill="#1A1010" />
+      {/* 5 dark-candle figures at closed door */}
+      {[740, 710, 680, 450, 420].map((x, i) => (
+        <g key={i} transform={`translate(${x}, 295)`}>
+          <circle cx="0" cy="-28" r="10" fill="#100C0C" opacity={0.55 + i*0.04} />
+          <path d="M-10,-10 L10,-10 L8,22 L-8,22 Z" fill="#100C0C" opacity={0.55 + i*0.04} />
+          <path d="M-8,20 Q-12,36 -10,52" stroke="#0E0808" strokeWidth="6" strokeLinecap="round" fill="none" opacity="0.5" />
+          <path d="M8,20 Q10,36 10,52" stroke="#0E0808" strokeWidth="6" strokeLinecap="round" fill="none" opacity="0.5" />
+          {/* arm with dead candle */}
+          <path d="M10,-10 Q18,-18 18,-28" stroke="#100C0C" strokeWidth="6" strokeLinecap="round" fill="none" opacity="0.6" />
+          {/* unlit candle — dark */}
+          <rect x="14" y="-38" width="8" height="14" rx="2" fill="#1A1008" opacity="0.6" />
+          {/* no flame, no glow */}
         </g>
       ))}
     </svg>
   );
 }
 
-/* ── Peter on Water — figure on dark water, a hand reaching from above ── */
+/* ── Peter on Water — sinking from waist, arm up, divine hand reaching down ── */
 function WaterArt() {
   return (
     <svg viewBox="0 0 800 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
       <defs>
         <linearGradient id="wat-sky" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#020408" />
-          <stop offset="55%" stopColor="#060C1A" />
-          <stop offset="100%" stopColor="#081422" />
+          <stop offset="0%" stopColor="#06091E" />
+          <stop offset="40%" stopColor="#0C1430" />
+          <stop offset="100%" stopColor="#101C38" />
         </linearGradient>
         <linearGradient id="wat-water" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#0A1828" />
-          <stop offset="100%" stopColor="#040A10" />
+          <stop offset="0%" stopColor="#102040" />
+          <stop offset="100%" stopColor="#060E1C" />
         </linearGradient>
-        <radialGradient id="wat-moon" cx="0.5" cy="0.25" r="0.25">
-          <stop offset="0%" stopColor="#E8E0C8" stopOpacity="0.35" />
+        <radialGradient id="wat-divine" cx="0.46" cy="0.3" r="0.42">
+          <stop offset="0%" stopColor="#E8E0C8" stopOpacity="0.4" />
+          <stop offset="50%" stopColor="#E8E0C8" stopOpacity="0.15" />
           <stop offset="100%" stopColor="#E8E0C8" stopOpacity="0" />
         </radialGradient>
       </defs>
       <rect width="800" height="400" fill="url(#wat-sky)" />
-      <rect width="800" height="400" fill="url(#wat-moon)" />
-      {/* moon */}
-      <circle cx="400" cy="60" r="28" fill="#E8E0C8" opacity="0.65" />
-      <circle cx="412" cy="54" r="22" fill="#020408" />
-      {/* moon reflection on water */}
-      <ellipse cx="400" cy="290" rx="28" ry="8" fill="#E8E0C8" opacity="0.12" />
-      {/* dark churning water */}
-      <path d="M0,240 Q100,225 200,240 Q300,255 400,240 Q500,225 600,240 Q700,255 800,240 L800,400 L0,400 Z" fill="url(#wat-water)" />
-      {/* waves */}
-      {[0,1,2,3].map(i => (
-        <path key={i} d={`M0,${258+i*22} Q100,${248+i*22} 200,${260+i*22} Q300,${272+i*22} 400,${260+i*22} Q500,${248+i*22} 600,${260+i*22} Q700,${272+i*22} 800,${260+i*22}`}
-          stroke="#1A3050" strokeWidth="1.5" fill="none" opacity={0.6 - i*0.1} />
+      {/* divine glow — faint heavenly light breaking through storm */}
+      <rect width="800" height="400" fill="url(#wat-divine)" />
+      {/* storm clouds — heavy, tearing */}
+      <path d="M0,0 Q80,30 160,10 Q240,0 310,40 Q370,70 440,30 Q520,0 590,50 Q650,80 720,40 Q760,20 800,30 L800,0 L0,0 Z" fill="#050810" opacity="0.85" />
+      <path d="M0,20 Q60,50 130,28 Q200,10 270,55 Q330,80 400,50 Q470,20 540,60 Q600,88 680,55 Q730,34 800,50 L800,20 Z" fill="#06091A" opacity="0.7" />
+      {/* lightning in clouds */}
+      <path d="M620,25 L610,52 L622,52 L608,80" stroke="#E8E0C8" strokeWidth="2" fill="none" opacity="0.25" strokeLinecap="round" strokeLinejoin="round" />
+      {/* dark churning water — high surface, waves tossing */}
+      <path d="M0,205 Q60,188 130,210 Q200,228 280,205 Q360,182 440,208 Q520,228 600,205 Q680,184 800,210 L800,400 L0,400 Z" fill="url(#wat-water)" />
+      {/* violent waves */}
+      {[0,1,2,3,4].map(i => (
+        <path key={i}
+          d={`M0,${225+i*26} Q80,${212+i*26} 170,${228+i*26} Q260,${244+i*26} 350,${228+i*26} Q440,${212+i*26} 540,${228+i*26} Q630,${244+i*26} 720,${228+i*26} Q760,${220+i*26} 800,${228+i*26}`}
+          stroke="#102240" strokeWidth="2" fill="none" opacity={0.65 - i*0.08} />
       ))}
-      {/* white caps on waves */}
-      {[[120,248],[350,256],[590,250],[680,264]].map(([x,y],i) => (
-        <path key={i} d={`M${x-18},${y} Q${x},${y-8} ${x+18},${y}`} stroke="#E8E0C8" strokeWidth="2" fill="none" opacity="0.25" />
+      {/* white water / foam on wave crests */}
+      {[[90,215],[240,208],[510,216],[660,210],[350,222],[170,230]].map(([x,y],i) => (
+        <path key={i} d={`M${x-22},${y} Q${x},${y-10} ${x+22},${y}`} stroke="#E8E0C8" strokeWidth="2.5" fill="none" opacity="0.18" />
       ))}
-      {/* boat in far background */}
-      <g transform="translate(640,248)" opacity="0.45">
-        <path d="M-50,10 Q0,-4 50,10 L40,22 L-40,22 Z" fill="#0A1020" />
-        <path d="M0,22 L0,-20" stroke="#0A1020" strokeWidth="3" />
-        <path d="M0,-20 L30,0 L0,0 Z" fill="#0A1020" opacity="0.5" />
+      {/* boat — far background, disciples watching in horror */}
+      <g transform="translate(660,210)" opacity="0.5">
+        <path d="M-55,14 Q0,-2 55,14 L44,28 L-44,28 Z" fill="#0A1022" />
+        <path d="M0,28 L0,-14" stroke="#0A1022" strokeWidth="4" />
+        <path d="M0,-14 L34,4 L0,4 Z" fill="#0A1022" opacity="0.4" />
+        {/* small figures in boat */}
+        {[-28,-10,12,30].map((bx,i) => (
+          <circle key={i} cx={bx} cy="14" r="5" fill="#0C1428" opacity="0.7" />
+        ))}
       </g>
-      {/* peter — standing on water, one arm raised, one beginning to sink */}
-      <g transform="translate(370,244)">
-        <circle cx="0" cy="-28" r="11" fill="#1B1A2E" />
-        <path d="M-11,-12 L11,-12 L9,16 L-9,16 Z" fill="#1B365D" />
-        {/* cloak */}
-        <path d="M-11,-12 Q-20,2 -16,20" stroke="#1B365D" strokeWidth="6" strokeLinecap="round" fill="none" />
-        <path d="M11,-12 Q20,2 16,20" stroke="#1B365D" strokeWidth="6" strokeLinecap="round" fill="none" />
-        {/* feet just on water surface — one sinking */}
-        <path d="M-9,14 L-10,32" stroke="#1B365D" strokeWidth="5" strokeLinecap="round" />
-        <path d="M9,14 L10,32" stroke="#1B365D" strokeWidth="5" strokeLinecap="round" />
-        {/* arm reaching desperately upward */}
-        <path d="M-10,-14 Q-24,-34 -20,-50" stroke="#1B365D" strokeWidth="7" strokeLinecap="round" fill="none" />
-        <circle cx="-20" cy="-52" r="5" fill="#C8956A" />
-        {/* other arm out for balance */}
-        <path d="M10,-14 Q28,-10 34,-4" stroke="#1B1A2E" strokeWidth="6" strokeLinecap="round" fill="none" />
+      {/* water surface ripples around sinking body */}
+      <ellipse cx="390" cy="218" rx="48" ry="12" fill="none" stroke="#E8E0C8" strokeWidth="1.5" opacity="0.14" />
+      <ellipse cx="390" cy="218" rx="72" ry="18" fill="none" stroke="#E8E0C8" strokeWidth="1" opacity="0.07" />
+      {/* peter — sinking from waist down, only torso and raised arm visible */}
+      <g transform="translate(390,218)">
+        {/* water breaking around his hips — just the surface splash */}
+        <path d="M-32,0 Q-20,-12 -8,2 Q0,8 8,2 Q20,-12 32,0" fill="#182E4A" opacity="0.7" />
+        {/* torso — submerged below waist, only upper body visible */}
+        <path d="M-14,-40 L14,-40 L12,-10 L-12,-10 Z" fill="#3A6090" />
+        {/* cloak/robe wet and heavy — dragged down */}
+        <path d="M-14,-40 Q-22,-28 -18,-12" stroke="#3A6090" strokeWidth="7" strokeLinecap="round" fill="none" />
+        <path d="M14,-40 Q22,-28 18,-12" stroke="#3A6090" strokeWidth="7" strokeLinecap="round" fill="none" />
+        {/* head — looking up in terror */}
+        <circle cx="0" cy="-54" r="13" fill="#A07050" />
+        {/* face turned upward */}
+        <path d="M-5,-58 Q0,-64 5,-58" fill="none" stroke="#7A4A28" strokeWidth="1.5" opacity="0.6" />
+        {/* left arm — desperately thrust straight up */}
+        <path d="M-12,-42 Q-16,-62 -10,-88" stroke="#3A6090" strokeWidth="8" strokeLinecap="round" fill="none" />
+        {/* hand spread wide, straining upward */}
+        <circle cx="-10" cy="-92" r="7" fill="#A07050" />
+        <path d="M-16,-92 Q-22,-98 -20,-106" stroke="#A07050" strokeWidth="4" strokeLinecap="round" fill="none" />
+        <path d="M-10,-94 Q-8,-102 -6,-108" stroke="#A07050" strokeWidth="4" strokeLinecap="round" fill="none" />
+        <path d="M-4,-92 Q-2,-100 2,-104" stroke="#A07050" strokeWidth="4" strokeLinecap="round" fill="none" />
+        {/* right arm — flailing for balance */}
+        <path d="M12,-42 Q32,-36 40,-28" stroke="#2A4870" strokeWidth="7" strokeLinecap="round" fill="none" />
       </g>
-      {/* the hand reaching from above — divine, reaching down to meet him */}
-      <g transform="translate(340,160)">
-        {/* arm coming from upper area */}
-        <path d="M0,-40 Q0,-10 4,10" stroke="#E8E0C8" strokeWidth="9" strokeLinecap="round" fill="none" opacity="0.75" />
-        {/* hand */}
-        <path d="M-10,12 Q-12,28 -4,30 Q4,32 8,18 L4,8 Z" fill="#E8E0C8" opacity="0.75" />
-        <path d="M8,18 Q14,34 20,32 Q26,28 22,16" stroke="#E8E0C8" strokeWidth="6" strokeLinecap="round" fill="none" opacity="0.75" />
-        <path d="M4,8 Q12,4 18,14" stroke="#E8E0C8" strokeWidth="5" strokeLinecap="round" fill="none" opacity="0.75" />
+      {/* divine hand and arm — reaching down through the storm break */}
+      {/* faint parting in clouds where arm descends */}
+      <path d="M340,0 Q360,20 370,40 Q380,60 368,80" fill="none" stroke="#E8E0C8" strokeWidth="1" opacity="0.1" />
+      <g transform="translate(362,80)">
+        {/* arm — luminous, otherworldly */}
+        <path d="M0,-60 Q-2,-30 0,-4" stroke="#D8D0C0" strokeWidth="11" strokeLinecap="round" fill="none" opacity="0.7" />
+        {/* wrist */}
+        <ellipse cx="0" cy="-2" rx="8" ry="6" fill="#D8D0C0" opacity="0.7" />
+        {/* hand reaching toward peter's hand — fingers extended */}
+        <path d="M-8,-2 Q-14,10 -10,20 Q-6,28 0,26 Q8,24 10,14 L6,0 Z" fill="#D8D0C0" opacity="0.7" />
+        {/* fingers */}
+        <path d="M10,14 Q18,24 20,18 Q22,10 16,4" stroke="#D8D0C0" strokeWidth="5" strokeLinecap="round" fill="none" opacity="0.7" />
+        <path d="M6,0 Q16,-6 20,4" stroke="#D8D0C0" strokeWidth="5" strokeLinecap="round" fill="none" opacity="0.7" />
+        <path d="M-8,-2 Q-18,-8 -16,4" stroke="#D8D0C0" strokeWidth="4" strokeLinecap="round" fill="none" opacity="0.7" />
+        {/* divine glow around the hand */}
+        <circle cx="0" cy="12" r="24" fill="#E8E0C8" opacity="0.06" />
       </g>
     </svg>
   );

@@ -58,4 +58,7 @@ app.use('/api/admin', adminRouter);
 
 app.get('/health', (_req, res) => res.json({ ok: true }));
 
-app.listen(PORT, () => console.log(`Prodigal backend :${PORT}`));
+// Bind to loopback only — Caddy (or another local proxy) terminates TLS
+// and forwards traffic. Exposing this port publicly would bypass the
+// CSP/HSTS/security headers applied at the reverse proxy.
+app.listen(PORT, '127.0.0.1', () => console.log(`Told backend on 127.0.0.1:${PORT}`));
