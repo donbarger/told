@@ -17,6 +17,11 @@ import { SYSTEM_PROMPT as richFoolPrompt }  from './richFool.js';
 import { SYSTEM_PROMPT as virginsPrompt }   from './virgins.js';
 import { SYSTEM_PROMPT as waterPrompt }     from './water.js';
 import { SYSTEM_PROMPT as poolPrompt }      from './pool.js';
+import { SYSTEM_PROMPT as blindManPrompt }  from './blindMan.js';
+import { SYSTEM_PROMPT as adulteryPrompt }  from './adultery.js';
+import { SYSTEM_PROMPT as treasurePrompt }  from './treasure.js';
+import { SYSTEM_PROMPT as laborersPrompt }  from './laborers.js';
+import { SYSTEM_PROMPT as legionPrompt }    from './legion.js';
 import { buildUserMessage }                  from './shared.js';
 
 export const PROMPTS = {
@@ -39,6 +44,11 @@ export const PROMPTS = {
   virgins:    virginsPrompt,
   water:      waterPrompt,
   pool:       poolPrompt,
+  blindMan:   blindManPrompt,
+  adultery:   adulteryPrompt,
+  treasure:   treasurePrompt,
+  laborers:   laborersPrompt,
+  legion:     legionPrompt,
 };
 
 export { buildUserMessage };

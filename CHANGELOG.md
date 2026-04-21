@@ -3,6 +3,25 @@
 All notable changes to **Told** are documented here.
 The format is loosely based on [Keep a Changelog](https://keepachangelog.com/).
 
+## [0.5.0] — 2026-04-21
+
+### Added
+- **5 new seeker-focused stories** — catalog grows from 19 to 24 stories, all chosen for people who are exploring faith rather than deepening it:
+  - *I Was Blind* (Man Born Blind / John 9:1–41) — stats: Belonging, Testimony, Sight. Five phases: mud, neighbors, pharisees, exile, worship.
+  - *On the Ground* (Woman Caught in Adultery / John 8:1–11) — stats: Shame, Voice, Seen. Four phases: dragged, ground, cleared, freed.
+  - *The Find* (Hidden Treasure and Pearl / Matthew 13:44–46) — stats: Certainty, Cost, Joy. Four phases: searching, counting, sold, joy.
+  - *The Last Hour* (Laborers in the Vineyard / Matthew 20:1–16) — stats: Resentment, Worth, Grace. Four phases: waiting, field, wage, reckoning.
+  - *Among the Tombs* (Gerasene Demoniac / Mark 5:1–20) — stats: Chaos, Isolation, Name. Four phases: tombs, shore, legion, sent.
+- **Backend system prompts** for all 5 new stories with phase maps, stat axes, and scene-type guidance calibrated for the seeker perspective.
+- **SVG story art** for all 5 new stories in `StoryArt.jsx`:
+  - *I Was Blind* — figure kneeling at pool edge, both hands raised to eyes, first light on the water
+  - *On the Ground* — woman crouching in an emptied courtyard, stones scattered on the ground untouched, writing marks in the dirt
+  - *The Find* — merchant at a lamp-lit table, pearl raised into the light, the rest of the inventory around him
+  - *The Last Hour* — lone figure standing in the hiring square in late-afternoon light, others long gone to the vineyard
+  - *Among the Tombs* — dark hillside with carved tomb openings, broken chain, boat light on the water below
+
+---
+
 ## [0.4.0] — 2026-04-21
 
 ### Added

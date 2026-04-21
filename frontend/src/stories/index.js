@@ -17,6 +17,11 @@ import { richFool }  from './richFool.js';
 import { virgins }   from './virgins.js';
 import { water }     from './water.js';
 import { pool }      from './pool.js';
+import { blindMan }  from './blindMan.js';
+import { adultery }  from './adultery.js';
+import { treasure }  from './treasure.js';
+import { laborers }  from './laborers.js';
+import { legion }    from './legion.js';
 
 export const STORIES = [
   prodigal,
@@ -38,8 +43,13 @@ export const STORIES = [
   virgins,
   water,
   pool,
+  blindMan,
+  adultery,
+  treasure,
+  laborers,
+  legion,
 ];
 
 export const STORY_MAP = Object.fromEntries(STORIES.map(s => [s.id, s]));
 
-export { prodigal, samaritan, zacchaeus, well, richRuler, bartimaeus, talents, debt, gate, widow, sower, elder, pharisee, martha, nicodemus, richFool, virgins, water, pool };
+export { prodigal, samaritan, zacchaeus, well, richRuler, bartimaeus, talents, debt, gate, widow, sower, elder, pharisee, martha, nicodemus, richFool, virgins, water, pool, blindMan, adultery, treasure, laborers, legion };

@@ -1407,6 +1407,322 @@ function PoolArt() {
   );
 }
 
+/* ── Blind Man — man at pool edge, hands raised to eyes, first light ─────── */
+function BlindManArt() {
+  return (
+    <svg viewBox="0 0 800 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <defs>
+        <linearGradient id="bm-sky" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#060A10" />
+          <stop offset="60%" stopColor="#0E1C30" />
+          <stop offset="100%" stopColor="#182840" />
+        </linearGradient>
+        <linearGradient id="bm-water" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#0A1828" />
+          <stop offset="100%" stopColor="#060E18" />
+        </linearGradient>
+        <radialGradient id="bm-glow" cx="0.5" cy="0.55" r="0.48">
+          <stop offset="0%" stopColor="#4A8AB0" stopOpacity="0.55" />
+          <stop offset="50%" stopColor="#2A5A80" stopOpacity="0.2" />
+          <stop offset="100%" stopColor="#4A8AB0" stopOpacity="0" />
+        </radialGradient>
+      </defs>
+      <rect width="800" height="400" fill="url(#bm-sky)" />
+      <rect width="800" height="400" fill="url(#bm-glow)" />
+      {/* pool water */}
+      <ellipse cx="400" cy="310" rx="260" ry="55" fill="url(#bm-water)" opacity="0.9" />
+      <ellipse cx="400" cy="310" rx="260" ry="55" fill="none" stroke="#2A5A80" strokeWidth="1.5" opacity="0.5" />
+      {/* pool edge / steps */}
+      <path d="M120,295 L680,295 L680,315 L120,315 Z" fill="#1A2A3C" opacity="0.8" />
+      <path d="M140,280 L660,280 L680,295 L120,295 Z" fill="#1E3040" opacity="0.7" />
+      {/* water ripples */}
+      <ellipse cx="400" cy="312" rx="80" ry="12" fill="none" stroke="#3A6888" strokeWidth="1" opacity="0.5" />
+      <ellipse cx="400" cy="312" rx="140" ry="20" fill="none" stroke="#2A5070" strokeWidth="0.8" opacity="0.35" />
+      {/* figure — kneeling at pool edge, hands raised to face */}
+      <g transform="translate(395,255)">
+        {/* head */}
+        <circle cx="0" cy="-26" r="13" fill="#9A7050" />
+        {/* torso */}
+        <path d="M-12,-12 L12,-12 L10,24 L-10,24 Z" fill="#3A5878" />
+        {/* both arms raised, hands near eyes */}
+        <path d="M-10,-8 Q-28,-22 -36,-18" stroke="#9A7050" strokeWidth="7" strokeLinecap="round" fill="none" />
+        <circle cx="-36" cy="-18" r="5" fill="#9A7050" />
+        <path d="M10,-8 Q28,-22 36,-18" stroke="#9A7050" strokeWidth="7" strokeLinecap="round" fill="none" />
+        <circle cx="36" cy="-18" r="5" fill="#9A7050" />
+        {/* kneeling legs */}
+        <path d="M-10,24 Q-14,38 -20,44" stroke="#2A4060" strokeWidth="8" strokeLinecap="round" fill="none" />
+        <path d="M10,24 Q14,38 20,44" stroke="#2A4060" strokeWidth="8" strokeLinecap="round" fill="none" />
+      </g>
+      {/* first light on the water surface */}
+      <ellipse cx="400" cy="295" rx="60" ry="8" fill="#4A8AB0" opacity="0.18" />
+      {/* distant colonnade */}
+      {[160, 240, 560, 640].map((x, i) => (
+        <rect key={i} x={x - 5} y="180" width="10" height="100" fill="#1A2A3C" opacity="0.45" />
+      ))}
+      <rect x="140" y="178" width="520" height="8" fill="#1A2A3C" opacity="0.4" />
+    </svg>
+  );
+}
+
+/* ── Woman Caught in Adultery — public square, stones on ground, alone ───── */
+function AdulteryArt() {
+  return (
+    <svg viewBox="0 0 800 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <defs>
+        <linearGradient id="ad-sky" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#100810" />
+          <stop offset="55%" stopColor="#1C1028" />
+          <stop offset="100%" stopColor="#281838" />
+        </linearGradient>
+        <linearGradient id="ad-ground" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#1A1428" />
+          <stop offset="100%" stopColor="#0E0C18" />
+        </linearGradient>
+        <radialGradient id="ad-glow" cx="0.48" cy="0.58" r="0.42">
+          <stop offset="0%" stopColor="#8A6AB0" stopOpacity="0.4" />
+          <stop offset="100%" stopColor="#8A6AB0" stopOpacity="0" />
+        </radialGradient>
+      </defs>
+      <rect width="800" height="400" fill="url(#ad-sky)" />
+      <rect width="800" height="400" fill="url(#ad-glow)" />
+      {/* ground */}
+      <rect x="0" y="300" width="800" height="100" fill="url(#ad-ground)" />
+      {/* courtyard paving lines */}
+      {[320, 360, 400, 440, 480].map((x, i) => (
+        <line key={i} x1={x} y1="300" x2={x - 40} y2="400" stroke="#1E1828" strokeWidth="1" opacity="0.6" />
+      ))}
+      <line x1="0" y1="340" x2="800" y2="340" stroke="#1E1828" strokeWidth="1" opacity="0.4" />
+      {/* stones scattered on ground — the ones not thrown */}
+      {[[250,320],[290,332],[330,316],[370,328],[440,322],[480,336],[510,318]].map(([x,y],i) => (
+        <ellipse key={i} cx={x} cy={y} rx="9" ry="6" fill="#3A2848" opacity="0.75" />
+      ))}
+      {/* figure — crouching low, head down */}
+      <g transform="translate(400,278)">
+        <circle cx="0" cy="-10" r="12" fill="#A07858" />
+        {/* shawl/head covering draped */}
+        <path d="M-14,-8 Q-24,0 -22,18 L22,18 Q24,0 14,-8 Z" fill="#4A3468" opacity="0.9" />
+        <path d="M-14,-18 Q0,-28 14,-18" stroke="#4A3468" strokeWidth="4" fill="none" opacity="0.8" />
+        {/* crouching posture — forward lean */}
+        <path d="M-10,18 Q-18,34 -26,40" stroke="#2A1E38" strokeWidth="8" strokeLinecap="round" fill="none" />
+        <path d="M10,18 Q18,34 26,40" stroke="#2A1E38" strokeWidth="8" strokeLinecap="round" fill="none" />
+        {/* arms forward — bracing */}
+        <path d="M-10,8 Q-22,18 -30,14" stroke="#A07858" strokeWidth="6" strokeLinecap="round" fill="none" />
+        <circle cx="-30" cy="14" r="5" fill="#A07858" />
+      </g>
+      {/* writing in dirt — partial marks on the ground */}
+      <path d="M340,358 Q360,350 380,358" stroke="#5A4870" strokeWidth="2" fill="none" opacity="0.6" strokeDasharray="4 3" />
+      <path d="M390,354 Q405,346 420,352" stroke="#5A4870" strokeWidth="2" fill="none" opacity="0.5" strokeDasharray="3 4" />
+      <path d="M428,360 Q444,350 456,358" stroke="#5A4870" strokeWidth="2" fill="none" opacity="0.6" strokeDasharray="5 2" />
+      {/* distant crowd departing — small figures walking away */}
+      {[[140,255],[175,248],[210,258],[620,252],[655,245],[688,255]].map(([x,y],i) => (
+        <g key={i} transform={`translate(${x},${y})`} opacity="0.4">
+          <circle cx="0" cy="-12" r="6" fill="#1A1428" />
+          <rect x="-5" y="-6" width="10" height="18" fill="#1A1428" />
+        </g>
+      ))}
+    </svg>
+  );
+}
+
+/* ── Hidden Treasure / Pearl — merchant at lamp-lit table, pearl in hand ─── */
+function TreasureArt() {
+  return (
+    <svg viewBox="0 0 800 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <defs>
+        <linearGradient id="tr-bg" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#100C08" />
+          <stop offset="60%" stopColor="#201808" />
+          <stop offset="100%" stopColor="#281E10" />
+        </linearGradient>
+        <radialGradient id="tr-lamp" cx="0.5" cy="0.52" r="0.5">
+          <stop offset="0%" stopColor="#F3D54E" stopOpacity="0.75" />
+          <stop offset="35%" stopColor="#E87722" stopOpacity="0.3" />
+          <stop offset="100%" stopColor="#E87722" stopOpacity="0" />
+        </radialGradient>
+        <radialGradient id="tr-pearl" cx="0.38" cy="0.35" r="0.6">
+          <stop offset="0%" stopColor="#F0EEE8" />
+          <stop offset="60%" stopColor="#C8C4B8" />
+          <stop offset="100%" stopColor="#A8A098" />
+        </radialGradient>
+      </defs>
+      <rect width="800" height="400" fill="url(#tr-bg)" />
+      <rect width="800" height="400" fill="url(#tr-lamp)" />
+      {/* wooden table surface */}
+      <path d="M180,240 L620,240 L660,400 L140,400 Z" fill="#2A1E0C" />
+      <path d="M180,240 L620,240 L620,248 L180,248 Z" fill="#3A2A10" />
+      {/* table edge highlight */}
+      <line x1="180" y1="240" x2="620" y2="240" stroke="#5A3A18" strokeWidth="2" opacity="0.6" />
+      {/* scattered inventory items — other gems, strings of beads */}
+      <ellipse cx="270" cy="268" rx="22" ry="10" fill="#1B365D" opacity="0.6" />
+      <path d="M244,268 Q270,256 296,268" stroke="#2EBCA8" strokeWidth="2" fill="none" opacity="0.5" />
+      <ellipse cx="530" cy="275" rx="18" ry="8" fill="#3A2A08" opacity="0.7" />
+      {[505,518,531,544,557].map((x,i) => (
+        <circle key={i} cx={x} cy="268" r="4" fill="#C4973A" opacity="0.65" />
+      ))}
+      {/* small open boxes/pouches */}
+      <rect x="220" y="252" width="28" height="20" rx="3" fill="#2A1A08" stroke="#5A3818" strokeWidth="1.5" opacity="0.7" />
+      <rect x="560" y="260" width="24" height="16" rx="2" fill="#2A1A08" stroke="#5A3818" strokeWidth="1.5" opacity="0.7" />
+      {/* lamp */}
+      <ellipse cx="400" cy="192" rx="18" ry="8" fill="#C4973A" opacity="0.9" />
+      <rect x="394" y="150" width="12" height="42" fill="#C4973A" opacity="0.8" />
+      <ellipse cx="400" cy="148" rx="8" ry="6" fill="#F3D54E" opacity="0.9" />
+      {/* flame */}
+      <path d="M396,140 Q400,128 404,140 Q400,136 396,140 Z" fill="#F3D54E" />
+      <path d="M397,140 Q400,132 403,140 Q400,137 397,140 Z" fill="#FFFFFF" opacity="0.7" />
+      {/* merchant figure */}
+      <g transform="translate(398,262)">
+        {/* head */}
+        <circle cx="0" cy="-28" r="14" fill="#9A7050" />
+        {/* beard */}
+        <path d="M-8,-14 Q0,-6 8,-14" stroke="#7A5030" strokeWidth="4" fill="none" opacity="0.7" />
+        {/* torso leaning forward over table */}
+        <path d="M-13,-12 L13,-12 L10,12 L-10,12 Z" fill="#3A2810" />
+        {/* arm extended — holding pearl up to light */}
+        <path d="M10,-8 Q26,-14 34,-22" stroke="#9A7050" strokeWidth="7" strokeLinecap="round" fill="none" />
+        {/* pearl in hand */}
+        <circle cx="36" cy="-24" r="10" fill="url(#tr-pearl)" />
+        <circle cx="33" cy="-27" r="3" fill="#FFFFFF" opacity="0.6" />
+        {/* other hand on table */}
+        <path d="M-10,-4 Q-22,4 -30,8" stroke="#9A7050" strokeWidth="6" strokeLinecap="round" fill="none" />
+        <circle cx="-30" cy="8" r="5" fill="#9A7050" />
+      </g>
+    </svg>
+  );
+}
+
+/* ── Laborers — day-labor square, single figure, late afternoon sun ──────── */
+function LaborersArt() {
+  return (
+    <svg viewBox="0 0 800 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <defs>
+        <linearGradient id="lb-sky" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#0C1808" />
+          <stop offset="50%" stopColor="#1A2C10" />
+          <stop offset="100%" stopColor="#243818" />
+        </linearGradient>
+        <linearGradient id="lb-ground" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#1A2010" />
+          <stop offset="100%" stopColor="#0E1408" />
+        </linearGradient>
+        <radialGradient id="lb-sun" cx="0.78" cy="0.28" r="0.35">
+          <stop offset="0%" stopColor="#E87722" stopOpacity="0.65" />
+          <stop offset="50%" stopColor="#C4973A" stopOpacity="0.25" />
+          <stop offset="100%" stopColor="#E87722" stopOpacity="0" />
+        </radialGradient>
+      </defs>
+      <rect width="800" height="400" fill="url(#lb-sky)" />
+      <rect width="800" height="400" fill="url(#lb-sun)" />
+      {/* ground */}
+      <rect x="0" y="300" width="800" height="100" fill="url(#lb-ground)" />
+      {/* distant vineyard rows */}
+      {[0,1,2,3,4,5,6].map(i => (
+        <line key={i} x1={80 + i*100} y1="220" x2={80 + i*100} y2="300" stroke="#2A3818" strokeWidth="2" opacity="0.5" />
+      ))}
+      <line x1="60" y1="260" x2="740" y2="260" stroke="#2A3818" strokeWidth="1" opacity="0.35" />
+      {/* stone wall of vineyard */}
+      <path d="M0,295 L800,295 L800,308 L0,308 Z" fill="#2A2818" opacity="0.7" />
+      {[0,1,2,3,4,5,6,7,8,9,10].map(i => (
+        <rect key={i} x={i*80 + 4} y="282" width="68" height="14" rx="3" fill="#242018" opacity="0.6" />
+      ))}
+      {/* gate post */}
+      <rect x="382" y="240" width="16" height="60" fill="#302818" opacity="0.8" />
+      <rect x="402" y="240" width="16" height="60" fill="#302818" opacity="0.8" />
+      {/* lone figure — standing, waiting, leaning slightly */}
+      <g transform="translate(240,272)">
+        {/* shadow */}
+        <ellipse cx="0" cy="28" rx="18" ry="6" fill="#0A1008" opacity="0.5" />
+        {/* head */}
+        <circle cx="0" cy="-28" r="13" fill="#8A6040" />
+        {/* torso */}
+        <path d="M-11,-14 L11,-14 L9,20 L-9,20 Z" fill="#3A4828" />
+        {/* legs */}
+        <path d="M-9,20 L-11,50" stroke="#2A3018" strokeWidth="9" strokeLinecap="round" fill="none" />
+        <path d="M9,20 L11,50" stroke="#2A3018" strokeWidth="9" strokeLinecap="round" fill="none" />
+        {/* arms down at sides */}
+        <path d="M-10,-10 Q-16,4 -14,18" stroke="#8A6040" strokeWidth="6" strokeLinecap="round" fill="none" />
+        <path d="M10,-10 Q16,4 14,18" stroke="#8A6040" strokeWidth="6" strokeLinecap="round" fill="none" />
+      </g>
+      {/* other hired figures in the distance — walking away already */}
+      {[[520,248],[560,242],[600,250],[640,244]].map(([x,y],i) => (
+        <g key={i} transform={`translate(${x},${y})`} opacity="0.35">
+          <circle cx="0" cy="-12" r="6" fill="#1A2810" />
+          <rect x="-5" y="-6" width="10" height="18" fill="#1A2810" />
+          <path d="M-5,12 L-6,24" stroke="#1A2810" strokeWidth="4" strokeLinecap="round" fill="none" />
+          <path d="M5,12 L6,24" stroke="#1A2810" strokeWidth="4" strokeLinecap="round" fill="none" />
+        </g>
+      ))}
+      {/* late afternoon shadows -- long on the ground */}
+      <path d="M233,300 L200,340 L280,340 L247,300 Z" fill="#080E08" opacity="0.3" />
+    </svg>
+  );
+}
+
+/* ── Among the Tombs — dark hillside tombs, shoreline below, a boat ─────── */
+function LegionArt() {
+  return (
+    <svg viewBox="0 0 800 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <defs>
+        <linearGradient id="lg-sky" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#080810" />
+          <stop offset="55%" stopColor="#10101C" />
+          <stop offset="100%" stopColor="#181824" />
+        </linearGradient>
+        <linearGradient id="lg-water" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#0A0C18" />
+          <stop offset="100%" stopColor="#060810" />
+        </linearGradient>
+        <radialGradient id="lg-boat-glow" cx="0.7" cy="0.6" r="0.3">
+          <stop offset="0%" stopColor="#8A7AC0" stopOpacity="0.45" />
+          <stop offset="100%" stopColor="#8A7AC0" stopOpacity="0" />
+        </radialGradient>
+      </defs>
+      <rect width="800" height="400" fill="url(#lg-sky)" />
+      <rect width="800" height="400" fill="url(#lg-boat-glow)" />
+      {/* stars */}
+      {[[100,40],[160,28],[250,55],[340,22],[500,35],[600,18],[700,42],[750,60],[80,70],[420,48]].map(([x,y],i) => (
+        <circle key={i} cx={x} cy={y} r="1.5" fill="#C8C0D8" opacity="0.6" />
+      ))}
+      {/* hillside with tombs — left side */}
+      <path d="M0,160 Q80,100 160,130 Q220,110 260,150 L260,300 L0,300 Z" fill="#0E0C18" />
+      {/* tomb openings carved in hillside */}
+      {[[60,180],[100,200],[140,175],[175,195]].map(([x,y],i) => (
+        <g key={i}>
+          <path d={`M${x-14},${y+20} L${x-14},${y} Q${x},${y-16} ${x+14},${y} L${x+14},${y+20} Z`}
+            fill="#050508" stroke="#1E1A28" strokeWidth="1.5" />
+        </g>
+      ))}
+      {/* figure -- crouching on hillside, broken chains visible */}
+      <g transform="translate(80,240)">
+        <circle cx="0" cy="-20" r="11" fill="#7A5840" />
+        {/* ragged clothing */}
+        <path d="M-10,-8 L10,-8 L8,14 L-8,14 Z" fill="#1E1828" opacity="0.8" />
+        {/* arms braced against ground */}
+        <path d="M-8,10 Q-20,18 -30,16" stroke="#7A5840" strokeWidth="6" strokeLinecap="round" fill="none" />
+        <path d="M8,10 Q20,18 30,16" stroke="#7A5840" strokeWidth="6" strokeLinecap="round" fill="none" />
+        {/* broken chain link on wrist */}
+        <path d="M24,14 Q32,18 30,24" stroke="#4A4050" strokeWidth="3" fill="none" opacity="0.8" />
+        {/* crouching legs */}
+        <path d="M-8,14 Q-12,26 -18,30" stroke="#181420" strokeWidth="7" strokeLinecap="round" fill="none" />
+        <path d="M8,14 Q12,26 18,30" stroke="#181420" strokeWidth="7" strokeLinecap="round" fill="none" />
+      </g>
+      {/* shoreline */}
+      <path d="M220,295 Q400,270 800,290 L800,320 Q400,300 220,320 Z" fill="#0A0C18" opacity="0.8" />
+      <path d="M240,300 Q420,282 800,298" stroke="#1A1C2E" strokeWidth="2" fill="none" opacity="0.6" />
+      {/* water */}
+      <rect x="220" y="295" width="580" height="105" fill="url(#lg-water)" />
+      {/* gentle waves */}
+      <path d="M280,315 Q320,308 360,315 Q400,322 440,315" stroke="#1A1E30" strokeWidth="1.5" fill="none" opacity="0.5" />
+      <path d="M480,325 Q530,318 580,325 Q630,332 680,325" stroke="#1A1E30" strokeWidth="1.5" fill="none" opacity="0.4" />
+      {/* boat on far water */}
+      <path d="M600,285 Q640,280 680,285 L675,305 L605,305 Z" fill="#1A1828" opacity="0.85" />
+      {/* boat sail or mast */}
+      <line x1="640" y1="285" x2="640" y2="252" stroke="#2A2438" strokeWidth="3" opacity="0.7" />
+      {/* light from the boat */}
+      <ellipse cx="640" cy="292" rx="35" ry="10" fill="#8A7AC0" opacity="0.15" />
+    </svg>
+  );
+}
+
 const ART = {
   prodigal:  ProdigalArt,
   samaritan: SamaritanArt,
@@ -1427,6 +1743,11 @@ const ART = {
   virgins:   VirginsArt,
   water:     WaterArt,
   pool:      PoolArt,
+  blindMan:  BlindManArt,
+  adultery:  AdulteryArt,
+  treasure:  TreasureArt,
+  laborers:  LaborersArt,
+  legion:    LegionArt,
 };
 
 export default function StoryArt({ storyId, accentColor, className }) {
