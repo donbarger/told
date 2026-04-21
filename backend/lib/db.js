@@ -75,6 +75,15 @@ export const gameQueries = {
     WHERE user_id = ? AND completed_at IS NULL
     ORDER BY started_at DESC LIMIT 1
   `),
+  userPlayedStoryIds: db.prepare(`
+    SELECT DISTINCT story_id FROM games
+    WHERE user_id = ? AND completed_at IS NOT NULL
+  `),
+  userInProgress: db.prepare(`
+    SELECT story_id, started_at FROM games
+    WHERE user_id = ? AND completed_at IS NULL
+    ORDER BY started_at DESC LIMIT 1
+  `),
   aggregateStats: db.prepare(`
     SELECT
       COUNT(*)                                             AS total_started,

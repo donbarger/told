@@ -1,5 +1,10 @@
 import React from 'react';
 import { STORIES } from '../stories/index.js';
+import StoryArt from './StoryArt.jsx';
+
+// A curated trio that has dedicated illustrations — used as a preview
+// after "How it works". Everything else still renders in the full lineup.
+const FEATURED_IDS = ['prodigal', 'samaritan', 'widow'];
 
 const HOW_IT_WORKS = [
   {
@@ -109,10 +114,36 @@ export default function LandingScreen({ onLogin, blocked }) {
         </div>
       </section>
 
-      {/* ── Story lineup ──────────────────────────────────────────────────── */}
+      {/* ── Featured stories (illustrated) ──────────────────────────────── */}
+      <section className="told-section told-section--featured">
+        <div className="told-section-inner">
+          <p className="told-section-label">A few of the stories</p>
+          <h2 className="told-section-heading">You step into ancient ground.</h2>
+          <div className="told-featured-grid">
+            {FEATURED_IDS.map((id) => {
+              const s = STORIES.find((x) => x.id === id);
+              if (!s) return null;
+              return (
+                <article key={s.id} className="told-featured-card">
+                  <div className="told-featured-art">
+                    <StoryArt storyId={s.id} accentColor={s.accentColor} />
+                  </div>
+                  <div className="told-featured-body">
+                    <span className="told-featured-scripture">{s.scripture}</span>
+                    <h3 className="told-featured-title">{s.title}</h3>
+                    <p className="told-featured-tagline">{s.tagline}</p>
+                  </div>
+                </article>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Full story lineup ───────────────────────────────────────────── */}
       <section className="told-section told-section--lineup">
         <div className="told-section-inner">
-          <p className="told-section-label">The stories</p>
+          <p className="told-section-label">The full collection</p>
           <h2 className="told-section-heading">Eleven parables. Step into any one.</h2>
           <ul className="told-lineup">
             {STORIES.map((s) => (

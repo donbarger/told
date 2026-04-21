@@ -5,6 +5,8 @@ import LandingScreen     from './components/LandingScreen.jsx';
 import StorySelectScreen from './components/StorySelectScreen.jsx';
 import TitleScreen       from './components/TitleScreen.jsx';
 import GameScreen        from './components/GameScreen.jsx';
+import EncounterScreen   from './components/EncounterScreen.jsx';
+import WitnessScreen     from './components/WitnessScreen.jsx';
 import EndScreen         from './components/EndScreen.jsx';
 import SettingsModal     from './components/SettingsModal.jsx';
 import AdminScreen       from './components/AdminScreen.jsx';
@@ -68,15 +70,21 @@ export default function App() {
       />
     );
   } else {
-    screen = (
-      <GameScreen
-        {...game}
-        user={auth.user}
-        audioEnabled={audioEnabled}
-        onToggleAudio={toggleAudio}
-        onOpenSettings={openSettings}
-      />
-    );
+    const template = game.activeStory?.template || 'journey';
+    const gameProps = {
+      ...game,
+      user: auth.user,
+      audioEnabled,
+      onToggleAudio: toggleAudio,
+      onOpenSettings: openSettings,
+    };
+    if (template === 'encounter') {
+      screen = <EncounterScreen {...gameProps} />;
+    } else if (template === 'witness') {
+      screen = <WitnessScreen {...gameProps} />;
+    } else {
+      screen = <GameScreen {...gameProps} />;
+    }
   }
 
   return (

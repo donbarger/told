@@ -101,6 +101,7 @@ const PASSAGE = [
 ];
 
 export const samaritan = {
+  template: 'encounter',
   id: 'samaritan',
   title: 'The Neighbor',
   subtitle: 'A modern story of the Good Samaritan',

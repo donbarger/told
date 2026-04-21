@@ -1,12 +1,14 @@
 import { Router } from 'express';
 import passport from 'passport';
 import { signToken, isAdminEmail, requireAuth } from '../lib/auth.js';
-import { userQueries } from '../lib/db.js';
+import { userQueries, gameQueries } from '../lib/db.js';
 
 const router = Router();
 const FRONTEND = process.env.FRONTEND_URL || 'http://localhost:5175';
 
 function serializeUser(u) {
+  const played = gameQueries.userPlayedStoryIds.all(u.id).map((r) => r.story_id);
+  const open   = gameQueries.userInProgress.get(u.id);
   return {
     id: u.id,
     email: u.email,
@@ -15,6 +17,10 @@ function serializeUser(u) {
     isBlocked: !!u.is_blocked,
     prefs: {
       autoplayNarration: !!u.autoplay_narration,
+    },
+    history: {
+      completed: played,
+      inProgress: open ? { storyId: open.story_id, startedAt: open.started_at } : null,
     },
   };
 }

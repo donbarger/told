@@ -116,6 +116,7 @@ const PASSAGE = [
 ];
 
 export const widow = {
+  template: 'witness',
   id: 'widow',
   title: 'The Fight',
   subtitle: 'A modern story of the persistent widow',
