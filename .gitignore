@@ -1,0 +1,33 @@
+# Dependencies
+node_modules/
+
+# Secrets & env
+.env
+.env.local
+.env.*.local
+
+# Build output
+dist/
+build/
+
+# Runtime data (never check in real users or TTS cache)
+backend/data/*.db
+backend/data/*.db-journal
+backend/data/*.db-wal
+backend/cache/
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors
+.vscode/
+.idea/
+*.swp
+
+# Misc
+.tmp/
