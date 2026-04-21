@@ -3,6 +3,41 @@
 All notable changes to **Told** are documented here.
 The format is loosely based on [Keep a Changelog](https://keepachangelog.com/).
 
+## [0.4.0] — 2026-04-21
+
+### Added
+- **8 new stories** — catalog grows from 11 to 19 complete parables and encounters:
+  - *The Years I Stayed* (Elder Brother / Luke 15:25–32)
+  - *The Better Prayer* (Pharisee and Tax Collector / Luke 18:9–14)
+  - *The Other Room* (Mary and Martha / Luke 10:38–42)
+  - *What I Couldn't Say* (Nicodemus / John 3:1–21)
+  - *The Bigger Barn* (Rich Fool / Luke 12:13–21)
+  - *Not Ready* (Ten Virgins / Matthew 25:1–13)
+  - *The Step* (Peter Walking on Water / Matthew 14:22–33)
+  - *Do You Want to Get Well?* (Pool of Bethesda / John 5:1–15)
+- **Backend system prompts** for all 8 new stories — each follows the shared scaffold with 4 story phases, three stat axes, 10 core rules, and scene-type guidance.
+
+### Changed
+- **Complete StoryArt redesign** — all 19 stories now have bespoke SVG illustrations. The prior release had 5 custom pieces and a generic fallback for the rest; now every card on the Story Select screen gets a unique scene:
+  - *The Portfolio* (Talents) — figure slumped at dark desk, sealed envelope untouched, city in window
+  - *The Debt* — fluorescent office hallway, suited figure grabbing a smaller person, torn "FORGIVEN" document on the floor
+  - *The Gate* / Lazarus — iron estate gate at night, warm amber glow inside, Lazarus lying outside
+  - *The Better Prayer* — morning community room split between a presenter and a lone hunched figure at the back
+  - *The Fight* — institutional corridor, woman with fist raised to knock again, rejection notices on the floor
+  - *The Step* — Peter sinking from the waist, arm thrust upward, luminous divine hand reaching down through the storm
+  - *Not Ready* — midnight corridor split in two: five figures with lit candles walking through an open door into warmth; five with dead candles at a closed door
+  - *The Bigger Barn* — glass executive office at night, laptop glowing green with financial charts, single fading star overhead
+  - *What I Couldn't Say* — suited professional alone at a small table with a single lamp, briefcase on the floor, private question in a public man
+- **Contrast and readability pass** on all night/interior scenes — background gradients lifted from near-black to visible dark, glow radii and opacities boosted, figure colors given warm skin tones so characters read clearly against their settings.
+- **Serif font: EB Garamond → Lora** — Lora's larger x-height and stronger stroke contrast hold up better at the small sizes used for journal entries, phase labels, and choice callouts.
+- **Minimum label size bumped** — all UI labels previously below `0.65rem` raised to that floor; journal prose and featured-text sizes also bumped to improve legibility at small viewport sizes.
+
+### Fixed
+- **Production TTS narration** — `TTS_SERVER_URL` was missing from the Digital Ocean production environment, causing the health check to return `ok: false` and the narration button to never render. Added `TTS_SERVER_URL` and `HF_TTS_VOICE` to the droplet `.env` and restarted PM2. Narration now works at `told.thegreatpursuit.faith`.
+- **Dev server CORS drift** — accumulated stale Vite dev servers on ports 5175–5177 caused active sessions on 5177 to be rejected by the backend CORS allow-list (which only trusts 5175). Fixed by killing stale processes.
+
+---
+
 ## [0.3.0] — 2026-04-21
 
 ### Deployed
