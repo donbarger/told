@@ -21,6 +21,16 @@ function hashKey(text, voice) {
   return crypto.createHash('sha256').update(`${voice}::${text}`).digest('hex');
 }
 
+// Pronunciation normalization — force certain numeric tokens to be spoken
+// digit-by-digit so the TTS model doesn't read them as quantities.
+// Example: "911" → "nine one one", "9/11" → "nine eleven".
+function normalizeForSpeech(input) {
+  let s = input;
+  s = s.replace(/\b911\b/g, 'nine one one');
+  s = s.replace(/\b9\/11\b/g, 'nine eleven');
+  return s;
+}
+
 // Health check — frontend uses this to decide whether to show the speaker UI
 router.get('/health', async (_req, res) => {
   const url = process.env.TTS_SERVER_URL;
@@ -42,11 +52,12 @@ router.post('/', async (req, res) => {
   const upstream = process.env.TTS_SERVER_URL;
   if (!upstream) return res.status(503).json({ error: 'TTS not configured' });
 
-  const text  = String(req.body?.text  || '').trim();
-  const voice = String(req.body?.voice || DEFAULT_VOICE);
-  if (!text) return res.status(400).json({ error: 'text required' });
-  if (text.length > MAX_TEXT_CHARS) return res.status(413).json({ error: `text exceeds ${MAX_TEXT_CHARS} chars` });
+  const rawText = String(req.body?.text  || '').trim();
+  const voice   = String(req.body?.voice || DEFAULT_VOICE);
+  if (!rawText) return res.status(400).json({ error: 'text required' });
+  if (rawText.length > MAX_TEXT_CHARS) return res.status(413).json({ error: `text exceeds ${MAX_TEXT_CHARS} chars` });
 
+  const text = normalizeForSpeech(rawText);
   const key  = hashKey(text, voice);
   const file = path.join(CACHE_DIR, `${key}.wav`);
 

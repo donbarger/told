@@ -20,7 +20,7 @@ const CHOICE_CARD = {
   type: 'fixed',
   phase: 'deciding',
   scene:
-    "You have three options in front of you. A friend wants you to invest in her restaurant   she's good, but restaurants fail. A nonprofit that trains people for skilled trades is looking for a major donor   they have a proven track record. And you could start the design studio you've been sketching plans for since grad school. Your accountant says the safest thing is a diversified index fund. She is not wrong. But your uncle didn't leave you money to be safe.",
+    "You have three options in front of you. A friend wants you to invest in her restaurant. She's good, but restaurants fail. A nonprofit that trains people for skilled trades is looking for a major donor. They have a proven track record. And you could start the design studio you've been sketching plans for since grad school. Your accountant says the safest thing is a diversified index fund. She is not wrong. But your uncle didn't leave you money to be safe.",
   characterName: 'Your Accountant',
   characterRole: 'Who counsels caution',
   leftChoice: { label: 'Play it safe. Index fund.' },
@@ -35,7 +35,7 @@ const RECKONING_CARD = {
   type: 'fixed',
   phase: 'reckoning',
   scene:
-    "Two years have passed. You're going to have to account for what you did. Not to a judge   to yourself, mostly. And to the memory of a man who believed in you before you believed in yourself. You open the spreadsheet. Whatever happened, happened. The number on the screen tells part of the story. The other part is what you learned, who you became, whether you buried the thing or risked it.",
+    "Two years have passed. You're going to have to account for what you did. Not to a judge. To yourself, mostly. And to the memory of a man who believed in you before you believed in yourself. You open the spreadsheet. Whatever happened, happened. The number on the screen tells part of the story. The other part is what you learned, who you became, whether you buried the thing or risked it.",
   characterName: null,
   characterRole: null,
   leftChoice: { label: 'The number is the answer.' },
@@ -102,7 +102,7 @@ export const talents = {
   verse: '"Each according to his ability."',
   verseRef: 'Matthew 25:15',
   tagline: 'You were given something real and told to do something with it. The clock is running.',
-  description: 'You\'ve inherited resources   money, talent, opportunity   and done nothing with them for eight months. The question isn\'t what to do with what you have. The question is whether fear will be your final answer. You track your security, your growth, and your faithfulness.',
+  description: 'You\'ve inherited resources: money, talent, opportunity. And done nothing with them for eight months. The question isn\'t what to do with what you have. The question is whether fear will be your final answer. You track your security, your growth, and your faithfulness.',
   gradient: 'linear-gradient(135deg, #1a1a0a 0%, #3a3a1a 50%, #6a5a1a 100%)',
   accentColor: '#c4a03a',
   statConfig: {

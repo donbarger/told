@@ -75,7 +75,7 @@ export default function GameScreen(props) {
             </div>
           )}
           {currentCard && (
-            <Card card={currentCard} story={activeStory} onChoice={makeChoice} loading={loading} />
+            <Card card={currentCard} story={activeStory} stats={stats} onChoice={makeChoice} loading={loading} />
           )}
         </div>
       </main>

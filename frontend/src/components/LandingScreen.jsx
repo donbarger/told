@@ -30,6 +30,11 @@ export default function LandingScreen({ onLogin, blocked }) {
       {/* ── Hero ──────────────────────────────────────────────────────────── */}
       <section className="told-hero">
         <div className="told-hero-inner">
+          <img
+            src="/imb-innovation-logo-white.png"
+            alt="IMB Innovation"
+            className="told-brand-lockup"
+          />
           <p className="told-eyebrow">An interactive parables project</p>
           <h1 className="told-wordmark">Told.</h1>
           <p className="told-tagline">
@@ -58,9 +63,6 @@ export default function LandingScreen({ onLogin, blocked }) {
                   </svg>
                   Sign in with Google to begin
                 </button>
-                <p className="told-privacy-note">
-                  We only use your Google profile to identify you across sessions. No posting, no contacts, no email access.
-                </p>
               </>
             )}
           </div>
@@ -151,6 +153,21 @@ export default function LandingScreen({ onLogin, blocked }) {
             <span className="told-footer-dot">•</span>
             <span>The parables, firsthand</span>
           </p>
+
+          <nav className="told-legal">
+            <a href="/privacy.html" target="_blank" rel="noopener">Privacy Policy</a>
+            <span className="told-legal-dot">·</span>
+            <a href="/terms.html" target="_blank" rel="noopener">Terms of Use</a>
+            <span className="told-legal-dot">·</span>
+            <a
+              href="https://www.imb.org/give/project/innovation-ministry/?projectCodePreselect=LMC300001697&designation="
+              target="_blank"
+              rel="noopener"
+              className="told-legal-support"
+            >
+              Support This Ministry
+            </a>
+          </nav>
         </div>
       </section>
     </div>

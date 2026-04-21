@@ -5,7 +5,7 @@ const OPENING_CARD = {
   type: 'fixed',
   phase: 'receiving',
   scene:
-    "It came the way things like this usually come   sideways, through a side door you weren't watching. A conversation at a funeral. A sentence in a book you picked up at an airport. A voice note your brother sent at 2 AM. Something arrived and you knew it was important and you didn't know what to do with it. You set it aside. But here it is again. The same idea, the same pull. You're going to have to decide what kind of ground you are.",
+    "It came the way things like this usually come, sideways, through a side door you weren't watching. A conversation at a funeral. A sentence in a book you picked up at an airport. A voice note your brother sent at 2 AM. Something arrived and you knew it was important and you didn't know what to do with it. You set it aside. But here it is again. The same idea, the same pull. You're going to have to decide what kind of ground you are.",
   characterName: null,
   characterRole: null,
   leftChoice: { label: 'It\'s interesting. Set it aside again.' },
@@ -50,7 +50,7 @@ const FRUIT_CARD = {
   type: 'fixed',
   phase: 'bearing',
   scene:
-    "You came back to it. You don't know exactly when the soil changed, but something softened. The thing that arrived   you've been working with it, in the spaces between the other things, and it's growing. Slowly. It doesn't look like the yield you imagined. But it's real, which is something you can't say about a lot of the noise around it. What you do with it now determines the rest of the story.",
+    "You came back to it. You don't know exactly when the soil changed, but something softened. The thing that arrived, you've been working with it, in the spaces between the other things, and it's growing. Slowly. It doesn't look like the yield you imagined. But it's real, which is something you can't say about a lot of the noise around it. What you do with it now determines the rest of the story.",
   characterName: null,
   characterRole: null,
   leftChoice: { label: 'This is enough. Tend what\'s growing.' },
@@ -111,7 +111,7 @@ const PASSAGE = [
   { ref: '3–8', text: '"Listen! A farmer went out to sow his seed. As he was scattering the seed, some fell along the path, and the birds came and ate it up. Some fell on rocky places, where it did not have much soil. It sprang up quickly, because the soil was shallow. But when the sun came up, the plants were scorched, and they withered because they had no root. Other seed fell among thorns, which grew up and choked the plants, so that they did not bear grain. Still other seed fell on good soil. It came up, grew and produced a crop, some multiplying thirty, some sixty, some a hundred times."' },
   { ref: '14–15', text: '"The farmer sows the word. Some people are like seed along the path, where the word is sown. As soon as they hear it, Satan comes and takes away the word that was sown in them."' },
   { ref: '16–17', text: '"Others, like seed sown on rocky places, hear the word and at once receive it with joy. But since they have no root, they last only a short time. When trouble or persecution comes because of the word, they quickly fall away."' },
-  { ref: '18–20', text: '"Still others, like seed sown among thorns, hear the word; but the worries of this life, the deceitfulness of wealth and the desires for other things come in and choke the word, making it unfruitful. Others, like seed sown on good soil, hear the word, accept it, and produce a crop   some thirty, some sixty, some a hundred times what was sown."' },
+  { ref: '18–20', text: '"Still others, like seed sown among thorns, hear the word; but the worries of this life, the deceitfulness of wealth and the desires for other things come in and choke the word, making it unfruitful. Others, like seed sown on good soil, hear the word, accept it, and produce a crop, some thirty, some sixty, some a hundred times what was sown."' },
 ];
 
 export const sower = {
@@ -122,7 +122,7 @@ export const sower = {
   verse: '"Still other seed fell on good soil."',
   verseRef: 'Mark 4:8',
   tagline: 'Something arrived and you haven\'t figured out what to do with it. It\'s still waiting.',
-  description: 'A message, a call, an idea, an encounter   something important landed and you set it aside. Now it\'s back. The parable is about what kind of ground you are when truth arrives. You track your rootedness, your resistance, and your openness.',
+  description: 'A message, a call, an idea, an encounter: something important landed and you set it aside. Now it\'s back. The parable is about what kind of ground you are when truth arrives. You track your rootedness, your resistance, and your openness.',
   gradient: 'linear-gradient(135deg, #0a1a0a 0%, #1a3a0a 50%, #3a5a1a 100%)',
   accentColor: '#7a9a3a',
   statConfig: {

@@ -24,12 +24,16 @@ export default function DesktopScene({ story, card, onChoice, loading, error, st
   const normalized = journal.map((j, i) =>
     typeof j === 'string' ? { text: j, phase: undefined, act: i, direction: undefined } : j
   );
-  const allEntries    = [...normalized].reverse();
-  const featuredEntry = allEntries[0] || null;
-  const historyEntries = allEntries.slice(1);
 
-  const phaseLabel = (p) => phaseMap[p]?.label || phaseMap[p]?.short || '';
   const directionArrow = (d) => d === 'left' ? '←' : d === 'right' ? '→' : '';
+
+  // Group entries by phase, preserving phase order from story.phases.
+  const entriesByPhase = {};
+  for (const e of normalized) {
+    const k = e.phase || 'unknown';
+    (entriesByPhase[k] = entriesByPhase[k] || []).push(e);
+  }
+  const latestEntry = normalized[normalized.length - 1] || null;
 
   const phaseVisuals = story?.phaseVisuals || {};
   const phaseVisual  = phaseVisuals[phase] || { bg: 'linear-gradient(160deg, #1a1a1a 0%, #3a3a3a 100%)' };
@@ -72,48 +76,56 @@ export default function DesktopScene({ story, card, onChoice, loading, error, st
       <div className="ds-body">
 
         <aside className="ds-journal">
-          <h4 className="ds-journal-title">Your Journal</h4>
-          <p className="ds-journal-caption">What you chose, scene by scene.</p>
-          {featuredEntry ? (
-            <>
-              <div className="ds-journal-featured" key={featuredEntry.text}>
-                <div className="ds-journal-featured-meta">
-                  <span className="ds-journal-pill">Latest</span>
-                  {featuredEntry.phase && (
-                    <span className="ds-journal-phase">{phaseLabel(featuredEntry.phase)}</span>
-                  )}
-                </div>
-                {featuredEntry.choiceLabel && (
-                  <p className="ds-journal-choice">
-                    <span className="ds-journal-arrow">{directionArrow(featuredEntry.direction)}</span>
-                    <span>{featuredEntry.choiceLabel}</span>
-                  </p>
-                )}
-                <p className="ds-journal-featured-text">{featuredEntry.text}</p>
-              </div>
-              {historyEntries.length > 0 && (
-                <div className="ds-journal-history">
-                  <span className="ds-journal-history-divider">Earlier in the story</span>
-                  {historyEntries.map((entry, i) => (
-                    <div key={i} className="ds-journal-history-entry">
-                      <div className="ds-journal-history-meta">
-                        {entry.phase && <span className="ds-journal-history-phase">{phaseLabel(entry.phase)}</span>}
-                        {entry.direction && (
-                          <span className="ds-journal-history-arrow">{directionArrow(entry.direction)}</span>
-                        )}
-                      </div>
-                      {entry.choiceLabel && (
-                        <p className="ds-journal-history-choice">{entry.choiceLabel}</p>
+          <h4 className="ds-journal-title">Your Journey</h4>
+          <p className="ds-journal-caption">The arc of your story, with the choices you've made.</p>
+
+          <ol className="ds-timeline">
+            {phases.map((ph, i) => {
+              const state = i < phaseIdx ? 'past' : i === phaseIdx ? 'current' : 'future';
+              const entries = entriesByPhase[ph.key] || [];
+              const isLast = i === phases.length - 1;
+              return (
+                <li key={ph.key} className={`ds-tl-phase ds-tl-phase-${state}`}>
+                  <div className="ds-tl-axis">
+                    <span className="ds-tl-pip" aria-hidden="true" />
+                    {!isLast && <span className="ds-tl-line" aria-hidden="true" />}
+                  </div>
+                  <div className="ds-tl-body">
+                    <div className="ds-tl-head">
+                      <span className="ds-tl-phase-name">{ph.label || ph.short}</span>
+                      {state === 'current' && (
+                        <span className="ds-tl-here">you are here</span>
                       )}
-                      <p className="ds-journal-history-text">{entry.text}</p>
                     </div>
-                  ))}
-                </div>
-              )}
-            </>
-          ) : (
-            <p className="ds-journal-empty">Your story is just beginning. Your choices will appear here.</p>
-          )}
+                    {ph.ref && state !== 'future' && (
+                      <span className="ds-tl-phase-ref">{ph.ref}</span>
+                    )}
+                    {entries.length > 0 && (
+                      <ul className="ds-tl-entries">
+                        {entries.map((e, j) => {
+                          const isLatest = e === latestEntry;
+                          return (
+                            <li key={j} className={`ds-tl-entry ${isLatest ? 'ds-tl-entry-latest' : ''}`}>
+                              {e.choiceLabel && (
+                                <p className="ds-tl-choice">
+                                  <span className="ds-tl-arrow">{directionArrow(e.direction)}</span>
+                                  <span>{e.choiceLabel}</span>
+                                </p>
+                              )}
+                              {e.text && <p className="ds-tl-text">{e.text}</p>}
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    )}
+                    {state === 'current' && entries.length === 0 && (
+                      <p className="ds-tl-empty">Your next choice is being written…</p>
+                    )}
+                  </div>
+                </li>
+              );
+            })}
+          </ol>
         </aside>
 
         <div className="ds-scene">

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms of Use — Told</title>
+  <meta name="description" content="Terms of Use for Told, an IMB Innovation tool." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #1B365D;
+      --accent: #487A7B;
+      --imb-red: #B83A4B;
+      --imb-teal: #009681;
+      --muted: #707372;
+      --surface: #F7F8FA;
+      --border: rgba(27, 54, 93, 0.12);
+      --white: #FFFFFF;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; }
+    body {
+      font-family: 'Source Sans 3', 'Segoe UI', sans-serif;
+      color: var(--ink);
+      background: var(--surface);
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .site-header {
+      background: var(--ink);
+      padding: 1.1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .site-header-brand {
+      font-family: 'Nunito Sans', sans-serif;
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: white;
+      letter-spacing: -0.01em;
+      text-decoration: none;
+    }
+    .site-header-brand span { color: rgba(255,255,255,0.55); font-weight: 400; }
+    .site-header-nav a {
+      color: rgba(255,255,255,0.65);
+      font-size: 0.875rem;
+      font-family: 'Nunito Sans', sans-serif;
+      font-weight: 600;
+      text-decoration: none;
+      margin-left: 1.5rem;
+    }
+    .site-header-nav a:hover { color: white; text-decoration: none; }
+
+    .doc-container {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 3.5rem 2rem 6rem;
+    }
+    .doc-eyebrow {
+      font-family: 'Nunito Sans', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--imb-teal);
+      margin-bottom: 0.75rem;
+    }
+    h1 {
+      font-family: 'Nunito Sans', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--ink);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+    }
+    .doc-updated {
+      font-size: 0.875rem;
+      color: var(--muted);
+      margin-bottom: 2.5rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .doc-intro {
+      font-size: 1.05rem;
+      line-height: 1.75;
+      color: var(--ink);
+      margin-bottom: 2.5rem;
+    }
+    h2 {
+      font-family: 'Nunito Sans', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--ink);
+      margin-top: 2.5rem;
+      margin-bottom: 0.65rem;
+    }
+    p {
+      font-size: 0.975rem;
+      line-height: 1.75;
+      color: #2a3a52;
+      margin-bottom: 0.85rem;
+    }
+    ul {
+      margin: 0.5rem 0 1rem 1.25rem;
+    }
+    li {
+      font-size: 0.975rem;
+      line-height: 1.7;
+      color: #2a3a52;
+      margin-bottom: 0.3rem;
+    }
+    .highlight-box {
+      background: var(--white);
+      border-left: 3px solid var(--imb-teal);
+      border-radius: 0 8px 8px 0;
+      padding: 1rem 1.25rem;
+      margin: 1.25rem 0;
+      font-size: 0.95rem;
+      line-height: 1.65;
+      color: var(--ink);
+    }
+    .warning-box {
+      background: #fff8f0;
+      border-left: 3px solid #E87722;
+      border-radius: 0 8px 8px 0;
+      padding: 1rem 1.25rem;
+      margin: 1.25rem 0;
+      font-size: 0.95rem;
+      line-height: 1.65;
+      color: var(--ink);
+    }
+
+    .doc-footer {
+      background: var(--ink);
+      color: rgba(255,255,255,0.55);
+      text-align: center;
+      padding: 1.75rem 2rem;
+      font-size: 0.8rem;
+      font-family: 'Nunito Sans', sans-serif;
+    }
+    .doc-footer a { color: rgba(255,255,255,0.65); }
+    .doc-footer a:hover { color: white; text-decoration: none; }
+    .doc-footer-links { margin-top: 0.4rem; }
+    .doc-footer-links a { margin: 0 0.75rem; }
+    .support-link {
+      color: #F3D54E !important;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .support-link:hover { color: white !important; }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 1.65rem; }
+      .doc-container { padding: 2.5rem 1.25rem 4rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <a class="site-header-brand" href="/">Told <span>by IMB Innovation</span></a>
+    <nav class="site-header-nav">
+      <a href="/privacy.html">Privacy Policy</a>
+      <a href="/">Play</a>
+    </nav>
+  </header>
+
+  <div class="doc-container">
+    <div class="doc-eyebrow">Legal</div>
+    <h1>Terms of Use</h1>
+    <p class="doc-updated">Last updated: April 2026</p>
+
+    <p class="doc-intro">
+      These Terms of Use govern your access to and use of Told, operated by the IMB Innovation team of the International Mission Board (IMB). By accessing or using Told, you agree to be bound by these terms.
+    </p>
+
+    <h2>1. Acceptance of Terms</h2>
+    <p>By creating an account or using any part of Told, you confirm that you have read, understood, and agreed to these Terms of Use and our <a href="/privacy.html">Privacy Policy</a>. If you do not agree, do not use this service.</p>
+    <p>You must be at least 13 years of age to use Told. By using the service, you represent that you meet this requirement.</p>
+
+    <h2>2. Description of Service</h2>
+    <p>Told is an AI-powered interactive parables experience. Players step inside one of eleven parables Jesus told — including the Prodigal Son, the Good Samaritan, Zacchaeus, the Rich Young Ruler, the Widow's Two Coins, and others — and make choices that shape the texture of the story. Each scene is a card; fixed story beats are written by hand, and scenes between them are generated in real time by AI.</p>
+    <p>Told is provided for devotional, educational, and discipleship purposes. It is not a replacement for Scripture itself, preaching, theological instruction, or pastoral counsel.</p>
+    <div class="highlight-box">
+      Told is a tool for reflection on the stories Jesus told — not a retelling that should displace Scripture. All AI-generated scenes are creative extensions of fixed story beats and do not represent the views of IMB personnel or the church.
+    </div>
+
+    <h2>3. Account Registration</h2>
+    <p>Told uses Google Sign-In as the sole authentication method. You are responsible for maintaining the security of your Google account and for all activity that occurs under your account. You agree to notify us immediately of any unauthorized use of your account.</p>
+    <p>IMB Innovation reserves the right to suspend, block, or terminate accounts that violate these terms.</p>
+
+    <h2>4. Permitted Use</h2>
+    <p>Told is provided for personal, non-commercial, and ministry-aligned use. You may use the service to:</p>
+    <ul>
+      <li>Play the parables for personal devotion or reflection</li>
+      <li>Use the experience in small groups, Bible studies, or discipleship contexts</li>
+      <li>Share your experience informally with others</li>
+    </ul>
+
+    <h2>5. Prohibited Use</h2>
+    <p>You agree not to:</p>
+    <ul>
+      <li>Use the service for any unlawful purpose or in violation of any applicable laws</li>
+      <li>Submit harmful, abusive, defamatory, or obscene content through the game interface</li>
+      <li>Attempt to extract, reverse-engineer, or scrape the AI models or underlying systems</li>
+      <li>Use automated tools, bots, or scripts to interact with the service</li>
+      <li>Introduce malware, viruses, or malicious code</li>
+      <li>Impersonate IMB, its staff, or other users</li>
+      <li>Use the service to generate content that misrepresents IMB's theology, strategy, or positions</li>
+      <li>Commercialize, resell, or sublicense any part of the service without written permission</li>
+    </ul>
+
+    <h2>6. AI-Generated Content Disclaimer</h2>
+    <div class="warning-box">
+      Told is a modern adaptation of historical Biblical narratives. The fixed story beats are authored by IMB Innovation; the scenes between them are generated by AI. All content should be checked for accuracy against Scripture. Told is a devotional and educational aid, not an authoritative exposition of the text.
+    </div>
+
+    <h2>7. Data You Submit</h2>
+    <p>Do not enter sensitive personal information into the game — including your real name, contact details, financial information, health records, passwords, or government identification numbers. Information entered into the AI narrative interface is processed by third-party AI providers.</p>
+
+    <h2>8. Intellectual Property</h2>
+    <p>All content, design, branding, code, and technology comprising Told is the property of the International Mission Board or its licensors. The IMB name, logo, and "Told" name are protected marks. You may not reproduce, distribute, or create derivative works from any part of this service without express written permission.</p>
+
+
+    <h2>9. Third-Party Services</h2>
+    <p>Told integrates with third-party services for AI-generated narrative content and for authentication (Google Sign-In). Your use of these services is also subject to their respective terms and privacy policies. IMB Innovation is not responsible for the practices or content of third-party services.</p>
+
+    <h2>10. Disclaimer of Warranties</h2>
+    <p>Told is provided "as is" and "as available" without warranties of any kind, express or implied, including but not limited to warranties of merchantability, fitness for a particular purpose, or non-infringement. IMB Innovation does not warrant that the service will be uninterrupted, error-free, or free of harmful components.</p>
+
+    <h2>11. Limitation of Liability</h2>
+    <p>To the fullest extent permitted by law, IMB Innovation and the International Mission Board shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising out of your use of or inability to use Told, even if advised of the possibility of such damages.</p>
+
+    <h2>12. Indemnification</h2>
+    <p>You agree to defend and hold harmless IMB Innovation and the International Mission Board from any claims, damages, or expenses (including reasonable legal fees) arising from your use of the service or your violation of these terms.</p>
+
+    <h2>13. Modifications to the Service</h2>
+    <p>IMB Innovation reserves the right to modify, suspend, or discontinue Told at any time without notice. We are not liable to you or any third party for any modification, suspension, or discontinuation of the service.</p>
+
+    <h2>14. Changes to These Terms</h2>
+    <p>We may update these Terms of Use from time to time. Updated terms will be posted at this URL with a revised "Last updated" date. Continued use of Told after changes are posted constitutes your acceptance of the revised terms.</p>
+
+    <h2>15. Governing Law</h2>
+    <p>These terms are governed by the laws of the United States and the Commonwealth of Virginia, without regard to conflict of law principles. Any disputes shall be resolved in the appropriate courts of Richmond, Virginia.</p>
+
+    <h2>16. Contact</h2>
+    <p>Questions about these terms should be directed through <a href="https://imb.org" target="_blank" rel="noopener">imb.org</a>. Told is a tool of the IMB Innovation team.</p>
+  </div>
+
+  <footer class="doc-footer">
+    <div>© 2026 International Mission Board. All rights reserved.</div>
+    <div class="doc-footer-links">
+      <a href="/privacy.html">Privacy Policy</a>
+      <a href="/terms.html">Terms of Use</a>
+      <a href="https://www.imb.org/give/project/innovation-ministry/?projectCodePreselect=LMC300001697&designation=" target="_blank" rel="noopener" class="support-link">Support This Ministry</a>
+      <a href="https://imb.org" target="_blank" rel="noopener">IMB.org</a>
+    </div>
+  </footer>
+
+</body>
+</html>

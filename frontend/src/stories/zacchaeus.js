@@ -20,7 +20,7 @@ const CLIMB_CARD = {
   type: 'fixed',
   phase: 'encounter',
   scene:
-    "There's a crowd blocking the entire street. Word spread fast   apparently someone remarkable is passing through town and everyone wants to see. You don't usually care about things like this. But something about the noise, the way people are craning and talking over each other, makes you slow down. You're short. You can't see over anyone. And then you notice the oak tree. Nobody's climbed it. You're forty-three years old in a dress shirt.",
+    "There's a crowd blocking the entire street. Word spread fast. Apparently someone remarkable is passing through town and everyone wants to see. You don't usually care about things like this. But something about the noise, the way people are craning and talking over each other, makes you slow down. You're short. You can't see over anyone. And then you notice the oak tree. Nobody's climbed it. You're forty-three years old in a dress shirt.",
   characterName: null,
   characterRole: null,
   leftChoice: { label: 'This is beneath me. Keep walking.' },
@@ -50,7 +50,7 @@ const TRANSFORMATION_CARD = {
   type: 'fixed',
   phase: 'transformation',
   scene:
-    "Dinner is finished and he's still at your table. And you hear yourself say it before you've decided to: 'Half of everything I own   I'll give it to the poor. And anyone I've cheated, I'll pay back four times over.' The math doesn't work. It doesn't matter. The crowd outside can hear you through the window. Your accountant would faint. But sitting here, you feel lighter than you have in years. Like the number in your account was always a cage, and you just opened the door.",
+    "Dinner is finished and he's still at your table. And you hear yourself say it before you've decided to: 'Half of everything I own, I'll give it to the poor. And anyone I've cheated, I'll pay back four times over.' The math doesn't work. It doesn't matter. The crowd outside can hear you through the window. Your accountant would faint. But sitting here, you feel lighter than you have in years. Like the number in your account was always a cage, and you just opened the door.",
   characterName: null,
   characterRole: null,
   leftChoice: { label: 'Say it. Commit to it fully.' },
@@ -93,12 +93,12 @@ function getAIPhase(actNum) {
 function getEnding(stats) {
   if (stats.stat3 >= 60) return {
     headline: 'Salvation came to your house.',
-    body: "Not because you climbed that tree. Not because of what you promised at dinner. Because someone saw you   really saw you   and still came in. And that changed everything.",
+    body: "Not because you climbed that tree. Not because of what you promised at dinner. Because someone saw you, really saw you, and still came in. And that changed everything.",
     sceneType: 'feast',
   };
   if (stats.stat3 >= 35) return {
     headline: 'You made the climb.',
-    body: "It was undignified. You didn't care. That's the thing about moments that matter   they don't ask you to look good first.",
+    body: "It was undignified. You didn't care. That's the thing about moments that matter. They don't ask you to look good first.",
     sceneType: 'embrace',
   };
   return {
@@ -123,7 +123,7 @@ export const zacchaeus = {
   verse: '"He was seeking to see who Jesus was."',
   verseRef: 'Luke 19:3',
   tagline: 'You built a life being hated. Now you\'re climbing a tree to see why.',
-  description: 'You\'re a tax collector   efficient, wealthy, despised. When a commotion fills the street, something makes you climb an oak tree in your dress shirt. The crowd sees a sinner. Someone else sees a son.',
+  description: 'You\'re a tax collector: efficient, wealthy, despised. When a commotion fills the street, something makes you climb an oak tree in your dress shirt. The crowd sees a sinner. Someone else sees a son.',
   gradient: 'linear-gradient(135deg, #0a1a0a 0%, #1a4a1a 50%, #2a6a2a 100%)',
   accentColor: '#4a9a4a',
   statConfig: {
@@ -152,6 +152,6 @@ export const zacchaeus = {
     getEnding,
     passage: PASSAGE,
     passageRef: 'Luke 19:1–10',
-    invitation: 'The Son of Man came to seek and to save the lost. That includes tax collectors. That includes people who built their lives on taking. If there\'s something in you that climbed a tree to see   he already saw you from the road.',
+    invitation: 'The Son of Man came to seek and to save the lost. That includes tax collectors. That includes people who built their lives on taking. If there\'s something in you that climbed a tree to see. He already saw you from the road.',
   },
 };

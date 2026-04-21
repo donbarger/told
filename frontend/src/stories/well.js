@@ -5,7 +5,7 @@ const OPENING_CARD = {
   type: 'fixed',
   phase: 'routine',
   scene:
-    "You go to the park at noon because nobody else does. Early morning and evening are the social hours   the joggers, the dog walkers, the couples. Noon in July is dead. That's the point. You fill your water bottle at the fountain near the parking lot, same as always. You don't need the water. You just needed to leave the apartment. It's been six weeks since Jake moved out. Four years. You stopped counting which relationship number he was.",
+    "You go to the park at noon because nobody else does. Early morning and evening are the social hours: the joggers, the dog walkers, the couples. Noon in July is dead. That's the point. You fill your water bottle at the fountain near the parking lot, same as always. You don't need the water. You just needed to leave the apartment. It's been six weeks since Jake moved out. Four years. You stopped counting which relationship number he was.",
   characterName: null,
   characterRole: null,
   leftChoice: { label: 'Turn back. Go home.' },
@@ -20,7 +20,7 @@ const ENCOUNTER_CARD = {
   type: 'fixed',
   phase: 'encounter',
   scene:
-    "There's a man sitting on the bench. He looks tired, like he's been traveling. He asks if he can use your charger, then after a pause he says, 'What do you come here looking for?' It's such a strange question. You start to say 'nothing'   you almost say 'water'   but instead you say, 'I don't know.' He nods like that's the most honest thing he's heard all day.",
+    "There's a man sitting on the bench. He looks tired, like he's been traveling. He asks if he can use your charger, then after a pause he says, 'What do you come here looking for?' It's such a strange question. You start to say 'nothing'. You almost say 'water'. But instead you say, 'I don't know.' He nods like that's the most honest thing he's heard all day.",
   characterName: 'The Stranger',
   characterRole: 'Who asked the right question',
   leftChoice: { label: 'Change the subject. Keep it light.' },
@@ -50,7 +50,7 @@ const RUNNING_CARD = {
   type: 'fixed',
   phase: 'telling',
   scene:
-    "You leave the park faster than you arrived. But not the way you left the others. You call your sister from the parking lot   the one you haven't talked to in seven months   and you say, 'Something happened. I need to tell you.' She's quiet for a second, then says, 'I'm listening.' You don't have words yet for what happened on that bench. But for the first time in years, the going-home feels different from the running-away.",
+    "You leave the park faster than you arrived. But not the way you left the others. You call your sister from the parking lot, the one you haven't talked to in seven months, and you say, 'Something happened. I need to tell you.' She's quiet for a second, then says, 'I'm listening.' You don't have words yet for what happened on that bench. But for the first time in years, the going-home feels different from the running-away.",
   characterName: null,
   characterRole: null,
   leftChoice: { label: 'Tell her. The whole thing.' },

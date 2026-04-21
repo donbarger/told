@@ -35,8 +35,12 @@ export default function StorySelectScreen({ user, onSelect, onLogout }) {
       <header className="ss-header">
         <div className="ss-header-inner">
           <div className="ss-header-brand">
-            <span className="ss-emblem">✦</span>
-            <div>
+            <img
+              src="/imb-innovation-logo-navy.png"
+              alt="IMB Innovation"
+              className="ss-brand-lockup"
+            />
+            <div className="ss-brand-text">
               <h1 className="ss-brand-title">Told</h1>
               <p className="ss-brand-sub">The parables, firsthand</p>
             </div>

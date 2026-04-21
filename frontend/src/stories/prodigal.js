@@ -5,7 +5,7 @@ const OPENING_CARD = {
   type: 'fixed',
   phase: 'prologue',
   scene:
-    "Your father sets down his coffee and listens without interrupting. He already knows what you're about to say   you've been avoiding his eyes for weeks. When you finally ask for your share of the inheritance now, today, he is quiet for a long moment. Then he stands, goes to the cabinet, and comes back with a folder. He writes the checks without speaking. When he slides them across the table, his hands are trembling slightly. You are twenty-four years old and free.",
+    "Your father sets down his coffee and listens without interrupting. He already knows what you're about to say. You've been avoiding his eyes for weeks. When you finally ask for your share of the inheritance now, today, he is quiet for a long moment. Then he stands, goes to the cabinet, and comes back with a folder. He writes the checks without speaking. When he slides them across the table, his hands are trembling slightly. You are twenty-four years old and free.",
   characterName: 'Your Father',
   characterRole: 'The man who raised you',
   leftChoice: { label: 'Leave without looking back.' },
@@ -35,7 +35,7 @@ const TURNING_CARD = {
   type: 'fixed',
   phase: 'turning',
   scene:
-    "You practice the speech on the bus. Over and over until it's smooth: 'Father, I have sinned against heaven and against you. I'm not worthy to be called your son. Just make me one of your hired hands.' The words feel both true and terrifying. You watch the highway through the window   cities giving way to the flat land you grew up in. The exits grow familiar. Your mouth is dry.",
+    "You practice the speech on the bus. Over and over until it's smooth: 'Father, I have sinned against heaven and against you. I'm not worthy to be called your son. Just make me one of your hired hands.' The words feel both true and terrifying. You watch the highway through the window, cities giving way to the flat land you grew up in. The exits grow familiar. Your mouth is dry.",
   characterName: null,
   characterRole: null,
   leftChoice: { label: 'Rehearse the speech again.' },

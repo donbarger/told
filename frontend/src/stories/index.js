@@ -9,6 +9,14 @@ import { debt }      from './debt.js';
 import { gate }      from './gate.js';
 import { widow }     from './widow.js';
 import { sower }     from './sower.js';
+import { elder }     from './elder.js';
+import { pharisee }  from './pharisee.js';
+import { martha }    from './martha.js';
+import { nicodemus } from './nicodemus.js';
+import { richFool }  from './richFool.js';
+import { virgins }   from './virgins.js';
+import { water }     from './water.js';
+import { pool }      from './pool.js';
 
 export const STORIES = [
   prodigal,
@@ -22,8 +30,16 @@ export const STORIES = [
   gate,
   widow,
   sower,
+  elder,
+  pharisee,
+  martha,
+  nicodemus,
+  richFool,
+  virgins,
+  water,
+  pool,
 ];
 
 export const STORY_MAP = Object.fromEntries(STORIES.map(s => [s.id, s]));
 
-export { prodigal, samaritan, zacchaeus, well, richRuler, bartimaeus, talents, debt, gate, widow, sower };
+export { prodigal, samaritan, zacchaeus, well, richRuler, bartimaeus, talents, debt, gate, widow, sower, elder, pharisee, martha, nicodemus, richFool, virgins, water, pool };

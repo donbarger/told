@@ -5,7 +5,7 @@ const OPENING_CARD = {
   type: 'fixed',
   phase: 'invisible',
   scene:
-    "The corner of Fifth and Maple. You've been here long enough to know which sounds mean a bus, which mean a cop, and which mean a drunk who will either give you five bucks or give you trouble. Today is Tuesday. Tuesday is slow. You hold the sign you can't read because someone made it for you six months ago and you figure the words are still there. The foot traffic today is different   more of it, more noise.",
+    "The corner of Fifth and Maple. You've been here long enough to know which sounds mean a bus, which mean a cop, and which mean a drunk who will either give you five bucks or give you trouble. Today is Tuesday. Tuesday is slow. You hold the sign you can't read because someone made it for you six months ago and you figure the words are still there. The foot traffic today is different. More of it, more noise.",
   characterName: null,
   characterRole: null,
   leftChoice: { label: 'Keep the sign up. Wait it out.' },
@@ -35,7 +35,7 @@ const LOUDER_CARD = {
   type: 'fixed',
   phase: 'calling',
   scene:
-    "People around you tell you to shut up. Not one person   several. Some are annoyed, some embarrassed on your behalf. A woman says, 'Don't.' A man says, 'He can't hear you.' You've been told your whole life to be quieter, to take up less space, to not make a scene. The procession is almost past you. You have maybe thirty seconds.",
+    "People around you tell you to shut up. Not one person. Several. Some are annoyed, some embarrassed on your behalf. A woman says, 'Don't.' A man says, 'He can't hear you.' You've been told your whole life to be quieter, to take up less space, to not make a scene. The procession is almost past you. You have maybe thirty seconds.",
   characterName: null,
   characterRole: null,
   leftChoice: { label: 'Go quiet. Maybe next time.' },
@@ -50,7 +50,7 @@ const CALLED_CARD = {
   type: 'fixed',
   phase: 'sight',
   scene:
-    "He stops. He asks for you. The same people who told you to be quiet are now saying, 'Get up, he's calling you.' You throw off your coat   the only coat you own   and you find him in the crowd without knowing exactly how. He asks you, 'What do you want me to do for you?' Nobody asks you that. Nobody in two years on this corner has asked you that. The question hits you like a door opening.",
+    "He stops. He asks for you. The same people who told you to be quiet are now saying, 'Get up, he's calling you.' You throw off your coat, the only coat you own, and you find him in the crowd without knowing exactly how. He asks you, 'What do you want me to do for you?' Nobody asks you that. Nobody in two years on this corner has asked you that. The question hits you like a door opening.",
   characterName: 'The Teacher',
   characterRole: 'Who stopped and asked',
   leftChoice: { label: '"Just something to eat, please."' },
@@ -128,7 +128,7 @@ export const bartimaeus = {
   verse: '"He shouted all the more."',
   verseRef: 'Mark 10:48',
   tagline: 'They told you to be quiet. Every time. You have one window left.',
-  description: 'You\'re invisible to the system   homeless, sightless, sitting on the same corner. A crowd passes with someone remarkable in it. People around you say don\'t bother. You track your visibility, your desperation, and your hope.',
+  description: 'You\'re invisible to the system: homeless, sightless, sitting on the same corner. A crowd passes with someone remarkable in it. People around you say don\'t bother. You track your visibility, your desperation, and your hope.',
   gradient: 'linear-gradient(135deg, #0a0a1a 0%, #1a1a3a 50%, #2a1a5a 100%)',
   accentColor: '#7a5ab4',
   statConfig: {
@@ -159,6 +159,6 @@ export const bartimaeus = {
     getEnding,
     passage: PASSAGE,
     passageRef: 'Mark 10:46–52',
-    invitation: 'The crowd told him to be quiet. He cried out louder. That\'s persistence. That\'s faith. If you\'ve been told that no one is listening, that you\'re not worth stopping for   this story is a direct contradiction. He stops. He asks. He wants to know what you want.',
+    invitation: 'The crowd told him to be quiet. He cried out louder. That\'s persistence. That\'s faith. If you\'ve been told that no one is listening, that you\'re not worth stopping for. This story is a direct contradiction. He stops. He asks. He wants to know what you want.',
   },
 };

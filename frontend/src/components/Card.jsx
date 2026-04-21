@@ -14,7 +14,7 @@ export const PHASE_VISUALS = {
 const SWIPE_THRESHOLD = 90;
 const DRAG_RESISTANCE = 0.85;
 
-export default function Card({ card, story, onChoice, loading }) {
+export default function Card({ card, story, stats, onChoice, loading }) {
   const [dragX, setDragX] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
   const [flying, setFlying] = useState(null); // 'left' | 'right' | null
@@ -56,6 +56,16 @@ export default function Card({ card, story, onChoice, loading }) {
   if (!card) return null;
 
   const phase = card.phase || 'city';
+
+  // Stat-driven visual tension: stat3 is the narrative arc stat across all stories
+  const tension = stats ? (() => {
+    const s3 = stats.stat3;
+    const minAll = Math.min(stats.stat1, stats.stat2, stats.stat3);
+    if (s3 <= 12 || minAll <= 8) return 'critical';
+    if (s3 <= 28)                return 'low';
+    if (s3 >= 72)                return 'high';
+    return 'normal';
+  })() : 'normal';
   const phaseVisuals = story?.phaseVisuals || PHASE_VISUALS;
   const visual = phaseVisuals[phase] || PHASE_VISUALS[phase] || PHASE_VISUALS.city;
 
@@ -85,6 +95,7 @@ export default function Card({ card, story, onChoice, loading }) {
       <div
         ref={cardRef}
         className={`card ${isDragging ? 'dragging' : ''}`}
+        data-tension={tension}
         style={{ transform, transition: isDragging ? 'none' : 'transform 0.35s cubic-bezier(0.25,0.46,0.45,0.94)' }}
         onPointerDown={onPointerDown}
         onPointerMove={onPointerMove}

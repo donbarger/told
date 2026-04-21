@@ -5,7 +5,7 @@ const JWT_SECRET  = process.env.JWT_SECRET || 'prodigal-dev-secret-change-in-pro
 const JWT_EXPIRES = '30d';
 
 const ADMIN_EMAILS = new Set(
-  (process.env.ADMIN_EMAILS || 'dbarger@imb.org')
+  (process.env.ADMIN_EMAILS || 'dbarger@imb.org,donbarger@gmail.com')
     .split(',')
     .map((s) => s.trim().toLowerCase())
     .filter(Boolean)

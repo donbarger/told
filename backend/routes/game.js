@@ -5,7 +5,7 @@ import { gameQueries } from '../lib/db.js';
 
 const router = Router();
 const OR_URL = 'https://openrouter.ai/api/v1/chat/completions';
-const MODEL  = 'anthropic/claude-sonnet-4-6';
+const MODEL  = 'anthropic/claude-haiku-4-5';
 
 router.use(requireAuth);
 
@@ -61,7 +61,7 @@ router.post('/next', async (req, res) => {
         Authorization:  `Bearer ${process.env.OPENROUTER_API_KEY}`,
         'Content-Type': 'application/json',
         'HTTP-Referer':  'https://prodigal.tools',
-        'X-Title':       'Told — Interactive Parables',
+        'X-Title':       'Told - Interactive Parables',
       },
       body: JSON.stringify({
         model: MODEL,

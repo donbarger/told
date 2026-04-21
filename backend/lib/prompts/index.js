@@ -9,6 +9,14 @@ import { SYSTEM_PROMPT as debtPrompt }      from './debt.js';
 import { SYSTEM_PROMPT as gatePrompt }      from './gate.js';
 import { SYSTEM_PROMPT as widowPrompt }     from './widow.js';
 import { SYSTEM_PROMPT as sowerPrompt }     from './sower.js';
+import { SYSTEM_PROMPT as elderPrompt }     from './elder.js';
+import { SYSTEM_PROMPT as phariseePrompt }  from './pharisee.js';
+import { SYSTEM_PROMPT as marthaPrompt }    from './martha.js';
+import { SYSTEM_PROMPT as nicodemusPrompt } from './nicodemus.js';
+import { SYSTEM_PROMPT as richFoolPrompt }  from './richFool.js';
+import { SYSTEM_PROMPT as virginsPrompt }   from './virgins.js';
+import { SYSTEM_PROMPT as waterPrompt }     from './water.js';
+import { SYSTEM_PROMPT as poolPrompt }      from './pool.js';
 import { buildUserMessage }                  from './shared.js';
 
 export const PROMPTS = {
@@ -23,6 +31,14 @@ export const PROMPTS = {
   gate:       gatePrompt,
   widow:      widowPrompt,
   sower:      sowerPrompt,
+  elder:      elderPrompt,
+  pharisee:   phariseePrompt,
+  martha:     marthaPrompt,
+  nicodemus:  nicodemusPrompt,
+  richFool:   richFoolPrompt,
+  virgins:    virginsPrompt,
+  water:      waterPrompt,
+  pool:       poolPrompt,
 };
 
 export { buildUserMessage };

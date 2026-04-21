@@ -50,7 +50,7 @@ const CONSEQUENCE_CARD = {
   type: 'fixed',
   phase: 'consequence',
   scene:
-    "Word got back to your lender   the one who forgave the $2.4 million. You don't know how. You get a message: 'I heard about Marcus. I'd like to talk.' The meeting is brief and without hostility. He says he forgave your debt because he believed in who you could become. He asks whether you believe in that too. The silence in the room is enormous.",
+    "Word got back to your lender, the one who forgave the $2.4 million. You don't know how. You get a message: 'I heard about Marcus. I'd like to talk.' The meeting is brief and without hostility. He says he forgave your debt because he believed in who you could become. He asks whether you believe in that too. The silence in the room is enormous.",
   characterName: 'Your Lender',
   characterRole: 'Who forgave everything',
   leftChoice: { label: 'Defend your decision.' },
@@ -122,7 +122,7 @@ export const debt = {
   verse: '"Shouldn\'t you have had mercy, just as I had on you?"',
   verseRef: 'Matthew 18:33',
   tagline: 'You were forgiven everything. Now the man who owes you is standing right in front of you.',
-  description: 'Six months ago your lender forgave a $2.4M debt that could have ended you. Now you\'ve found the man who owes you $11K   and you recognize the look on his face. You track your power, your bitterness, and your freedom.',
+  description: 'Six months ago your lender forgave a $2.4M debt that could have ended you. Now you\'ve found the man who owes you $11K. And you recognize the look on his face. You track your power, your bitterness, and your freedom.',
   gradient: 'linear-gradient(135deg, #1a0a0a 0%, #3a1a1a 50%, #6a2a2a 100%)',
   accentColor: '#c44a4a',
   statConfig: {
