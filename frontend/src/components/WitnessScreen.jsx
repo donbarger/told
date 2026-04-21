@@ -67,8 +67,6 @@ export default function WitnessScreen(props) {
 
         {currentCard && (
           <article className="wit-article">
-            <p className="wit-kicker">You are watching</p>
-
             {currentCard.characterName && (
               <p className="wit-character">
                 <span className="wit-character-name">{currentCard.characterName}</span>
@@ -93,7 +91,7 @@ export default function WitnessScreen(props) {
 
         {noteText && (
           <aside className="wit-notebook">
-            <span className="wit-notebook-label">What you took from the last scene</span>
+            <span className="wit-notebook-label">From the last scene</span>
             <p className="wit-notebook-text">{noteText}</p>
           </aside>
         )}
@@ -101,7 +99,6 @@ export default function WitnessScreen(props) {
 
       {currentCard && canChoose && (
         <div className="wit-reflect">
-          <p className="wit-reflect-prompt">What will you take with you?</p>
           <div className="wit-reflect-choices">
             <button
               className="wit-reflect-btn"

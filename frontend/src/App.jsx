@@ -70,7 +70,7 @@ export default function App() {
       />
     );
   } else {
-    const template = game.activeStory?.template || 'journey';
+    const template = game.activeStory?.template || 'witness';
     const gameProps = {
       ...game,
       user: auth.user,
