@@ -35,11 +35,6 @@ export default function LandingScreen({ onLogin, blocked }) {
       {/* ── Hero ──────────────────────────────────────────────────────────── */}
       <section className="told-hero">
         <div className="told-hero-inner">
-          <img
-            src="/imb-innovation-logo-white.png"
-            alt="IMB Innovation"
-            className="told-brand-lockup"
-          />
           <p className="told-eyebrow">An interactive parables project</p>
           <h1 className="told-wordmark">Told.</h1>
           <p className="told-tagline">
