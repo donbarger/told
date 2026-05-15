@@ -45,6 +45,7 @@ passport.use(new GoogleStrategy(
 const app = express();
 const PORT = process.env.PORT || 3002;
 
+app.set('trust proxy', 1); // Caddy terminates TLS and sets X-Forwarded-For
 app.use(cors({ origin: process.env.FRONTEND_URL || 'http://localhost:5175' }));
 app.use(express.json());
 app.use(passport.initialize());
