@@ -45,20 +45,28 @@ export function useGame() {
         ? [story.statConfig.stat1.name, story.statConfig.stat2.name, story.statConfig.stat3.name]
         : undefined;
 
-      const res = await apiFetch('/api/game/next', {
-        method: 'POST',
-        body: JSON.stringify({
-          storyId:       story?.id || 'prodigal',
-          phase,
-          stats:         curStats,
-          journal:       curJournal,
-          actNum:        nextAct,
-          choiceHistory: curChoiceHistory.slice(-10),
-          characters:    curCharacters.slice(-8),
-          callbackChoice,
-          statNames,
-        }),
-      });
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 20000);
+      let res;
+      try {
+        res = await apiFetch('/api/game/next', {
+          method: 'POST',
+          signal: controller.signal,
+          body: JSON.stringify({
+            storyId:       story?.id || 'prodigal',
+            phase,
+            stats:         curStats,
+            journal:       curJournal,
+            actNum:        nextAct,
+            choiceHistory: curChoiceHistory.slice(-10),
+            characters:    curCharacters.slice(-8),
+            callbackChoice,
+            statNames,
+          }),
+        });
+      } finally {
+        clearTimeout(timeoutId);
+      }
       if (!res.ok) throw new Error(`Server error ${res.status}`);
       const card = await res.json();
       return { ...card, id: `act-${nextAct}`, type: 'ai' };
