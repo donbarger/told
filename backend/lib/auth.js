@@ -36,6 +36,7 @@ export function optionalAuth(req, _res, next) {
 }
 
 export function requireAuth(req, res, next) {
+  console.log('[requireAuth] userId=%s path=%s', req.userId, req.path);
   if (!req.userId) return res.status(401).json({ error: 'Not authenticated' });
   const user = userQueries.findById.get(req.userId);
   if (!user) return res.status(401).json({ error: 'Not authenticated' });
