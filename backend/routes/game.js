@@ -48,6 +48,8 @@ router.post('/next', async (req, res) => {
     statNames,
   } = req.body;
 
+  console.log('[game/next] storyId=%s phase=%s actNum=%s user=%s', storyId, phase, actNum, req.user?.id);
+
   if (!phase || !stats || actNum === undefined) {
     return res.status(400).json({ error: 'Missing required fields' });
   }
@@ -81,10 +83,12 @@ router.post('/next', async (req, res) => {
 
     const data = await response.json();
     const raw  = data.choices[0].message.content.trim();
+    console.log('[game/next] raw response:', raw.slice(0, 200));
     const card = extractJSON(raw);
+    console.log('[game/next] parsed card keys:', Object.keys(card));
     res.json(card);
   } catch (err) {
-    console.error('[game/next]', err.message);
+    console.error('[game/next] ERROR:', err.message);
     res.status(500).json({ error: err.message });
   }
 });
