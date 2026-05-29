@@ -2,6 +2,7 @@ import { Router } from 'express';
 import { PROMPTS, buildUserMessage } from '../lib/prompts/index.js';
 import { requireAuth } from '../lib/auth.js';
 import { gameQueries } from '../lib/db.js';
+import { pregenerate as pregenTts } from '../lib/tts.js';
 
 const router = Router();
 const OR_URL = 'https://openrouter.ai/api/v1/chat/completions';
@@ -86,6 +87,9 @@ router.post('/next', async (req, res) => {
     console.log('[game/next] raw response:', raw.slice(0, 200));
     const card = extractJSON(raw);
     console.log('[game/next] parsed card keys:', Object.keys(card));
+    // Fire-and-forget TTS pre-render so the audio is cached by the time the
+    // client's NarrationButton requests it (cache HIT → ~0.2s vs ~4s MISS).
+    if (card?.scene) pregenTts(card.scene);
     res.json(card);
   } catch (err) {
     console.error('[game/next] ERROR:', err.message);
