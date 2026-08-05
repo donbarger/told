@@ -3,6 +3,10 @@
 All notable changes to **Told** are documented here.
 The format is loosely based on [Keep a Changelog](https://keepachangelog.com/).
 
+## [Unreleased] — 2026-08-04
+
+- Added `SBOM.md` — Software Bill of Materials (dependencies, external services, AI models and provider routing, infrastructure, licenses). Required in every repo; update it whenever the dependency surface changes.
+
 ## [0.5.0] — 2026-04-21
 
 ### Added
