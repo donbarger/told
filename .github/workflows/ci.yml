@@ -1,0 +1,42 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+# Verification only — no deploy job. Deploying goes to the shared droplet hosting ~40 other sites,
+# which would mean handing CI an SSH key with that blast radius. Deploys stay manual.
+#
+# No secrets are referenced anywhere in this file. GOOGLE_CLIENT_ID must be non-empty or
+# passport-oauth2 throws before the server listens, so the test supplies an obvious dummy; building
+# the strategy makes no network call. OPENROUTER_API_KEY and TTS_SERVER_URL are set EMPTY in the
+# suite, so nothing here can reach a paid model or the narration server.
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'          # README says Node 20+; lib/tts.js needs 18+ web streams
+          cache: npm
+          cache-dependency-path: |
+            backend/package-lock.json
+            frontend/package-lock.json
+
+      # better-sqlite3 is native, so this must be a real install on the runner.
+      - run: npm ci --prefix backend
+      - run: npm ci --prefix frontend
+
+      # Boots the real server and calls every public route. The load-bearing test reads the router
+      # mounts out of server.js and asserts each guarded one refuses an anonymous caller — /api/game
+      # spends money per call and /api/admin blocks other people's accounts.
+      - name: Backend routes
+        run: npm test --prefix backend
+
+      # A broken build is otherwise found at deploy time, on the droplet.
+      - name: Frontend builds
+        run: npm run build --prefix frontend
