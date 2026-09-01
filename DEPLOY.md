@@ -57,12 +57,12 @@ cd backend  && npm ci --omit=dev
 cd ../frontend && npm ci && npm run build
 ```
 
-The frontend's static site now lives at `/var/www/told/frontend/dist`.
+The frontend's static site now lives at `/opt/told/frontend/dist`.
 
 ### 3. Backend env file
 
 ```bash
-cd /var/www/told/backend
+cd /opt/told/backend
 cp .env.example .env
 nano .env   # or vim — fill in the values below
 ```
@@ -94,7 +94,7 @@ openssl rand -base64 48
 PM2 is already installed on this droplet (Harvest Fields uses it). Start Told:
 
 ```bash
-cd /var/www/told/backend
+cd /opt/told/backend
 pm2 start server.js --name told --time
 pm2 save
 ```
@@ -120,7 +120,7 @@ told.thegreatpursuit.faith {
     encode gzip zstd
 
     # Serve the built SPA, fall back to index.html for client routes
-    root * /var/www/told/frontend/dist
+    root * /opt/told/frontend/dist
     file_server
     try_files {path} /index.html
 
@@ -169,13 +169,27 @@ Open https://told.thegreatpursuit.faith in a browser. You should see the Landing
 Standard pull → rebuild → restart:
 
 ```bash
-ssh root@thegreatpursuit.faith
-cd /var/www/told
-git pull
+ssh root@thegreatpursuit.faith        # = 159.203.128.45, the shared droplet
+cd /opt/told
+git status --short                    # untracked prod-only files live here; see below
+git fetch origin && git log --oneline origin/main..HEAD   # MUST be empty
+cp -r frontend/dist frontend/dist.bak-$(date +%Y%m%d-%H%M%S)
+git pull --ff-only origin main
 cd backend  && npm ci --omit=dev
 cd ../frontend && npm ci && npm run build
 pm2 restart told
 ```
+
+**Check `origin/main..HEAD` is empty before pulling.** If the droplet holds commits
+that never reached GitHub, a pull or reset rolls production backwards and they are
+gone. Empty means the droplet is strictly behind and a fast-forward is safe.
+
+**Back up `dist` first.** `vite build` empties its output directory, so a build that
+fails partway leaves no site at all — not the previous one.
+
+**`frontend/src/analytics.js` exists on the droplet and is not in git.** It is imported
+by nothing, so it is currently harmless, but it means production carries a source file
+no checkout has. Either commit it or delete it.
 
 If the DB migrations ran (they run automatically on backend start via `ensureColumn` in `lib/db.js`), no extra step — the schema self-heals.
 
@@ -196,7 +210,7 @@ If the DB migrations ran (they run automatically on backend start via `ensureCol
 - `pm2 logs told --err` to see backend errors. Most common: missing `OPENROUTER_API_KEY` in `.env`.
 
 **"Attempt to write a readonly database"**
-- The SQLite file's directory isn't writable by the pm2 user. `chown -R <pm2-user> /var/www/told/backend/data` fixes it. On this droplet PM2 runs as root by default, so this normally isn't an issue.
+- The SQLite file's directory isn't writable by the pm2 user. `chown -R <pm2-user> /opt/told/backend/data` fixes it. On this droplet PM2 runs as root by default, so this normally isn't an issue.
 
 ---
 
@@ -204,7 +218,7 @@ If the DB migrations ran (they run automatically on backend start via `ensureCol
 
 ```bash
 ssh root@thegreatpursuit.faith
-cd /var/www/told
+cd /opt/told
 git reset --hard HEAD~1   # or to a specific commit
 cd frontend && npm run build
 pm2 restart told

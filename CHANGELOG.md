@@ -3,6 +3,22 @@
 All notable changes to **Told** are documented here.
 The format is loosely based on [Keep a Changelog](https://keepachangelog.com/).
 
+## [Unreleased] — 2026-09-01
+
+- **Deployed to production**: vite `^5.3.4` → `^6.4.3` and postcss to 8.5.18, clearing
+  three high-severity advisories. Both bumps were made by **Blaze**, the Compass agent —
+  `#12` was reviewed and merged by hand, `#13` was opened, checked and merged with no
+  human in the loop. Rebuilt on vite 6 with no errors; the landing page and bundle were
+  verified in a real browser rather than by a status code.
+- **`DEPLOY.md` pointed at `/var/www/told`; the app actually runs from `/opt/told`.**
+  Seven occurrences corrected. The documented procedure now also fetches and checks
+  `origin/main..HEAD` is empty before pulling — a droplet holding unpushed commits would
+  otherwise be rolled backwards — and backs up `frontend/dist` first, because `vite build`
+  empties its output directory and a build that fails partway leaves no site at all.
+- **Noted for cleanup:** `frontend/src/analytics.js` exists on the droplet and is not in
+  git. Nothing imports it, so it is harmless today, but production carries a source file
+  no checkout has.
+
 ## [Unreleased] — 2026-08-04
 
 - Added `SBOM.md` — Software Bill of Materials (dependencies, external services, AI models and provider routing, infrastructure, licenses). Required in every repo; update it whenever the dependency surface changes.
