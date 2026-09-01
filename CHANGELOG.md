@@ -5,6 +5,21 @@ The format is loosely based on [Keep a Changelog](https://keepachangelog.com/).
 
 ## [Unreleased] — 2026-09-01
 
+- **Added `deploy.sh`.** Told had a documented procedure in `DEPLOY.md` and no script, so
+  every deploy was hand-typed and Compass's agent could not run one at all. The script
+  does what the runbook said, plus the two checks the runbook was missing: it refuses to
+  pull when the droplet holds unpushed commits (a pull would discard them), and it backs up
+  `frontend/dist` first because `vite build` empties its output directory — a build that
+  fails partway otherwise leaves no site rather than the previous one.
+- It **pulls on the droplet** rather than shipping a local build, because `/opt/told` is a
+  real git checkout that can reach GitHub. That keeps one source of truth for what
+  production runs: `git log` there answers it.
+- No `git push` at the end, unlike the house pattern. It runs unattended from a shallow
+  clone, and whatever is being deployed is already on main — that is what made it
+  deployable.
+- The smoke test is the gate, not a courtesy: a non-zero exit is how Compass learns a
+  release failed, so `/` and `/health` must both answer or the deploy reports as broken.
+
 - **Deployed to production**: vite `^5.3.4` → `^6.4.3` and postcss to 8.5.18, clearing
   three high-severity advisories. Both bumps were made by **Blaze**, the Compass agent —
   `#12` was reviewed and merged by hand, `#13` was opened, checked and merged with no
