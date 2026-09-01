@@ -4,10 +4,13 @@ import fs from 'node:fs';
 import { fileURLToPath } from 'node:url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const DATA_DIR = path.join(__dirname, '..', 'data');
-fs.mkdirSync(DATA_DIR, { recursive: true });
+// TOLD_DB_PATH lets a test point at a scratch file. Without it the suite would open the real
+// development database, which is how a test suite quietly becomes something you are afraid to run.
+// Every other app here does the same (ENGAGE_DB_PATH, compass's DB_PATH, sticky's STICKY_DATA_DIR).
+const DB_PATH = process.env.TOLD_DB_PATH || path.join(__dirname, '..', 'data', 'users.db');
+fs.mkdirSync(path.dirname(DB_PATH), { recursive: true });
 
-const db = new Database(path.join(DATA_DIR, 'users.db'));
+const db = new Database(DB_PATH);
 
 db.exec(`
   CREATE TABLE IF NOT EXISTS users (
