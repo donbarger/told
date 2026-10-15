@@ -3,7 +3,19 @@
 All notable changes to **Told** are documented here.
 The format is loosely based on [Keep a Changelog](https://keepachangelog.com/).
 
-## [Unreleased] — 2026-09-01
+## [Unreleased] — 2026-10-15
+
+- **Scenes now come from Claude Haiku 5.5** (was Haiku 4.5, which is still active but
+  past its earliest retirement date). Tested side by side on four stories with the real
+  prompts: 5.5 keeps to the 3-5 sentence rule that 4.5 routinely overran, drops the em
+  dashes the style rules forbid, and answers in about 3.5s against 5.5s.
+- **Thinking is turned off** (`reasoning: { enabled: false }`). Haiku 5.5 reasons by
+  default and that reasoning counts against `max_tokens`, so with the old request every
+  call spent its 750 tokens thinking and returned no card at all.
+- **Dropped `temperature: 0.85`.** Claude 4.7 and later reject a non-default temperature
+  on Anthropic's API; OpenRouter tolerating it is not something to rely on.
+
+## 2026-09-01
 
 - **Added `deploy.sh`.** Told had a documented procedure in `DEPLOY.md` and no script, so
   every deploy was hand-typed and Compass's agent could not run one at all. The script
