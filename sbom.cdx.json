@@ -6914,9 +6914,9 @@
       ]
     },
     {
-      "bom-ref": "model:anthropic/claude-haiku-4-5",
+      "bom-ref": "model:anthropic/claude-haiku-5.5",
       "type": "machine-learning-model",
-      "name": "anthropic/claude-haiku-4-5",
+      "name": "anthropic/claude-haiku-5.5",
       "description": "inference model",
       "properties": [
         {

@@ -39,7 +39,7 @@ Told is an interactive parables project by IMB Innovation. Twenty-four of the st
 
 - **Frontend** — React 18 + Vite, vanilla CSS on the IMB brand system (Nunito Sans display, Source Sans 3 body, Lora for narrative serif, IMB navy / teal / red / orange palette on a light surface)
 - **Backend** — Node + Express, SQLite (`better-sqlite3`), Passport (Google OAuth 2.0), JWT sessions, express-rate-limit
-- **AI scene generation** — OpenRouter (provider-agnostic proxy) calling Anthropic Claude
+- **AI scene generation** — OpenRouter (provider-agnostic proxy) calling Anthropic Claude Haiku 5.5 (`anthropic/claude-haiku-5.5`), with thinking disabled so the whole token budget goes to the scene card
 - **Narration** (optional) — self-hosted Kokoro-compatible TTS endpoint with on-disk WAV cache
 - **Production** — Digital Ocean droplet, Caddy reverse proxy with auto-TLS, PM2 process manager
 
