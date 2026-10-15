@@ -37,7 +37,7 @@ An interactive parables project: twenty-four of the stories Jesus told, stepped 
 
 | Model | Provider routing | Notes |
 |---|---|---|
-| `anthropic/claude-haiku-4-5` | OpenRouter | — |
+| `anthropic/claude-haiku-5.5` | OpenRouter | — |
 
 ## Third-party frontend assets
 

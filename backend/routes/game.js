@@ -6,7 +6,7 @@ import { pregenerate as pregenTts } from '../lib/tts.js';
 
 const router = Router();
 const OR_URL = 'https://openrouter.ai/api/v1/chat/completions';
-const MODEL  = 'anthropic/claude-haiku-4-5';
+const MODEL  = 'anthropic/claude-haiku-5.5';
 
 router.use(requireAuth);
 
@@ -73,7 +73,9 @@ router.post('/next', async (req, res) => {
           { role: 'user',   content: buildUserMessage({ phase, stats, journal, actNum, choiceHistory, characters, callbackChoice, statNames }) },
         ],
         max_tokens:  750,
-        temperature: 0.85,
+        // Haiku 5.5 thinks by default, and thinking counts against max_tokens:
+        // left on, it spent all 750 before writing a word of the card.
+        reasoning:   { enabled: false },
       }),
     });
 
