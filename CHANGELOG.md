@@ -3,6 +3,29 @@
 All notable changes to **Told** are documented here.
 The format is loosely based on [Keep a Changelog](https://keepachangelog.com/).
 
+## Unreleased — Claude via the Anthropic API directly (#30)
+
+- **Scenes now come straight from Anthropic**, through the official SDK
+  (`@anthropic-ai/sdk` 1.3.0, pinned), instead of through OpenRouter. Same model family,
+  now addressed by Anthropic's ID: `claude-haiku-5-5` (was `anthropic/claude-haiku-5.5`).
+  Told called no other model, so OpenRouter is gone from the app entirely.
+- **New env var `ANTHROPIC_API_KEY`** replaces `OPENROUTER_API_KEY`. Told gets its own key
+  (Keychain `TOLD_ANTHROPIC_API_KEY`), written into the droplet's `backend/.env`. Without it,
+  `/api/game/next` answers 503 "Scene generation not configured" instead of failing upstream.
+- **Thinking stays on**, because on Anthropic's API Haiku 5.5 has no way to turn it off.
+  The request sets `output_config.effort: "low"` (the default is medium, and a player is
+  waiting on each card) and raises `max_tokens` from 750 to 16,000 so the thinking cannot
+  eat the card's budget. Only `text` blocks become the card; thinking blocks are dropped.
+- **Refusals and truncation are errors, never cards.** `stop_reason: "refusal"` or
+  `"max_tokens"` returns a 500 that the game shows like any other server error. Haiku 5.5
+  has no server-side refusal fallback, so none is requested. No `temperature`, `top_p` or
+  `top_k` is sent: API version 2026-10-21 rejects them.
+- **The routes suite now exercises scene generation** against a fake Anthropic server it
+  starts itself: it checks the exact request (model, effort, max_tokens, no sampling
+  parameters, no fallback, no prefill), that thinking never leaks into the card, and that
+  a refusal and a `max_tokens` cut-off are both refused. Still no network, no real key.
+- `sbom.cdx.json` regenerated with syft; `SBOM.md`, `README.md` and `DEPLOY.md` updated.
+
 ## 2026-10-15 — deployed (b41ce33)
 
 - **Scenes now come from Claude Haiku 5.5** (was Haiku 4.5, which is still active but
