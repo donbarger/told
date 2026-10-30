@@ -3,10 +3,28 @@ import { PROMPTS, buildUserMessage } from '../lib/prompts/index.js';
 import { requireAuth } from '../lib/auth.js';
 import { gameQueries } from '../lib/db.js';
 import { pregenerate as pregenTts } from '../lib/tts.js';
+import Anthropic from '@anthropic-ai/sdk';
 
 const router = Router();
-const OR_URL = 'https://openrouter.ai/api/v1/chat/completions';
-const MODEL  = 'anthropic/claude-haiku-5.5';
+
+// Scenes come from Anthropic's API directly, through the official SDK (was OpenRouter's
+// `anthropic/claude-haiku-5.5`). Told calls no other model, so OpenRouter is gone entirely.
+const MODEL = 'claude-haiku-5-5';
+
+// Haiku 5.5 thinks on every call (adaptive, no way to turn it off) and the thinking counts
+// against max_tokens. The old 750-token cap was for the card alone; 16000 leaves the thinking
+// room so a card is never cut off. The card itself is still ~3-5 sentences of JSON.
+const MAX_TOKENS = 16000;
+
+// Built on first use, not at import: the routes test boots the server with no key, and the SDK
+// constructor throws without one. maxRetries 0 and a 20s timeout match the frontend, which
+// abandons the request at 20s (useGame.js), so a retry after that would be paid for and unseen.
+let client = null;
+function anthropic() {
+  if (!process.env.ANTHROPIC_API_KEY) return null;
+  client ||= new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY, maxRetries: 0, timeout: 20_000 });
+  return client;
+}
 
 router.use(requireAuth);
 
@@ -57,35 +75,34 @@ router.post('/next', async (req, res) => {
 
   const systemPrompt = PROMPTS[storyId] || PROMPTS.prodigal;
 
+  const ai = anthropic();
+  if (!ai) {
+    console.error('[game/next] ERROR: ANTHROPIC_API_KEY is not set');
+    return res.status(503).json({ error: 'Scene generation not configured' });
+  }
+
   try {
-    const response = await fetch(OR_URL, {
-      method: 'POST',
-      headers: {
-        Authorization:  `Bearer ${process.env.OPENROUTER_API_KEY}`,
-        'Content-Type': 'application/json',
-        'HTTP-Referer':  'https://prodigal.tools',
-        'X-Title':       'Told - Interactive Parables',
-      },
-      body: JSON.stringify({
-        model: MODEL,
-        messages: [
-          { role: 'system', content: systemPrompt },
-          { role: 'user',   content: buildUserMessage({ phase, stats, journal, actNum, choiceHistory, characters, callbackChoice, statNames }) },
-        ],
-        max_tokens:  750,
-        // Haiku 5.5 thinks by default, and thinking counts against max_tokens:
-        // left on, it spent all 750 before writing a word of the card.
-        reasoning:   { enabled: false },
-      }),
+    // No temperature/top_p/top_k: API version 2026-10-21 (SDK 1.x) rejects them on every model.
+    // Effort is set explicitly because Haiku 5.5 defaults to medium, and this is an interactive
+    // game where the player is waiting on the card. No `fallbacks`: Haiku 5.5 has no server-side
+    // refusal fallback.
+    const msg = await ai.messages.create({
+      model:      MODEL,
+      max_tokens: MAX_TOKENS,
+      system:     systemPrompt,
+      messages: [
+        { role: 'user', content: buildUserMessage({ phase, stats, journal, actNum, choiceHistory, characters, callbackChoice, statNames }) },
+      ],
+      output_config: { effort: 'low' },
     });
 
-    if (!response.ok) {
-      const txt = await response.text();
-      throw new Error(`OpenRouter ${response.status}: ${txt}`);
-    }
+    // Checked before reading content. A refusal or a truncated reply is an error, never a card:
+    // half a JSON object would fail to parse anyway, and a refusal's text is not a scene.
+    if (msg.stop_reason === 'refusal') throw new Error('Anthropic refused to write this scene (stop_reason: refusal)');
+    if (msg.stop_reason === 'max_tokens') throw new Error(`Anthropic hit max_tokens (${MAX_TOKENS}) before finishing the card`);
 
-    const data = await response.json();
-    const raw  = data.choices[0].message.content.trim();
+    // content holds thinking blocks first, then text. Only the text is the card.
+    const raw = msg.content.filter((b) => b.type === 'text').map((b) => b.text).join('').trim();
     console.log('[game/next] raw response:', raw.slice(0, 200));
     const card = extractJSON(raw);
     console.log('[game/next] parsed card keys:', Object.keys(card));

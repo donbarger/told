@@ -39,7 +39,7 @@ Told is an interactive parables project by IMB Innovation. Twenty-four of the st
 
 - **Frontend** — React 18 + Vite, vanilla CSS on the IMB brand system (Nunito Sans display, Source Sans 3 body, Lora for narrative serif, IMB navy / teal / red / orange palette on a light surface)
 - **Backend** — Node + Express, SQLite (`better-sqlite3`), Passport (Google OAuth 2.0), JWT sessions, express-rate-limit
-- **AI scene generation** — OpenRouter (provider-agnostic proxy) calling Anthropic Claude Haiku 5.5 (`anthropic/claude-haiku-5.5`), with thinking disabled so the whole token budget goes to the scene card
+- **AI scene generation** — Anthropic API, called directly through the official SDK (`@anthropic-ai/sdk` 1.3.0), model Claude Haiku 5.5 (`claude-haiku-5-5`) at `effort: low`, with a 16,000-token cap so its always-on thinking never crowds out the scene card
 - **Narration** (optional) — self-hosted Kokoro-compatible TTS endpoint with on-disk WAV cache
 - **Production** — Digital Ocean droplet, Caddy reverse proxy with auto-TLS, PM2 process manager
 
@@ -96,7 +96,7 @@ backend/
 
 - Node 20+
 - A Google OAuth 2.0 Client with `http://localhost:3002/api/auth/google/callback` added to **Authorized redirect URIs** and `http://localhost:5175` to **Authorized JavaScript origins**
-- An OpenRouter API key
+- An Anthropic API key
 
 ### Setup
 
@@ -104,7 +104,7 @@ backend/
 # Backend
 cd backend
 cp .env.example .env
-# Fill in OPENROUTER_API_KEY, GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, JWT_SECRET, ADMIN_EMAILS
+# Fill in ANTHROPIC_API_KEY, GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, JWT_SECRET, ADMIN_EMAILS
 npm install
 npm run dev                   # 127.0.0.1:3002
 
@@ -125,7 +125,7 @@ Visit [http://localhost:5175](http://localhost:5175).
 | `BACKEND_URL` | Where Google redirects after OAuth — must match the registered callback |
 | `JWT_SECRET` | Signing key for session tokens. Use `openssl rand -base64 48` |
 | `GOOGLE_CLIENT_ID` / `GOOGLE_CLIENT_SECRET` | OAuth 2.0 credentials |
-| `OPENROUTER_API_KEY` | Scene generation (Anthropic via OpenRouter) |
+| `ANTHROPIC_API_KEY` | Scene generation (Anthropic API, direct). Told's own key: Keychain `TOLD_ANTHROPIC_API_KEY`. Without it `/api/game/next` answers 503 |
 | `ADMIN_EMAILS` | Comma-separated admin emails (default `dbarger@imb.org,donbarger@gmail.com`) |
 | `TTS_SERVER_URL` *(optional)* | Kokoro-compatible narration endpoint |
 | `HF_TTS_VOICE` *(optional)* | Voice key (default `am_michael`) |

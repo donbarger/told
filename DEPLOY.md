@@ -76,7 +76,7 @@ BACKEND_URL=https://told.thegreatpursuit.faith
 JWT_SECRET=<generate a strong random string>
 GOOGLE_CLIENT_ID=<from the same Google OAuth client used locally>
 GOOGLE_CLIENT_SECRET=<same>
-OPENROUTER_API_KEY=<your key>
+ANTHROPIC_API_KEY=<Told's own key: Keychain TOLD_ANTHROPIC_API_KEY>
 ADMIN_EMAILS=dbarger@imb.org,donbarger@gmail.com
 
 # Optional — only if you want TTS narration in production
@@ -207,7 +207,7 @@ If the DB migrations ran (they run automatically on backend start via `ensureCol
 - Google OAuth redirect URI hasn't been added (prerequisite #2 above), or propagation lag. Retry in a minute.
 
 **"Could not reach the server" inside the app**
-- `pm2 logs told --err` to see backend errors. Most common: missing `OPENROUTER_API_KEY` in `.env`.
+- `pm2 logs told --err` to see backend errors. Most common: missing `ANTHROPIC_API_KEY` in `.env` (scene generation then answers 503 "Scene generation not configured").
 
 **"Attempt to write a readonly database"**
 - The SQLite file's directory isn't writable by the pm2 user. `chown -R <pm2-user> /opt/told/backend/data` fixes it. On this droplet PM2 runs as root by default, so this normally isn't an issue.

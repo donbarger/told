@@ -11,8 +11,9 @@ on:
 #
 # No secrets are referenced anywhere in this file. GOOGLE_CLIENT_ID must be non-empty or
 # passport-oauth2 throws before the server listens, so the test supplies an obvious dummy; building
-# the strategy makes no network call. OPENROUTER_API_KEY and TTS_SERVER_URL are set EMPTY in the
-# suite, so nothing here can reach a paid model or the narration server.
+# the strategy makes no network call. The suite points ANTHROPIC_BASE_URL at a fake Anthropic server
+# it starts itself, with a dummy key, and sets TTS_SERVER_URL empty, so nothing here can reach a paid
+# model or the narration server.
 jobs:
   verify:
     runs-on: ubuntu-latest
