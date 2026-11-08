@@ -1,6 +1,6 @@
 # SBOM — Told — the parables, firsthand
 
-**Last updated:** 2026-10-29  
+**Last updated:** 2026-11-08  
 **Runtime:** Node.js (Express) + React frontend  
 **Lockfile of record:** `backend/package-lock.json`, `frontend/package-lock.json` — transitive dependencies live there, not here  
 **Deployed at:** https://told.thegreatpursuit.faith  
@@ -74,3 +74,4 @@ All direct dependencies are permissive — MIT / Apache-2.0 / BSD / ISC / Unlice
 | 2026-08-04 | Initial SBOM — generated from the repo, the running droplet services, and installed package metadata, then reviewed by hand. |
 | 2026-08-05 | Added `sbom.cdx.json` (CycloneDX, syft-generated) so the SBOM is machine-readable and scannable; this file became its human companion. |
 | 2026-10-29 | Claude moved from OpenRouter to the Anthropic API directly (#30): added `@anthropic-ai/sdk` 1.3.0, OpenRouter service replaced by Anthropic, model is now `claude-haiku-5-5`. `sbom.cdx.json` regenerated with syft 1.51.0; that also picked up the earlier `qs` 6.15.2 and `body-parser` 1.20.6 bumps and the two GitHub Actions. |
+| 2026-11-08 | Security advisories: `qs` override 6.15.2 → 6.16.2 and `body-parser` override 1.20.6 → 1.20.9 (both pinned in `backend/package.json` `overrides`), which lets `express` move 4.22.1 → 4.22.3; frontend lockfile takes `vite` 6.4.3 → 6.4.5 and `source-map-js` 1.2.1 → 1.2.2 (dev/build-time only, so not in the JSON). `sbom.cdx.json` regenerated with syft 1.51.0; the hand-written project metadata, Anthropic service and `claude-haiku-5-5` model entries were carried over, and GitHub Actions found inside `node_modules` workflow files were left out. Still 152 components. |

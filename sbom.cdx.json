@@ -2,10 +2,10 @@
   "$schema": "http://cyclonedx.org/schema/bom-1.7.schema.json",
   "bomFormat": "CycloneDX",
   "specVersion": "1.7",
-  "serialNumber": "urn:uuid:ce588fa8-cae8-4b18-9fb1-3709c3a6918a",
+  "serialNumber": "urn:uuid:042269da-89a8-46c4-952f-5753d3e63bfa",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-29T22:11:06-05:00",
+    "timestamp": "2026-11-08T18:00:05-05:00",
     "tools": {
       "components": [
         {
@@ -582,10 +582,10 @@
       ]
     },
     {
-      "bom-ref": "pkg:npm/body-parser@1.20.6?package-id=c53798c49b5a1ea0",
+      "bom-ref": "pkg:npm/body-parser@1.20.9?package-id=af967433d4071c28",
       "type": "library",
       "name": "body-parser",
-      "version": "1.20.6",
+      "version": "1.20.9",
       "licenses": [
         {
           "license": {
@@ -593,8 +593,8 @@
           }
         }
       ],
-      "cpe": "cpe:2.3:a:openjsf:body-parser:1.20.6:*:*:*:*:node.js:*:*",
-      "purl": "pkg:npm/body-parser@1.20.6",
+      "cpe": "cpe:2.3:a:openjsf:body-parser:1.20.9:*:*:*:*:node.js:*:*",
+      "purl": "pkg:npm/body-parser@1.20.9",
       "properties": [
         {
           "name": "syft:package:foundBy",
@@ -1916,10 +1916,10 @@
       ]
     },
     {
-      "bom-ref": "pkg:npm/es-object-atoms@1.1.1?package-id=989d6ef144e13096",
+      "bom-ref": "pkg:npm/es-object-atoms@1.1.2?package-id=34dbdfb5c873c13e",
       "type": "library",
       "name": "es-object-atoms",
-      "version": "1.1.1",
+      "version": "1.1.2",
       "licenses": [
         {
           "license": {
@@ -1927,8 +1927,8 @@
           }
         }
       ],
-      "cpe": "cpe:2.3:a:es-object-atoms:es-object-atoms:1.1.1:*:*:*:*:*:*:*",
-      "purl": "pkg:npm/es-object-atoms@1.1.1",
+      "cpe": "cpe:2.3:a:es-object-atoms:es-object-atoms:1.1.2:*:*:*:*:*:*:*",
+      "purl": "pkg:npm/es-object-atoms@1.1.2",
       "properties": [
         {
           "name": "syft:package:foundBy",
@@ -1948,39 +1948,39 @@
         },
         {
           "name": "syft:cpe23",
-          "value": "cpe:2.3:a:es-object-atoms:es_object_atoms:1.1.1:*:*:*:*:*:*:*"
+          "value": "cpe:2.3:a:es-object-atoms:es_object_atoms:1.1.2:*:*:*:*:*:*:*"
         },
         {
           "name": "syft:cpe23",
-          "value": "cpe:2.3:a:es_object_atoms:es-object-atoms:1.1.1:*:*:*:*:*:*:*"
+          "value": "cpe:2.3:a:es_object_atoms:es-object-atoms:1.1.2:*:*:*:*:*:*:*"
         },
         {
           "name": "syft:cpe23",
-          "value": "cpe:2.3:a:es_object_atoms:es_object_atoms:1.1.1:*:*:*:*:*:*:*"
+          "value": "cpe:2.3:a:es_object_atoms:es_object_atoms:1.1.2:*:*:*:*:*:*:*"
         },
         {
           "name": "syft:cpe23",
-          "value": "cpe:2.3:a:es-object:es-object-atoms:1.1.1:*:*:*:*:*:*:*"
+          "value": "cpe:2.3:a:es-object:es-object-atoms:1.1.2:*:*:*:*:*:*:*"
         },
         {
           "name": "syft:cpe23",
-          "value": "cpe:2.3:a:es-object:es_object_atoms:1.1.1:*:*:*:*:*:*:*"
+          "value": "cpe:2.3:a:es-object:es_object_atoms:1.1.2:*:*:*:*:*:*:*"
         },
         {
           "name": "syft:cpe23",
-          "value": "cpe:2.3:a:es_object:es-object-atoms:1.1.1:*:*:*:*:*:*:*"
+          "value": "cpe:2.3:a:es_object:es-object-atoms:1.1.2:*:*:*:*:*:*:*"
         },
         {
           "name": "syft:cpe23",
-          "value": "cpe:2.3:a:es_object:es_object_atoms:1.1.1:*:*:*:*:*:*:*"
+          "value": "cpe:2.3:a:es_object:es_object_atoms:1.1.2:*:*:*:*:*:*:*"
         },
         {
           "name": "syft:cpe23",
-          "value": "cpe:2.3:a:es:es-object-atoms:1.1.1:*:*:*:*:*:*:*"
+          "value": "cpe:2.3:a:es:es-object-atoms:1.1.2:*:*:*:*:*:*:*"
         },
         {
           "name": "syft:cpe23",
-          "value": "cpe:2.3:a:es:es_object_atoms:1.1.1:*:*:*:*:*:*:*"
+          "value": "cpe:2.3:a:es:es_object_atoms:1.1.2:*:*:*:*:*:*:*"
         },
         {
           "name": "syft:location:0:path",
@@ -2138,10 +2138,10 @@
       ]
     },
     {
-      "bom-ref": "pkg:npm/express@4.22.1?package-id=520b85b3fa303a1a",
+      "bom-ref": "pkg:npm/express@4.22.3?package-id=214a8a1292062644",
       "type": "library",
       "name": "express",
-      "version": "4.22.1",
+      "version": "4.22.3",
       "licenses": [
         {
           "license": {
@@ -2149,8 +2149,8 @@
           }
         }
       ],
-      "cpe": "cpe:2.3:a:openjsf:express:4.22.1:*:*:*:*:node.js:*:*",
-      "purl": "pkg:npm/express@4.22.1",
+      "cpe": "cpe:2.3:a:openjsf:express:4.22.3:*:*:*:*:node.js:*:*",
+      "purl": "pkg:npm/express@4.22.3",
       "properties": [
         {
           "name": "syft:package:foundBy",
@@ -2770,12 +2770,12 @@
       ]
     },
     {
-      "bom-ref": "pkg:golang/github.com/evanw/esbuild@v0.0.0-20240609211631-fc37c2fa9de2?package-id=9e6ed2ac57f56018",
+      "bom-ref": "pkg:golang/github.com/evanw/esbuild@v0.0.0-20251101233416-208f539945b1?package-id=596b608aaf1f8b71",
       "type": "library",
       "name": "github.com/evanw/esbuild",
-      "version": "v0.0.0-20240609211631-fc37c2fa9de2",
-      "cpe": "cpe:2.3:a:evanw:esbuild:v0.0.0-20240609211631-fc37c2fa9de2:*:*:*:*:*:*:*",
-      "purl": "pkg:golang/github.com/evanw/esbuild@v0.0.0-20240609211631-fc37c2fa9de2",
+      "version": "v0.0.0-20251101233416-208f539945b1",
+      "cpe": "cpe:2.3:a:evanw:esbuild:v0.0.0-20251101233416-208f539945b1:*:*:*:*:*:*:*",
+      "purl": "pkg:golang/github.com/evanw/esbuild@v0.0.0-20251101233416-208f539945b1",
       "properties": [
         {
           "name": "syft:package:foundBy",
@@ -2803,11 +2803,7 @@
         },
         {
           "name": "syft:metadata:goCompiledVersion",
-          "value": "go1.20.12"
-        },
-        {
-          "name": "syft:metadata:goCryptoSettings:0",
-          "value": "standard-crypto"
+          "value": "go1.23.12"
         },
         {
           "name": "syft:metadata:mainModule",
@@ -2816,12 +2812,12 @@
       ]
     },
     {
-      "bom-ref": "pkg:golang/github.com/evanw/esbuild@v0.0.0-20240609211631-fc37c2fa9de2?package-id=dd2aaa917051adac",
+      "bom-ref": "pkg:golang/github.com/evanw/esbuild@v0.0.0-20251101233416-208f539945b1?package-id=f20c7d6b31a175ea",
       "type": "library",
       "name": "github.com/evanw/esbuild",
-      "version": "v0.0.0-20240609211631-fc37c2fa9de2",
-      "cpe": "cpe:2.3:a:evanw:esbuild:v0.0.0-20240609211631-fc37c2fa9de2:*:*:*:*:*:*:*",
-      "purl": "pkg:golang/github.com/evanw/esbuild@v0.0.0-20240609211631-fc37c2fa9de2",
+      "version": "v0.0.0-20251101233416-208f539945b1",
+      "cpe": "cpe:2.3:a:evanw:esbuild:v0.0.0-20251101233416-208f539945b1:*:*:*:*:*:*:*",
+      "purl": "pkg:golang/github.com/evanw/esbuild@v0.0.0-20251101233416-208f539945b1",
       "properties": [
         {
           "name": "syft:package:foundBy",
@@ -2849,11 +2845,7 @@
         },
         {
           "name": "syft:metadata:goCompiledVersion",
-          "value": "go1.20.12"
-        },
-        {
-          "name": "syft:metadata:goCryptoSettings:0",
-          "value": "standard-crypto"
+          "value": "go1.23.12"
         },
         {
           "name": "syft:metadata:mainModule",
@@ -2862,7 +2854,7 @@
       ]
     },
     {
-      "bom-ref": "pkg:golang/golang.org/x/sys@v0.0.0-20220715151400-c0bba94af5f8?package-id=f493aaf71e737230",
+      "bom-ref": "pkg:golang/golang.org/x/sys@v0.0.0-20220715151400-c0bba94af5f8?package-id=049434e99d3472fd",
       "type": "library",
       "name": "golang.org/x/sys",
       "version": "v0.0.0-20220715151400-c0bba94af5f8",
@@ -2895,11 +2887,7 @@
         },
         {
           "name": "syft:metadata:goCompiledVersion",
-          "value": "go1.20.12"
-        },
-        {
-          "name": "syft:metadata:goCryptoSettings:0",
-          "value": "standard-crypto"
+          "value": "go1.23.12"
         },
         {
           "name": "syft:metadata:h1Digest",
@@ -2912,7 +2900,7 @@
       ]
     },
     {
-      "bom-ref": "pkg:golang/golang.org/x/sys@v0.0.0-20220715151400-c0bba94af5f8?package-id=3eeb326e5c5f835b",
+      "bom-ref": "pkg:golang/golang.org/x/sys@v0.0.0-20220715151400-c0bba94af5f8?package-id=0330d256af08c9fe",
       "type": "library",
       "name": "golang.org/x/sys",
       "version": "v0.0.0-20220715151400-c0bba94af5f8",
@@ -2945,11 +2933,7 @@
         },
         {
           "name": "syft:metadata:goCompiledVersion",
-          "value": "go1.20.12"
-        },
-        {
-          "name": "syft:metadata:goCryptoSettings:0",
-          "value": "standard-crypto"
+          "value": "go1.23.12"
         },
         {
           "name": "syft:metadata:h1Digest",
@@ -3056,10 +3040,10 @@
       ]
     },
     {
-      "bom-ref": "pkg:npm/hasown@2.0.3?package-id=dc707c8fff11d7af",
+      "bom-ref": "pkg:npm/hasown@2.0.4?package-id=27797f6c7acb605b",
       "type": "library",
       "name": "hasown",
-      "version": "2.0.3",
+      "version": "2.0.4",
       "licenses": [
         {
           "license": {
@@ -3067,8 +3051,8 @@
           }
         }
       ],
-      "cpe": "cpe:2.3:a:hasown:hasown:2.0.3:*:*:*:*:*:*:*",
-      "purl": "pkg:npm/hasown@2.0.3",
+      "cpe": "cpe:2.3:a:hasown:hasown:2.0.4:*:*:*:*:*:*:*",
+      "purl": "pkg:npm/hasown@2.0.4",
       "properties": [
         {
           "name": "syft:package:foundBy",
@@ -5389,10 +5373,10 @@
       ]
     },
     {
-      "bom-ref": "pkg:npm/proxy-addr@2.0.7?package-id=b1b4565be223f8d0",
+      "bom-ref": "pkg:npm/proxy-addr@2.0.8?package-id=156c19d0f294cbcc",
       "type": "library",
       "name": "proxy-addr",
-      "version": "2.0.7",
+      "version": "2.0.8",
       "licenses": [
         {
           "license": {
@@ -5400,8 +5384,8 @@
           }
         }
       ],
-      "cpe": "cpe:2.3:a:proxy-addr:proxy-addr:2.0.7:*:*:*:*:*:*:*",
-      "purl": "pkg:npm/proxy-addr@2.0.7",
+      "cpe": "cpe:2.3:a:proxy-addr:proxy-addr:2.0.8:*:*:*:*:*:*:*",
+      "purl": "pkg:npm/proxy-addr@2.0.8",
       "properties": [
         {
           "name": "syft:package:foundBy",
@@ -5421,23 +5405,23 @@
         },
         {
           "name": "syft:cpe23",
-          "value": "cpe:2.3:a:proxy-addr:proxy_addr:2.0.7:*:*:*:*:*:*:*"
+          "value": "cpe:2.3:a:proxy-addr:proxy_addr:2.0.8:*:*:*:*:*:*:*"
         },
         {
           "name": "syft:cpe23",
-          "value": "cpe:2.3:a:proxy_addr:proxy-addr:2.0.7:*:*:*:*:*:*:*"
+          "value": "cpe:2.3:a:proxy_addr:proxy-addr:2.0.8:*:*:*:*:*:*:*"
         },
         {
           "name": "syft:cpe23",
-          "value": "cpe:2.3:a:proxy_addr:proxy_addr:2.0.7:*:*:*:*:*:*:*"
+          "value": "cpe:2.3:a:proxy_addr:proxy_addr:2.0.8:*:*:*:*:*:*:*"
         },
         {
           "name": "syft:cpe23",
-          "value": "cpe:2.3:a:proxy:proxy-addr:2.0.7:*:*:*:*:*:*:*"
+          "value": "cpe:2.3:a:proxy:proxy-addr:2.0.8:*:*:*:*:*:*:*"
         },
         {
           "name": "syft:cpe23",
-          "value": "cpe:2.3:a:proxy:proxy_addr:2.0.7:*:*:*:*:*:*:*"
+          "value": "cpe:2.3:a:proxy:proxy_addr:2.0.8:*:*:*:*:*:*:*"
         },
         {
           "name": "syft:location:0:path",
@@ -5483,10 +5467,10 @@
       ]
     },
     {
-      "bom-ref": "pkg:npm/qs@6.15.2?package-id=06f1237984d9479f",
+      "bom-ref": "pkg:npm/qs@6.16.2?package-id=776bdd32c47afd98",
       "type": "library",
       "name": "qs",
-      "version": "6.15.2",
+      "version": "6.16.2",
       "licenses": [
         {
           "license": {
@@ -5494,8 +5478,8 @@
           }
         }
       ],
-      "cpe": "cpe:2.3:a:qs_project:qs:6.15.2:*:*:*:*:node.js:*:*",
-      "purl": "pkg:npm/qs@6.15.2",
+      "cpe": "cpe:2.3:a:qs_project:qs:6.16.2:*:*:*:*:node.js:*:*",
+      "purl": "pkg:npm/qs@6.16.2",
       "properties": [
         {
           "name": "syft:package:foundBy",
@@ -6139,10 +6123,10 @@
       ]
     },
     {
-      "bom-ref": "pkg:npm/side-channel@1.1.0?package-id=7d5940c50564058c",
+      "bom-ref": "pkg:npm/side-channel@1.1.1?package-id=4b0617f1f527c953",
       "type": "library",
       "name": "side-channel",
-      "version": "1.1.0",
+      "version": "1.1.1",
       "licenses": [
         {
           "license": {
@@ -6150,8 +6134,8 @@
           }
         }
       ],
-      "cpe": "cpe:2.3:a:side-channel:side-channel:1.1.0:*:*:*:*:*:*:*",
-      "purl": "pkg:npm/side-channel@1.1.0",
+      "cpe": "cpe:2.3:a:side-channel:side-channel:1.1.1:*:*:*:*:*:*:*",
+      "purl": "pkg:npm/side-channel@1.1.1",
       "properties": [
         {
           "name": "syft:package:foundBy",
@@ -6171,23 +6155,23 @@
         },
         {
           "name": "syft:cpe23",
-          "value": "cpe:2.3:a:side-channel:side_channel:1.1.0:*:*:*:*:*:*:*"
+          "value": "cpe:2.3:a:side-channel:side_channel:1.1.1:*:*:*:*:*:*:*"
         },
         {
           "name": "syft:cpe23",
-          "value": "cpe:2.3:a:side_channel:side-channel:1.1.0:*:*:*:*:*:*:*"
+          "value": "cpe:2.3:a:side_channel:side-channel:1.1.1:*:*:*:*:*:*:*"
         },
         {
           "name": "syft:cpe23",
-          "value": "cpe:2.3:a:side_channel:side_channel:1.1.0:*:*:*:*:*:*:*"
+          "value": "cpe:2.3:a:side_channel:side_channel:1.1.1:*:*:*:*:*:*:*"
         },
         {
           "name": "syft:cpe23",
-          "value": "cpe:2.3:a:side:side-channel:1.1.0:*:*:*:*:*:*:*"
+          "value": "cpe:2.3:a:side:side-channel:1.1.1:*:*:*:*:*:*:*"
         },
         {
           "name": "syft:cpe23",
-          "value": "cpe:2.3:a:side:side_channel:1.1.0:*:*:*:*:*:*:*"
+          "value": "cpe:2.3:a:side:side_channel:1.1.1:*:*:*:*:*:*:*"
         },
         {
           "name": "syft:location:0:path",
@@ -6583,10 +6567,10 @@
       ]
     },
     {
-      "bom-ref": "pkg:golang/stdlib@1.20.12?package-id=323fd18a5157d94a",
+      "bom-ref": "pkg:golang/stdlib@1.23.12?package-id=2e44332322905057",
       "type": "library",
       "name": "stdlib",
-      "version": "go1.20.12",
+      "version": "go1.23.12",
       "licenses": [
         {
           "license": {
@@ -6594,8 +6578,8 @@
           }
         }
       ],
-      "cpe": "cpe:2.3:a:golang:go:1.20.12:-:*:*:*:*:*:*",
-      "purl": "pkg:golang/stdlib@1.20.12",
+      "cpe": "cpe:2.3:a:golang:go:1.23.12:-:*:*:*:*:*:*",
+      "purl": "pkg:golang/stdlib@1.23.12",
       "properties": [
         {
           "name": "syft:package:foundBy",
@@ -6619,15 +6603,15 @@
         },
         {
           "name": "syft:metadata:goCompiledVersion",
-          "value": "go1.20.12"
+          "value": "go1.23.12"
         }
       ]
     },
     {
-      "bom-ref": "pkg:golang/stdlib@1.20.12?package-id=d067a3e6ea251a62",
+      "bom-ref": "pkg:golang/stdlib@1.23.12?package-id=6ebafc710f67e176",
       "type": "library",
       "name": "stdlib",
-      "version": "go1.20.12",
+      "version": "go1.23.12",
       "licenses": [
         {
           "license": {
@@ -6635,8 +6619,8 @@
           }
         }
       ],
-      "cpe": "cpe:2.3:a:golang:go:1.20.12:-:*:*:*:*:*:*",
-      "purl": "pkg:golang/stdlib@1.20.12",
+      "cpe": "cpe:2.3:a:golang:go:1.23.12:-:*:*:*:*:*:*",
+      "purl": "pkg:golang/stdlib@1.23.12",
       "properties": [
         {
           "name": "syft:package:foundBy",
@@ -6660,7 +6644,7 @@
         },
         {
           "name": "syft:metadata:goCompiledVersion",
-          "value": "go1.20.12"
+          "value": "go1.23.12"
         }
       ]
     },
@@ -7399,19 +7383,37 @@
       ]
     }
   ],
+  "services": [
+    {
+      "bom-ref": "service:anthropic",
+      "name": "Anthropic API",
+      "description": "Claude inference (scene generation)",
+      "authenticated": true,
+      "x-trust-boundary": true,
+      "data": [
+        {
+          "flow": "outbound",
+          "classification": "prompt text \u2014 the story prompt plus the player's stats, choices and journal"
+        }
+      ],
+      "endpoints": [
+        "https://api.anthropic.com/v1/messages"
+      ]
+    }
+  ],
   "dependencies": [
     {
-      "ref": "pkg:golang/github.com/evanw/esbuild@v0.0.0-20240609211631-fc37c2fa9de2?package-id=9e6ed2ac57f56018",
+      "ref": "pkg:golang/github.com/evanw/esbuild@v0.0.0-20251101233416-208f539945b1?package-id=596b608aaf1f8b71",
       "dependsOn": [
-        "pkg:golang/golang.org/x/sys@v0.0.0-20220715151400-c0bba94af5f8?package-id=f493aaf71e737230",
-        "pkg:golang/stdlib@1.20.12?package-id=323fd18a5157d94a"
+        "pkg:golang/golang.org/x/sys@v0.0.0-20220715151400-c0bba94af5f8?package-id=049434e99d3472fd",
+        "pkg:golang/stdlib@1.23.12?package-id=2e44332322905057"
       ]
     },
     {
-      "ref": "pkg:golang/github.com/evanw/esbuild@v0.0.0-20240609211631-fc37c2fa9de2?package-id=dd2aaa917051adac",
+      "ref": "pkg:golang/github.com/evanw/esbuild@v0.0.0-20251101233416-208f539945b1?package-id=f20c7d6b31a175ea",
       "dependsOn": [
-        "pkg:golang/golang.org/x/sys@v0.0.0-20220715151400-c0bba94af5f8?package-id=3eeb326e5c5f835b",
-        "pkg:golang/stdlib@1.20.12?package-id=d067a3e6ea251a62"
+        "pkg:golang/golang.org/x/sys@v0.0.0-20220715151400-c0bba94af5f8?package-id=0330d256af08c9fe",
+        "pkg:golang/stdlib@1.23.12?package-id=6ebafc710f67e176"
       ]
     },
     {
@@ -7451,7 +7453,7 @@
       ]
     },
     {
-      "ref": "pkg:npm/body-parser@1.20.6?package-id=c53798c49b5a1ea0",
+      "ref": "pkg:npm/body-parser@1.20.9?package-id=af967433d4071c28",
       "dependsOn": [
         "pkg:npm/bytes@3.1.2?package-id=71dfa692fea26676",
         "pkg:npm/content-type@1.0.5?package-id=b262e676b148cf09",
@@ -7461,7 +7463,7 @@
         "pkg:npm/http-errors@2.0.1?package-id=2bbc5793c52cfe64",
         "pkg:npm/iconv-lite@0.4.24?package-id=a98265ecac4b06ed",
         "pkg:npm/on-finished@2.4.1?package-id=935177e545e63ef9",
-        "pkg:npm/qs@6.15.2?package-id=06f1237984d9479f",
+        "pkg:npm/qs@6.16.2?package-id=776bdd32c47afd98",
         "pkg:npm/raw-body@2.5.3?package-id=8cf12696096d47cc",
         "pkg:npm/type-is@1.6.18?package-id=d26321a90c4b0fdf",
         "pkg:npm/unpipe@1.0.0?package-id=99ce2ad84c183c62"
@@ -7535,17 +7537,17 @@
       ]
     },
     {
-      "ref": "pkg:npm/es-object-atoms@1.1.1?package-id=989d6ef144e13096",
+      "ref": "pkg:npm/es-object-atoms@1.1.2?package-id=34dbdfb5c873c13e",
       "dependsOn": [
         "pkg:npm/es-errors@1.3.0?package-id=d03efc39d379d21b"
       ]
     },
     {
-      "ref": "pkg:npm/express@4.22.1?package-id=520b85b3fa303a1a",
+      "ref": "pkg:npm/express@4.22.3?package-id=214a8a1292062644",
       "dependsOn": [
         "pkg:npm/accepts@1.3.8?package-id=db1308b992977316",
         "pkg:npm/array-flatten@1.1.1?package-id=8b941a63858ca900",
-        "pkg:npm/body-parser@1.20.6?package-id=c53798c49b5a1ea0",
+        "pkg:npm/body-parser@1.20.9?package-id=af967433d4071c28",
         "pkg:npm/content-disposition@0.5.4?package-id=b50e63065b7c1aff",
         "pkg:npm/content-type@1.0.5?package-id=b262e676b148cf09",
         "pkg:npm/cookie-signature@1.0.7?package-id=47f416d9f6d1fcef",
@@ -7563,8 +7565,8 @@
         "pkg:npm/on-finished@2.4.1?package-id=935177e545e63ef9",
         "pkg:npm/parseurl@1.3.3?package-id=c4d3c8a18c37e9ee",
         "pkg:npm/path-to-regexp@0.1.13?package-id=de01f23b97c76c2e",
-        "pkg:npm/proxy-addr@2.0.7?package-id=b1b4565be223f8d0",
-        "pkg:npm/qs@6.15.2?package-id=06f1237984d9479f",
+        "pkg:npm/proxy-addr@2.0.8?package-id=156c19d0f294cbcc",
+        "pkg:npm/qs@6.16.2?package-id=776bdd32c47afd98",
         "pkg:npm/range-parser@1.2.1?package-id=563eaff69f654a00",
         "pkg:npm/safe-buffer@5.2.1?package-id=66cf77a63e6adce7",
         "pkg:npm/send@0.19.2?package-id=15bf4992f6530da9",
@@ -7594,12 +7596,12 @@
         "pkg:npm/call-bind-apply-helpers@1.0.2?package-id=b70faa0056516a7e",
         "pkg:npm/es-define-property@1.0.1?package-id=fcc14eaf52e07c88",
         "pkg:npm/es-errors@1.3.0?package-id=d03efc39d379d21b",
-        "pkg:npm/es-object-atoms@1.1.1?package-id=989d6ef144e13096",
+        "pkg:npm/es-object-atoms@1.1.2?package-id=34dbdfb5c873c13e",
         "pkg:npm/function-bind@1.1.2?package-id=3eeb9d5d975e2bb6",
         "pkg:npm/get-proto@1.0.1?package-id=a9e744e5352477b9",
         "pkg:npm/gopd@1.2.0?package-id=68fbfd0dd8d92f3d",
         "pkg:npm/has-symbols@1.1.0?package-id=3c5c8f59e9deec5e",
-        "pkg:npm/hasown@2.0.3?package-id=dc707c8fff11d7af",
+        "pkg:npm/hasown@2.0.4?package-id=27797f6c7acb605b",
         "pkg:npm/math-intrinsics@1.1.0?package-id=c0198ae4b7ecf64e"
       ]
     },
@@ -7607,11 +7609,11 @@
       "ref": "pkg:npm/get-proto@1.0.1?package-id=a9e744e5352477b9",
       "dependsOn": [
         "pkg:npm/dunder-proto@1.0.1?package-id=3d1567269102d540",
-        "pkg:npm/es-object-atoms@1.1.1?package-id=989d6ef144e13096"
+        "pkg:npm/es-object-atoms@1.1.2?package-id=34dbdfb5c873c13e"
       ]
     },
     {
-      "ref": "pkg:npm/hasown@2.0.3?package-id=dc707c8fff11d7af",
+      "ref": "pkg:npm/hasown@2.0.4?package-id=27797f6c7acb605b",
       "dependsOn": [
         "pkg:npm/function-bind@1.1.2?package-id=3eeb9d5d975e2bb6"
       ]
@@ -7749,7 +7751,7 @@
         "pkg:npm/cors@2.8.6?package-id=b177040c0c63bdf5",
         "pkg:npm/dotenv@16.6.1?package-id=62010277e28d5161",
         "pkg:npm/express-rate-limit@7.5.1?package-id=01f6ee049235c8ee",
-        "pkg:npm/express@4.22.1?package-id=520b85b3fa303a1a",
+        "pkg:npm/express@4.22.3?package-id=214a8a1292062644",
         "pkg:npm/jsonwebtoken@9.0.3?package-id=19e103891e3eb2ac",
         "pkg:npm/passport-google-oauth20@2.0.0?package-id=18f20d24f5586007",
         "pkg:npm/passport@0.7.0?package-id=08816d442233b5a7"
@@ -7763,7 +7765,7 @@
       ]
     },
     {
-      "ref": "pkg:npm/proxy-addr@2.0.7?package-id=b1b4565be223f8d0",
+      "ref": "pkg:npm/proxy-addr@2.0.8?package-id=156c19d0f294cbcc",
       "dependsOn": [
         "pkg:npm/forwarded@0.2.0?package-id=c26809d17cff5782",
         "pkg:npm/ipaddr.js@1.9.1?package-id=a879e7190dc154a7"
@@ -7777,9 +7779,10 @@
       ]
     },
     {
-      "ref": "pkg:npm/qs@6.15.2?package-id=06f1237984d9479f",
+      "ref": "pkg:npm/qs@6.16.2?package-id=776bdd32c47afd98",
       "dependsOn": [
-        "pkg:npm/side-channel@1.1.0?package-id=7d5940c50564058c"
+        "pkg:npm/es-define-property@1.0.1?package-id=fcc14eaf52e07c88",
+        "pkg:npm/side-channel@1.1.1?package-id=4b0617f1f527c953"
       ]
     },
     {
@@ -7882,7 +7885,7 @@
       ]
     },
     {
-      "ref": "pkg:npm/side-channel@1.1.0?package-id=7d5940c50564058c",
+      "ref": "pkg:npm/side-channel@1.1.1?package-id=4b0617f1f527c953",
       "dependsOn": [
         "pkg:npm/es-errors@1.3.0?package-id=d03efc39d379d21b",
         "pkg:npm/object-inspect@1.13.4?package-id=e2841254f87164e4",
@@ -7942,24 +7945,6 @@
       "dependsOn": [
         "pkg:npm/media-typer@0.3.0?package-id=a36bcd2f824f29c1",
         "pkg:npm/mime-types@2.1.35?package-id=b65705977afe7967"
-      ]
-    }
-  ],
-  "services": [
-    {
-      "bom-ref": "service:anthropic",
-      "name": "Anthropic API",
-      "description": "Claude inference (scene generation)",
-      "authenticated": true,
-      "x-trust-boundary": true,
-      "data": [
-        {
-          "flow": "outbound",
-          "classification": "prompt text \u2014 the story prompt plus the player's stats, choices and journal"
-        }
-      ],
-      "endpoints": [
-        "https://api.anthropic.com/v1/messages"
       ]
     }
   ]
