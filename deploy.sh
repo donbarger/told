@@ -5,7 +5,7 @@
 #   Target:  https://told.thegreatpursuit.faith
 #   Host:    159.203.128.45 (the shared droplet)
 #   Path:    /opt/told   — a real git checkout, on main
-#   Process: pm2 `told`, backend on 127.0.0.1:3002, Caddy serves frontend/dist
+#   Process: systemd `told.service` (pm2 `told` before claude-config#22), backend on 127.0.0.1:3002, Caddy serves frontend/dist
 #
 # Runs unattended: Compass's agent invokes `bash ./deploy.sh` from a fresh shallow clone
 # after a release is approved. That imposes three rules on this script.
@@ -67,7 +67,8 @@ $SSH "$DROPLET" "cd $REMOTE/frontend && npm ci && npm run build"
 
 say "Restarting"
 # Migrations run on boot via ensureColumn in lib/db.js, so there is no separate step.
-$SSH "$DROPLET" "pm2 restart told --update-env && pm2 save >/dev/null"
+# systemd once told has moved off pm2 (claude-config#22); pm2 until then.
+$SSH "$DROPLET" "if systemctl cat told.service >/dev/null 2>&1; then systemctl restart told; else pm2 restart told --update-env && pm2 save >/dev/null; fi"
 
 say "Smoke test"
 sleep 4
@@ -80,8 +81,8 @@ echo "  GET /health  -> ${HEALTH:-(no response)}"
 # Compass the release failed, so a broken deploy is reported as broken.
 if [ "$CODE" != "200" ] || [[ "$HEALTH" != *'"ok":true'* ]]; then
   echo "✗ Told is not healthy after the deploy." >&2
-  echo "  Roll back:  ssh $DROPLET 'cd $REMOTE && git reset --hard HEAD~1 && cd frontend && npm run build && pm2 restart told'" >&2
-  echo "  Logs:       ssh $DROPLET 'pm2 logs told --lines 40 --nostream'" >&2
+  echo "  Roll back:  ssh $DROPLET 'cd $REMOTE && git reset --hard HEAD~1 && cd frontend && npm run build && systemctl restart told'" >&2
+  echo "  Logs:       ssh $DROPLET 'journalctl -u told -n 40 --no-pager'" >&2
   exit 1
 fi
 
