@@ -3,6 +3,17 @@
 All notable changes to **Told** are documented here.
 The format is loosely based on [Keep a Changelog](https://keepachangelog.com/).
 
+## Unreleased — security advisories (2026-11-08)
+
+- **`npm audit` is clean in both workspaces again.** Dependency-only change; no app code moved.
+- Backend: the `overrides` pins were what held the tree on vulnerable versions, so they moved:
+  `qs` 6.15.2 → 6.16.2 and `body-parser` 1.20.6 → 1.20.9. That lets `express` take its patch
+  release, 4.22.1 → 4.22.3 (still `^4.19.2` in `package.json`). Clears the high `body-parser`
+  and `express` advisories and the moderate `qs` ones.
+- Frontend: `vite` 6.4.3 → 6.4.5 and `source-map-js` 1.2.1 → 1.2.2 (high), lockfile only.
+  Both are build-time; nothing in them ships to the browser.
+- `sbom.cdx.json` regenerated with syft; `SBOM.md` history updated.
+
 ## Unreleased — Claude via the Anthropic API directly (#30)
 
 - **Scenes now come straight from Anthropic**, through the official SDK
