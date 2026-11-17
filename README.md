@@ -40,7 +40,7 @@ Told is an interactive parables project by IMB Innovation. Twenty-four of the st
 - **Frontend** — React 18 + Vite, vanilla CSS on the IMB brand system (Nunito Sans display, Source Sans 3 body, Lora for narrative serif, IMB navy / teal / red / orange palette on a light surface)
 - **Backend** — Node + Express, SQLite (`better-sqlite3`), Passport (Google OAuth 2.0), JWT sessions, express-rate-limit
 - **AI scene generation** — Anthropic API, called directly through the official SDK (`@anthropic-ai/sdk` 1.3.0), model Claude Haiku 5.5 (`claude-haiku-5-5`) at `effort: low`, with a 16,000-token cap so its always-on thinking never crowds out the scene card
-- **Narration** (optional) — self-hosted Kokoro-compatible TTS endpoint with on-disk WAV cache
+- **Narration** (optional) — self-hosted Kokoro-compatible TTS endpoint with on-disk WAV cache. Signed-in players only: the page gets a URL signed for one exact line from `POST /api/tts/sign`, and `GET /api/tts` plays nothing else
 - **Production** — Digital Ocean droplet, Caddy reverse proxy with auto-TLS, PM2 process manager
 
 ## Three presentation templates
@@ -85,7 +85,7 @@ backend/
     auth.js                  # /google, /google/callback, /me, /me/prefs
     game.js                  # /start, /complete, /next (AI scene generation)
     admin.js                 # /users, /stats, /users/:id/{block,unblock}
-    tts.js                   # proxy + SHA-256 disk cache of narration audio
+    tts.js                   # proxy + SHA-256 disk cache of narration audio; signed-URL gate
   data/                      # users.db (gitignored, 600 perms in prod)
   cache/tts/                 # WAV cache (gitignored)
 ```

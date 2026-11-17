@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { apiFetch } from '../hooks/useAuth';
 
 const BASE = import.meta.env.VITE_API_BASE_URL || '';
 
@@ -15,10 +16,14 @@ function useTtsAvailable() {
   return available;
 }
 
-// Build a streaming audio URL the browser can play as bytes arrive — no
-// fetch+blob buffering, no waiting for the whole WAV to download.
-function ttsStreamUrl(text) {
-  return `${BASE}/api/tts?text=${encodeURIComponent(text)}`;
+// A streaming audio URL the browser can play as bytes arrive — no fetch+blob
+// buffering, no waiting for the whole WAV. An <audio> element cannot send the
+// Bearer header, so the server signs the URL for this exact line instead (told#3).
+async function signedStreamUrl(text) {
+  const r = await apiFetch('/api/tts/sign', { method: 'POST', body: JSON.stringify({ text }) });
+  if (!r.ok) throw new Error(`sign ${r.status}`);
+  const { url } = await r.json();
+  return `${BASE}${url}`;
 }
 
 export default function NarrationButton({ text, autoplay = false }) {
@@ -27,6 +32,19 @@ export default function NarrationButton({ text, autoplay = false }) {
   const audioRef                = useRef(null);
   const currentTextRef          = useRef(null);
   const autoStartedForRef       = useRef(null);
+  // { text, url } once signed. Signed as soon as the text arrives, so a tap can call
+  // play() without awaiting the network first: Safari only honors play() inside the
+  // gesture, and an await in between loses it.
+  const signedRef               = useRef({ text: null, url: null });
+
+  useEffect(() => {
+    if (!text || ttsAvailable !== true) return;
+    let cancelled = false;
+    signedStreamUrl(text)
+      .then((url) => { if (!cancelled) signedRef.current = { text, url }; })
+      .catch(() => { /* signing again on tap reports the error */ });
+    return () => { cancelled = true; };
+  }, [text, ttsAvailable]);
 
   // Clean up when text changes (new scene = fresh audio)
   useEffect(() => {
@@ -54,7 +72,13 @@ export default function NarrationButton({ text, autoplay = false }) {
 
     const thisText = text;
     setState('loading');
-    const audio = new Audio(ttsStreamUrl(thisText));
+    let url = signedRef.current.text === thisText ? signedRef.current.url : null;
+    if (!url) {
+      try { url = await signedStreamUrl(thisText); }
+      catch { setState('error'); return; }
+      if (currentTextRef.current !== thisText) return;   // scene moved on while signing
+    }
+    const audio = new Audio(url);
     audio.preload = 'auto';
     audio.addEventListener('playing', () => setState('playing'));
     audio.addEventListener('pause', () => {
