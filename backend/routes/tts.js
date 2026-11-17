@@ -8,7 +8,10 @@
 
 import express from 'express';
 import fs from 'node:fs';
+import { requireAuth } from '../lib/auth.js';
 import {
+  signText,
+  verifyTextSig,
   CACHE_DIR,
   DEFAULT_VOICE,
   MAX_TEXT_CHARS,
@@ -80,13 +83,31 @@ async function serveTts(rawText, voice, res) {
   }
 }
 
+// Mint a playable URL for one line. Signed-in players only; this is the gate.
+router.post('/sign', requireAuth, (req, res) => {
+  const text  = String(req.body?.text  || '').trim();
+  const voice = String(req.body?.voice || DEFAULT_VOICE);
+  if (!text) return res.status(400).json({ error: 'text required' });
+  if (text.length > MAX_TEXT_CHARS) return res.status(413).json({ error: `text exceeds ${MAX_TEXT_CHARS} chars` });
+  const qs = new URLSearchParams({ text, voice, sig: signText(text, voice) });
+  return res.json({ url: `/api/tts?${qs}` });
+});
+
+// What the <audio> element plays. Only a URL minted by /sign is honored: the
+// signature is checked before anything else, so an anonymous caller learns nothing
+// and costs nothing.
 router.get('/', async (req, res) => {
   const text  = String(req.query.text  || '').trim();
   const voice = String(req.query.voice || DEFAULT_VOICE);
+  if (!verifyTextSig(text, voice, req.query.sig)) {
+    return res.status(401).json({ error: 'Not authenticated' });
+  }
   return serveTts(text, voice, res);
 });
 
-router.post('/', async (req, res) => {
+// Legacy body-based entry point. fetch() can send the Bearer header, so it just
+// requires sign-in.
+router.post('/', requireAuth, async (req, res) => {
   const text  = String(req.body?.text  || '').trim();
   const voice = String(req.body?.voice || DEFAULT_VOICE);
   return serveTts(text, voice, res);

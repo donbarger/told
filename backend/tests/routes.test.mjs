@@ -135,10 +135,9 @@ test('every guarded API router refuses anonymous callers', async () => {
 
   // Public by design:
   //   /api/auth — the sign-in entry point; /me and /me/prefs guard themselves individually
-  //   /api/tts  — deliberately unauthenticated today. That is a decision worth revisiting rather
-  //               than a bug in this test; see the issue filed against this repo. Listed here so the
-  //               exemption is explicit and someone has to delete a line to change it.
-  const PUBLIC = new Set(['/api/auth', '/api/tts']);
+  // /api/tts used to be listed here too (told#3). It is guarded now: GET needs a signed URL, and
+  // the signing route needs a session, so it answers an anonymous caller with the same 401.
+  const PUBLIC = new Set(['/api/auth']);
 
   const guarded = mounts.filter((p) => !PUBLIC.has(p));
   assert.ok(guarded.length >= 2, 'expected /api/game and /api/admin to be in the guarded set');
@@ -159,21 +158,55 @@ test('the admin surface is not merely logged-in, it is admin-only', async () => 
     'routes/admin.js no longer guards the whole router with requireAdmin');
 });
 
+// ── Narration (told#3) ────────────────────────────────────────────────────────────────────────
+// <audio> cannot send a Bearer header, so GET /api/tts takes a URL signed for one exact line by
+// POST /api/tts/sign, which needs a session. Before this, anyone could synthesize any text and
+// every miss wrote a new file into a cache nothing evicts.
+const signLine = (text, auth = true) => fetch(`${base}/api/tts/sign`, {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json', ...(auth ? { Authorization: `Bearer ${signedIn()}` } : {}) },
+  body: JSON.stringify({ text }),
+});
+
+test('narration cannot be requested anonymously', async () => {
+  assert.equal((await get('/api/tts/?text=hello%20there')).status, 401, 'an unsigned URL must be refused');
+  assert.equal((await signLine('hello there', false)).status, 401, 'signing needs a session');
+  const legacy = await fetch(`${base}/api/tts/`, {
+    method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ text: 'hi' }),
+  });
+  assert.equal(legacy.status, 401, 'the legacy POST entry point needs a session too');
+});
+
+test('a signed URL speaks exactly the line it was signed for', async () => {
+  const r = await signLine('hello there');
+  assert.equal(r.status, 200);
+  const { url } = await r.json();
+  assert.match(url, /^\/api\/tts\?.*sig=/);
+  // Signed and valid, so it gets past the gate and hits the deliberate "not configured" 503.
+  assert.equal((await get(url)).status, 503);
+  const swapped = url.replace('text=hello+there', 'text=say+something+else');
+  assert.notEqual(swapped, url, 'test setup: the text parameter should have been replaced');
+  assert.equal((await get(swapped)).status, 401, 'a signature must not transfer to other text');
+  assert.equal((await signLine('hello there').then((x) => x.json())).url, url,
+    'the same line always signs to the same URL, so the browser cache keeps working');
+});
+
 test('narration is refused, not attempted, when it is not configured', async () => {
   // With TTS_SERVER_URL unset these must fail closed and locally. If either ever tried the network
   // anyway, CI would hang rather than fail, which is the worse outcome.
   assert.equal((await get('/api/tts/health')).status, 503);
-  const r = await get('/api/tts/?text=hello%20there');
+  const { url } = await (await signLine('hello there')).json();
+  const r = await get(url);
   assert.equal(r.status, 503);
   assert.equal((await r.json()).error, 'TTS not configured');
 });
 
 test('narration rejects empty and oversized text before doing any work', async () => {
-  assert.equal((await get('/api/tts/?text=')).status, 400);
-  const long = 'a'.repeat(5000);
+  assert.equal((await signLine('')).status, 400);
+  assert.equal((await signLine('a'.repeat(5000))).status, 413, 'oversized text must not even be signed');
   const r = await fetch(`${base}/api/tts/`, {
-    method: 'POST', headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ text: long }),
+    method: 'POST', headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${signedIn()}` },
+    body: JSON.stringify({ text: 'a'.repeat(5000) }),
   });
   assert.equal(r.status, 413, 'oversized narration text must be refused, not forwarded upstream');
 });

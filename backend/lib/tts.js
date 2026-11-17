@@ -30,6 +30,29 @@ export function hashKey(text, voice) {
   return crypto.createHash('sha256').update(`${voice}::${text}`).digest('hex');
 }
 
+// ── Signed narration URLs (told#3) ──────────────────────────────────────────
+// GET /api/tts is played by an <audio> element, which cannot send the Bearer
+// header told authenticates with. So instead of being open, the URL carries an
+// HMAC of exactly the text and voice it may speak, minted by an authenticated
+// POST /api/tts/sign. A stranger cannot make it say anything new or grow the
+// cache; a leaked URL can only replay one line someone signed in to request.
+// Deterministic on purpose: the same line always gets the same URL, so the
+// browser's year-long immutable cache keeps working.
+const signingKey = () =>
+  `told-tts-url:${process.env.JWT_SECRET || 'prodigal-dev-secret-change-in-prod'}`;
+
+export function signText(text, voice) {
+  return crypto.createHmac('sha256', signingKey())
+    .update(`${voice}::${normalizeForSpeech(text)}`).digest('base64url');
+}
+
+export function verifyTextSig(text, voice, sig) {
+  if (typeof sig !== 'string' || !sig) return false;
+  const want = Buffer.from(signText(text, voice));
+  const got  = Buffer.from(sig);
+  return got.length === want.length && crypto.timingSafeEqual(got, want);
+}
+
 export function cachePath(text, voice) {
   return path.join(CACHE_DIR, `${hashKey(text, voice)}.wav`);
 }

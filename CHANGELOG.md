@@ -3,6 +3,20 @@
 All notable changes to **Told** are documented here.
 The format is loosely based on [Keep a Changelog](https://keepachangelog.com/).
 
+## Unreleased — narration needs a signed-in player (2026-11-17, #3)
+
+- **`/api/tts` is no longer open to anyone.** Before, any caller could have the narration server
+  synthesize arbitrary text, and every miss wrote a new WAV into a cache nothing evicts.
+- `GET /api/tts` now plays only a URL signed for that exact text and voice (HMAC, keyed from
+  `JWT_SECRET`), minted by the new `POST /api/tts/sign`, which needs a session. `POST /api/tts`
+  needs a session too. `/api/tts/health` stays public so the page can decide whether to show the button.
+- Why not plain `requireAuth`: narration plays through an `<audio>` element, which cannot send the
+  Bearer header told authenticates with, so it would have silenced narration for everyone.
+- `NarrationButton` signs as soon as a scene's text arrives, so a tap still calls `play()` inside the
+  gesture (Safari requires it). Signatures are deterministic, so the year-long browser cache still applies.
+- The route-guard test no longer exempts `/api/tts`; four narration tests cover the gate.
+- **Ship backend and frontend together** (`./deploy.sh` does): an old page against the new backend gets 401 on narration.
+
 ## Unreleased — security advisories (2026-11-08)
 
 - **`npm audit` is clean in both workspaces again.** Dependency-only change; no app code moved.
