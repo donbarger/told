@@ -10,6 +10,7 @@ import gameRouter from './routes/game.js';
 import authRouter from './routes/auth.js';
 import ttsRouter from './routes/tts.js';
 import adminRouter from './routes/admin.js';
+import internalRouter from './routes/internal.js';
 import { userQueries } from './lib/db.js';
 import { optionalAuth } from './lib/auth.js';
 
@@ -46,6 +47,10 @@ const app = express();
 const PORT = process.env.PORT || 3002;
 
 app.set('trust proxy', 1); // Caddy terminates TLS and sets X-Forwarded-For
+// Server-to-server summary for the unified FaithBot admin (routes/internal.js). FIRST, before CORS,
+// optionalAuth and the /api rate limiter: it carries its own four locks, needs no sign-in, and the
+// admin's polling must not count against anyone's rate limit. 404 unless TOLD_INTERNAL_TOKEN is set.
+app.use('/api/internal', internalRouter());
 app.use(cors({ origin: process.env.FRONTEND_URL || 'http://localhost:5175' }));
 app.use(express.json());
 app.use(passport.initialize());
