@@ -1,6 +1,6 @@
 # SBOM — Told — the parables, firsthand
 
-**Last updated:** 2026-11-08  
+**Last updated:** 2026-11-22  
 **Runtime:** Node.js (Express) + React frontend  
 **Lockfile of record:** `backend/package-lock.json`, `frontend/package-lock.json` — transitive dependencies live there, not here  
 **Deployed at:** https://told.thegreatpursuit.faith  
@@ -32,6 +32,12 @@ An interactive parables project: twenty-four of the stories Jesus told, stepped 
 |---|---|---|---|
 | Anthropic API (`api.anthropic.com`) | Claude inference: scene generation | `ANTHROPIC_API_KEY` (Keychain: `TOLD_ANTHROPIC_API_KEY`) | prompt text — the story's system prompt plus the player's stats, choices and journal lines. No names or emails. |
 
+## Inbound callers
+
+| Caller | Endpoint | Credential (env var name) | What it gets |
+|---|---|---|---|
+| FaithBot admin (`donbarger/faithbot-v3`), same droplet, direct to `127.0.0.1:3002` | `GET /api/internal/summary` | `TOLD_INTERNAL_TOKEN` (sent as `X-Internal-Token`; unset = route is a 404) | **aggregates only** — user/game counts, completion, average ending stats, plays per parable, plays per day. No emails, names or ids. Refused (404) if it carries `X-Forwarded-For`/`Forwarded` or the TCP peer is not loopback. |
+
 > Values are never recorded here — only the variable names. Secrets live in the macOS Keychain locally and in the service `.env` on the droplet.
 
 ## AI models
@@ -53,9 +59,9 @@ An interactive parables project: twenty-four of the stories Jesus told, stepped 
 |---|---|
 | Host | DigitalOcean droplet `159.203.128.45` (Ubuntu) |
 | Path on host | `/opt/told` (`frontend/dist` + `backend/`) |
-| Process | PM2 — `told`, 127.0.0.1:3002 |
+| Process | systemd — `told.service`, 127.0.0.1:3002 (PM2 before claude-config#22) |
 | Reverse proxy / TLS | Caddy — TLS + shared `sec_headers` snippet |
-| Deploy | `./deploy.sh`: `git pull` on the droplet, `npm ci`, build, `pm2 restart told` |
+| Deploy | `./deploy.sh`: `git pull` on the droplet, `npm ci`, build, `systemctl restart told` |
 
 ## License summary
 
@@ -75,3 +81,4 @@ All direct dependencies are permissive — MIT / Apache-2.0 / BSD / ISC / Unlice
 | 2026-08-05 | Added `sbom.cdx.json` (CycloneDX, syft-generated) so the SBOM is machine-readable and scannable; this file became its human companion. |
 | 2026-10-29 | Claude moved from OpenRouter to the Anthropic API directly (#30): added `@anthropic-ai/sdk` 1.3.0, OpenRouter service replaced by Anthropic, model is now `claude-haiku-5-5`. `sbom.cdx.json` regenerated with syft 1.51.0; that also picked up the earlier `qs` 6.15.2 and `body-parser` 1.20.6 bumps and the two GitHub Actions. |
 | 2026-11-08 | Security advisories: `qs` override 6.15.2 → 6.16.2 and `body-parser` override 1.20.6 → 1.20.9 (both pinned in `backend/package.json` `overrides`), which lets `express` move 4.22.1 → 4.22.3; frontend lockfile takes `vite` 6.4.3 → 6.4.5 and `source-map-js` 1.2.1 → 1.2.2 (dev/build-time only, so not in the JSON). `sbom.cdx.json` regenerated with syft 1.51.0; the hand-written project metadata, Anthropic service and `claude-haiku-5-5` model entries were carried over, and GitHub Actions found inside `node_modules` workflow files were left out. Still 152 components. |
+| 2026-11-22 | Added the **Inbound callers** table: the FaithBot admin's server-to-server summary (`GET /api/internal/summary`, `TOLD_INTERNAL_TOKEN`, aggregates only). No dependency change, so `sbom.cdx.json` is unchanged. Infrastructure rows corrected from PM2 to systemd. |

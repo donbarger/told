@@ -3,6 +3,20 @@
 All notable changes to **Told** are documented here.
 The format is loosely based on [Keep a Changelog](https://keepachangelog.com/).
 
+## Unreleased — summary for the unified FaithBot admin (2026-11-22)
+
+- **New `GET /api/internal/summary`**, a server-to-server endpoint the FaithBot admin calls on
+  the same droplet (`127.0.0.1:3002`) to show Told in its Product switch. Aggregates only:
+  user and game counts, completion rate, average ending stats, plays per parable, plays per day
+  (`last7`). `since`/`until` (ISO) narrow the dated counts. No emails, names or ids.
+- **Off by default.** It is a bare 404 unless `TOLD_INTERNAL_TOKEN` is set in `backend/.env`, and
+  even then it answers only when `X-Internal-Token` matches (constant-time), the request carries
+  no `X-Forwarded-For`/`Forwarded` (so nothing through Caddy), and the TCP peer is loopback.
+- Mounted ahead of CORS, `optionalAuth` and the `/api` rate limiter, so it needs no sign-in and the
+  admin's polling never uses a player's rate-limit budget.
+- `npm test` now runs every `tests/*.test.mjs`; new `tests/internal.test.mjs`, and the routes
+  smoke test calls the endpoint through the real `server.js`.
+
 ## Unreleased — security advisories (2026-11-08)
 
 - **`npm audit` is clean in both workspaces again.** Dependency-only change; no app code moved.

@@ -25,6 +25,7 @@ const PORT = 8895;
 const base = `http://127.0.0.1:${PORT}`;
 const JWT_SECRET = 'ci-only-not-a-real-secret-0000000000';
 let child, TMP;
+const INTERNAL_TOKEN = 'ci-internal-not-a-real-token-000000';
 
 // ── Fake Anthropic API ─────────────────────────────────────────────────────────────────────────
 // Stands in for api.anthropic.com so the real SDK call in routes/game.js runs end to end. It records
@@ -83,6 +84,7 @@ before(async () => {
       GOOGLE_CLIENT_ID: 'ci-not-a-real-client',
       GOOGLE_CLIENT_SECRET: 'ci-not-a-real-secret',
       JWT_SECRET,
+      TOLD_INTERNAL_TOKEN: INTERNAL_TOKEN,
     },
     stdio: ['ignore', 'pipe', 'pipe'],
   });
@@ -138,7 +140,10 @@ test('every guarded API router refuses anonymous callers', async () => {
   //   /api/tts  — deliberately unauthenticated today. That is a decision worth revisiting rather
   //               than a bug in this test; see the issue filed against this repo. Listed here so the
   //               exemption is explicit and someone has to delete a line to change it.
-  const PUBLIC = new Set(['/api/auth', '/api/tts']);
+  //   /api/internal — the FaithBot admin's server-to-server summary. It has no sign-in by design and
+  //               carries its own token + loopback locks instead; its own test below asserts it is a
+  //               bare 404 to anyone else, and tests/internal.test.mjs covers every lock.
+  const PUBLIC = new Set(['/api/auth', '/api/tts', '/api/internal']);
 
   const guarded = mounts.filter((p) => !PUBLIC.has(p));
   assert.ok(guarded.length >= 2, 'expected /api/game and /api/admin to be in the guarded set');
@@ -149,6 +154,18 @@ test('every guarded API router refuses anonymous callers', async () => {
       + '404 or 200 means no guard ran and the router is mounted without requireAuth/requireAdmin.');
     assert.equal((await r.json()).error, 'Not authenticated');
   }
+});
+
+test('the FaithBot admin summary is reachable through server.js, and only with the token', async () => {
+  // End to end through the real mount: proves it sits ahead of optionalAuth and the rate limiter, and
+  // that server.js reads TOLD_INTERNAL_TOKEN after dotenv. The suite's fetch is a direct loopback call.
+  const ok = await fetch(`${base}/api/internal/summary`, { headers: { 'X-Internal-Token': INTERNAL_TOKEN } });
+  assert.equal(ok.status, 200);
+  assert.equal((await ok.json()).app, 'told');
+  assert.equal((await get('/api/internal/summary')).status, 404);
+  const proxied = await fetch(`${base}/api/internal/summary`,
+    { headers: { 'X-Internal-Token': INTERNAL_TOKEN, 'X-Forwarded-For': '203.0.113.9' } });
+  assert.equal(proxied.status, 404);
 });
 
 test('the admin surface is not merely logged-in, it is admin-only', async () => {
